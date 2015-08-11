@@ -1,4 +1,4 @@
-"""
+﻿"""
 Django settings for DiabloDjango project.
 """
 
@@ -18,6 +18,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+#Need to change to mysql
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -38,7 +39,7 @@ LOGIN_URL = '/login'
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/Boise'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -130,6 +131,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admin',
     'app',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
