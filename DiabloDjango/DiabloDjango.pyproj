@@ -37,9 +37,6 @@
     <Compile Include="app\tests.py" />
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
-    <Compile Include="DiabloDjango\Diablo.py">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="manage.py" />
     <Compile Include="DiabloDjango\__init__.py" />
     <Compile Include="DiabloDjango\settings.py" />
