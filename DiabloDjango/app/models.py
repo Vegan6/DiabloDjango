@@ -4,6 +4,9 @@ Definition of models.
 
 from django.db import models
 from django.core.urlresolvers import reverse
+#from DiabloDjango import Diablo
+
+#career = Diablo.career_profile(Diablo.US_SERVER, 'heretic', '1984')
 
 # Create your models here.
 
