@@ -10,8 +10,8 @@
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
 </head>
 
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+<body style="background-image:url({%static 'app/Images/Background.jpg' %}); background-size: 100% 100% ">
+    <!-- <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -30,13 +30,13 @@
                 {% include 'app/loginpartial.html' %}
             </div>
         </div>
-    </div>
+    </div>-->
 
     <div class="container body-content">
 {% block content %}{% endblock %}
         <hr/>
         <footer>
-            <p>&copy; {{ year }} - My Django Application</p>
+            <p>&copy; {{ year }} - Diablo 3 Profile</p>
         </footer>
     </div>
 

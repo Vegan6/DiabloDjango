@@ -21,7 +21,7 @@
 
 /*! normalize.css v2.1.0 | MIT License | git.io/normalize */
 
-article,
+/*article,
 aside,
 details,
 figcaption,
@@ -315,7 +315,7 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 input,
@@ -371,7 +371,7 @@ img {
   max-width: 100%;
   padding: 4px;
   line-height: 1.428571429;
-  background-color: #ffffff;
+  background-color: transparent;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -1449,7 +1449,7 @@ th {
 }
 
 .table .table {
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .table-condensed thead > tr > th,
@@ -1667,7 +1667,6 @@ input[type="radio"],
 input[type="checkbox"] {
   margin: 4px 0 0;
   margin-top: 1px \9;
-  /* IE8-9 */
 
   line-height: normal;
 }
@@ -1725,7 +1724,7 @@ input[type="number"]::-webkit-inner-spin-button {
   line-height: 1.428571429;
   color: #555555;
   vertical-align: middle;
-  background-color: #ffffff;
+  background-color: transparent;
   border: 1px solid #cccccc;
   border-radius: 4px;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -2050,7 +2049,7 @@ fieldset[disabled] .btn {
 
 .btn-default {
   color: #333333;
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #cccccc;
 }
 
@@ -2085,7 +2084,7 @@ fieldset[disabled] .btn-default:active,
 .btn-default.disabled.active,
 .btn-default[disabled].active,
 fieldset[disabled] .btn-default.active {
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #cccccc;
 }
 
@@ -3244,7 +3243,7 @@ input[type="button"].btn-block {
   margin: 2px 0 0;
   font-size: 14px;
   list-style: none;
-  background-color: #ffffff;
+  background-color: transparent;
   border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
@@ -3882,7 +3881,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a:focus {
   color: #555555;
   cursor: default;
-  background-color: #ffffff;
+  background-color: transparent;
   border: 1px solid #dddddd;
   border-bottom-color: transparent;
 }
@@ -4553,7 +4552,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse .navbar-toggle .icon-bar {
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .navbar-inverse .navbar-collapse,
@@ -4660,7 +4659,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   margin-left: -1px;
   line-height: 1.428571429;
   text-decoration: none;
-  background-color: #ffffff;
+  background-color: transparent;
   border: 1px solid #dddddd;
 }
 
@@ -4703,7 +4702,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pagination > .disabled > a:focus {
   color: #999999;
   cursor: not-allowed;
-  background-color: #ffffff;
+  background-color: transparent;
   border-color: #dddddd;
 }
 
@@ -4778,7 +4777,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pager li > span {
   display: inline-block;
   padding: 5px 14px;
-  background-color: #ffffff;
+  background-color: transparent;
   border: 1px solid #dddddd;
   border-radius: 15px;
 }
@@ -4805,7 +4804,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .pager .disabled > span {
   color: #999999;
   cursor: not-allowed;
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .label {
@@ -4920,7 +4919,7 @@ a.badge:focus {
 a.list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
   color: #428bca;
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .nav-pills > li > a > .badge {
@@ -4934,7 +4933,7 @@ a.list-group-item.active > .badge,
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: transparent;
 }
 
 .maindiv{
@@ -4981,7 +4980,7 @@ a.list-group-item.active > .badge,
   max-width: 100%;
   padding: 4px;
   line-height: 1.428571429;
-  background-color: #ffffff;
+  background-color: transparent;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -5267,7 +5266,7 @@ a.thumbnail:focus {
   display: block;
   padding: 10px 15px;
   margin-bottom: -1px;
-  background-color: #ffffff;
+  background-color: transparent;
   border: 1px solid #dddddd;
 }
 
@@ -5337,7 +5336,7 @@ a.list-group-item:focus {
 
 .panel {
   margin-bottom: 20px;
-  background-color: #ffffff;
+  background-color: transparent;
   border: 1px solid transparent;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -5658,7 +5657,7 @@ body.modal-open,
 
 .modal-content {
   position: relative;
-  background-color: #ffffff;
+  background-color: transparent;
   border: 1px solid #999999;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
@@ -5886,7 +5885,7 @@ body.modal-open,
   padding: 1px;
   text-align: left;
   white-space: normal;
-  background-color: #ffffff;
+  background-color: transparent;
   border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 6px;
@@ -6173,7 +6172,7 @@ body.modal-open,
   width: 12px;
   height: 12px;
   margin: 0;
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 .carousel-caption {
@@ -6823,4 +6822,4 @@ td.visible-print {
   td.hidden-print {
     display: none !important;
   }
-}
+}*/
