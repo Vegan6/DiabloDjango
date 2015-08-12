@@ -13,6 +13,7 @@ def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
     HeroProfile = DiabloAPI.HeroProfile(DiabloAPI.US_SERVER, 'Heretic-1984', '64346468')
+    query = request.GET.get('hello','')
     return render(
         request,
         'app/index.html',
@@ -20,7 +21,7 @@ def home(request):
         {
             'title':'Diablo 3',
             'year':datetime.now().year,
-            'HeroProfile': "Hero Name: " + HeroProfile['name'] + " Paragon Level:" + str(HeroProfile['paragonLevel']) 
+            'HeroProfile': str(query) + "Hero Name: " + HeroProfile['name'] + " Paragon Level:" + str(HeroProfile['paragonLevel']),
         })
     )
 
