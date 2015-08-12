@@ -40,3 +40,11 @@ input[type="checkbox"].input-validation-error {
 .validation-summary-valid {
     display: none;
 }
+
+.large-txt{
+	height:800px; width:800px;
+}
+
+#json-dispaly{
+	width:100%;
+}
