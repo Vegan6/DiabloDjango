@@ -1,4 +1,4 @@
-﻿"""
+"""
 Definition of urls for DiabloDjango.
 """
 
@@ -7,12 +7,11 @@ from django.conf.urls import patterns, url
 from app.forms import BootstrapAuthenticationForm
 
 # Uncomment the next lines to enable the admin:
-from django.conf.urls import include
+#from django.conf.urls import include
 
 urlpatterns = patterns('',
-    # Examples:
     url(r'^$', 'app.views.home', name='home'),
-    url(r'^#hero', 'app.views.home', name='hero'),
+    url(r'^#hero', 'app.views.hero', name='hero'),
 
     url(r'^contact$', 'app.views.contact', name='contact'),
     url(r'^about', 'app.views.about', name='about'),
@@ -23,8 +22,8 @@ urlpatterns = patterns('',
             'authentication_form': BootstrapAuthenticationForm,
             'extra_context':
             {
-                'title':'Log in',
-                'year':datetime.now().year,
+                'title': 'Log in',
+                'year': datetime.now().year,
             }
         },
         name='login'),

@@ -13,8 +13,8 @@ from DiabloDjango import DiabloAPI
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
-    HeroProfile = DiabloAPI.HeroProfile(DiabloAPI.US_SERVER, 'Heretic-1984', '64346468')
-    query = request.GET.get('hello', '')
+    #HeroProfile = DiabloAPI.HeroProfile(DiabloAPI.US_SERVER, 'Heretic-1984', '64346468')
+    #query = request.GET.get('hello', '')
     return render(
         request,
         'app/index.html',
@@ -22,8 +22,27 @@ def home(request):
         {
             'title': 'Diablo 3',
             'year': datetime.now().year,
-            'HeroProfile': str(query)
-                + "\nHero Name: " + HeroProfile['name']
+            'HeroProfile': "",
+                #+ "\nHero Name: " + HeroProfile['name']
+                #+ "\nParagon Level: " + str(HeroProfile['paragonLevel'])
+                #+ "\nClass: " + HeroProfile['class'],
+        })
+    )
+
+
+def hero(request):
+    """Renders the hero page."""
+    assert isinstance(request, HttpRequest)
+    HeroProfile = DiabloAPI.HeroProfile(DiabloAPI.US_SERVER, 'Heretic-1984', '64346468')
+    return render(
+        request,
+        'app/hero.html',
+        context_instance=RequestContext(request,
+        {
+            'title': 'Diablo 3',
+            'year': datetime.now().year,
+            'HeroProfile':
+                "\nHero Name: " + HeroProfile['name']
                 + "\nParagon Level: " + str(HeroProfile['paragonLevel'])
                 + "\nClass: " + HeroProfile['class'],
         })
