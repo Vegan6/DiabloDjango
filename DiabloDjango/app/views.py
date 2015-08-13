@@ -23,8 +23,9 @@ def home(request):
             'title': 'Diablo 3',
             'year': datetime.now().year,
             'HeroProfile': str(query)
-                + "Hero Name: " + HeroProfile['name']
-                + " Paragon Level:" + str(HeroProfile['paragonLevel']),
+                + "\nHero Name: " + HeroProfile['name']
+                + "\nParagon Level: " + str(HeroProfile['paragonLevel'])
+                + "\nClass: " + HeroProfile['class'],
         })
     )
 
