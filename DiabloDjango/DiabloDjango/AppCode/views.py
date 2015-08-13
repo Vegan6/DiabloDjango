@@ -51,7 +51,7 @@ def hero(request):
                 + "\nParagon Level: " + str(Hero['paragonLevel'])
                 + "\nClass: " + Hero.Class()
                 + "\nGender: " + Hero.Gender()
-                + "\nLast Update: " + str(GetUpdateTime(int(Hero['last-updated'])))
+                + "\nLast Update: " + str(GetUpdateTime(int(Hero['last-updated']))),
         })
     )
 
@@ -78,7 +78,7 @@ def career(request):
                 + "\nSeasonal Paragon Level: " + str(CareerDetails['paragonLevelSeason'])
                 + "\nElite Kills: " + str(CareerKills['elites'])
                 + "\nHeroes: " + str(CareerDetails.Heroes())
-                + "\nLast Update: " + str(GetUpdateTime(int(CareerDetails['lastUpdated'])))
+                + "\nLast Update: " + str(GetUpdateTime(int(CareerDetails['lastUpdated']))),
         })
     )
 
