@@ -48,3 +48,9 @@ input[type="checkbox"].input-validation-error {
 #json-dispaly{
 	width:100%;
 }
+
+/* Below is used to stop chromes autofill color change*/
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px black inset;
+    -webkit-text-fill-color: white !important;
+}

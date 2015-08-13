@@ -1,4 +1,4 @@
-"""
+﻿"""
 Definition of views.
 """
 
@@ -6,23 +6,22 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
+from DiabloDjango.AppCode.DiabloAPI import *
 
-from DiabloDjango import DiabloAPI
 
 
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
-    #HeroProfile = DiabloAPI.HeroProfile(DiabloAPI.US_SERVER, 'Heretic-1984', '64346468')
     #query = request.GET.get('hello', '')
     return render(
         request,
-        'app/index.html',
+        'index.html',
         context_instance=RequestContext(request,
         {
             'title': 'Diablo 3',
             'year': datetime.now().year,
-            'HeroProfile': "",
+            'HeroProfile': 'No Hero Found',
                 #+ "\nHero Name: " + HeroProfile['name']
                 #+ "\nParagon Level: " + str(HeroProfile['paragonLevel'])
                 #+ "\nClass: " + HeroProfile['class'],
@@ -33,18 +32,23 @@ def home(request):
 def hero(request):
     """Renders the hero page."""
     assert isinstance(request, HttpRequest)
-    HeroProfile = DiabloAPI.HeroProfile(DiabloAPI.US_SERVER, 'Heretic-1984', '64346468')
+    if (request.GET.get('GetHero')):
+        BattleTag = request.GET.get('battletag')
+        HeroID = int(request.GET.get('heroid'))
+        HerosProfile = HeroProfile(US_SERVER, BattleTag, HeroID)
+    else:
+        HerosProfile = ''
     return render(
         request,
-        'app/hero.html',
+        'hero.html',
         context_instance=RequestContext(request,
         {
             'title': 'Diablo 3',
             'year': datetime.now().year,
             'HeroProfile':
-                "\nHero Name: " + HeroProfile['name']
-                + "\nParagon Level: " + str(HeroProfile['paragonLevel'])
-                + "\nClass: " + HeroProfile['class'],
+                "\nHero Name: " + HerosProfile['name']
+                + "\nParagon Level: " + str(HerosProfile['paragonLevel'])
+                + "\nClass: " + HerosProfile['class'],
         })
     )
 
@@ -54,7 +58,7 @@ def contact(request):
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'app/contact.html',
+        'Pages/contact.html',
         context_instance=RequestContext(request,
         {
             'title': 'Contact',
@@ -69,7 +73,7 @@ def about(request):
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'app/about.html',
+        'Pages/about.html',
         context_instance=RequestContext(request,
         {
             'title': 'About',
