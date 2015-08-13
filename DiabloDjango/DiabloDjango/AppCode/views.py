@@ -5,9 +5,14 @@ Definition of views.
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
-from datetime import datetime
+from datetime import datetime, timedelta
 from DiabloDjango.AppCode.DiabloAPI import *
 
+# Convert SecondsFromEpoch to local datetime
+
+
+def GetUpdateTime(epochSeconds):
+    return datetime.fromtimestamp(epochSeconds)
 
 
 def home(request):
@@ -31,9 +36,9 @@ def hero(request):
     if (request.GET.get('GetHero')):
         BattleTag = request.GET.get('battletag')
         HeroID = int(request.GET.get('heroid'))
-        HerosProfile = HeroProfile(US_SERVER, BattleTag, HeroID)
+        Hero = HeroProfile(US_SERVER, BattleTag, HeroID)
     else:
-        HerosProfile = ''
+        Hero = ''
     return render(
         request,
         'hero.html',
@@ -42,9 +47,11 @@ def hero(request):
             'title': 'Diablo 3',
             'year': datetime.now().year,
             'HeroProfile':
-                "\nHero Name: " + HerosProfile['name']
-                + "\nParagon Level: " + str(HerosProfile['paragonLevel'])
-                + "\nClass: " + HerosProfile['class'],
+                "\nHero Name: " + Hero['name']
+                + "\nParagon Level: " + str(Hero['paragonLevel'])
+                + "\nClass: " + Hero.Class()
+                + "\nGender: " + Hero.Gender()
+                + "\nLast Update: " + str(GetUpdateTime(int(Hero['last-updated'])))
         })
     )
 
@@ -54,9 +61,10 @@ def career(request):
     assert isinstance(request, HttpRequest)
     if (request.GET.get('GetCareer')):
         BattleTag = request.GET.get('battletagcareer')
-        Career = GetCareer(US_SERVER, BattleTag)
+        CareerDetails = GetCareer(US_SERVER, BattleTag)
+        CareerKills = CareerDetails.Kills()
     else:
-        Career = ''
+        CareerInfo = ''
     return render(
         request,
         'hero.html',
@@ -65,10 +73,11 @@ def career(request):
             'title': 'Diablo 3',
             'year': datetime.now().year,
             'HeroProfile':
-                "\nBattleTag: " + Career['battleTag']
-                + "\nParagon Level: " + str(Career['paragonLevel'])
-                + "\nParagon Level Season: " + str(Career['paragonLevelSeason'])
-                #+ "\nKills: " + Career['kills'],
+                "\nBattleTag: " + CareerDetails['battleTag']
+                + "\nParagon Level: " + str(CareerDetails['paragonLevel'])
+                + "\nSeasonal Paragon Level: " + str(CareerDetails['paragonLevelSeason'])
+                + "\nElite Kills: " + str(CareerKills['elites'])
+                + "\nHeroes: " + str(CareerDetails.Heroes())
         })
     )
 
