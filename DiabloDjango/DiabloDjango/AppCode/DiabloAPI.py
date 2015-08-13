@@ -1,4 +1,4 @@
-import requests
+﻿import requests
 import json
 
 # Static Variables
@@ -16,7 +16,6 @@ genders = {0: 'Male', 1: 'Female'}
 # Load Hero Profile
 # Returns JSON Object
 
-
 def HeroProfile(Host, BattleTag, HeroId):
     url = "%s/d3/profile/%s/hero/%s?%s&%s" % (Host, BattleTag, HeroId, EN_LOCALE, API_KEY)
     response = requests.get(url)
@@ -28,3 +27,18 @@ def HeroProfile(Host, BattleTag, HeroId):
 
 # Load Career
 # Returns Career Class
+
+
+def GetCareer(Host, BattleTag):
+    url = "%s/d3/profile/%s/?%s&%s" % (Host, BattleTag, EN_LOCALE, API_KEY)
+    response = requests.get(url)
+    if response.status_code == 200:
+        return json.loads(response.text)
+    else:
+        raise Exception('Error:\n' + response.text)
+
+
+class Career(object):
+    
+    def Kills(self):
+        return json.loads(self['kills'])

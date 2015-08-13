@@ -21,10 +21,6 @@ def home(request):
         {
             'title': 'Diablo 3',
             'year': datetime.now().year,
-            'HeroProfile': 'No Hero Found',
-                #+ "\nHero Name: " + HeroProfile['name']
-                #+ "\nParagon Level: " + str(HeroProfile['paragonLevel'])
-                #+ "\nClass: " + HeroProfile['class'],
         })
     )
 
@@ -49,6 +45,30 @@ def hero(request):
                 "\nHero Name: " + HerosProfile['name']
                 + "\nParagon Level: " + str(HerosProfile['paragonLevel'])
                 + "\nClass: " + HerosProfile['class'],
+        })
+    )
+
+
+def career(request):
+    """Renders the Career page."""
+    assert isinstance(request, HttpRequest)
+    if (request.GET.get('GetCareer')):
+        BattleTag = request.GET.get('battletagcareer')
+        Career = GetCareer(US_SERVER, BattleTag)
+    else:
+        Career = ''
+    return render(
+        request,
+        'hero.html',
+        context_instance=RequestContext(request,
+        {
+            'title': 'Diablo 3',
+            'year': datetime.now().year,
+            'HeroProfile':
+                "\nBattleTag: " + Career['battleTag']
+                + "\nParagon Level: " + str(Career['paragonLevel'])
+                + "\nParagon Level Season: " + str(Career['paragonLevelSeason'])
+                #+ "\nKills: " + Career['kills'],
         })
     )
 
