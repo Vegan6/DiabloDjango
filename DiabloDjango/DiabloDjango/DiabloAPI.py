@@ -9,12 +9,14 @@ ASIA_SERVER = 'https://as.api.battle.net'
 EN_LOCALE = 'locale=en_US'
 
 # Heretic Key
-API_KEY = 'apikey=wszpeaq9nkmskx58ra68yknst4dage85' 
+API_KEY = 'apikey=wszpeaq9nkmskx58ra68yknst4dage85'
 
 genders = {0: 'Male', 1: 'Female'}
 
 # Load Hero Profile
 # Returns JSON Object
+
+
 def HeroProfile(Host, BattleTag, HeroId):
     url = "%s/d3/profile/%s/hero/%s?%s&%s" % (Host, BattleTag, HeroId, EN_LOCALE, API_KEY)
     response = requests.get(url)
@@ -22,3 +24,7 @@ def HeroProfile(Host, BattleTag, HeroId):
         return json.loads(response.text)
     else:
         raise Exception('Error:\n' + response.text)
+
+
+# Load Career
+# Returns Career Class
