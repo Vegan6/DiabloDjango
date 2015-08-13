@@ -78,6 +78,7 @@ def career(request):
                 + "\nSeasonal Paragon Level: " + str(CareerDetails['paragonLevelSeason'])
                 + "\nElite Kills: " + str(CareerKills['elites'])
                 + "\nHeroes: " + str(CareerDetails.Heroes())
+                + "\nLast Update: " + str(GetUpdateTime(int(CareerDetails['lastUpdated'])))
         })
     )
 
