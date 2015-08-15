@@ -1,0 +1,468 @@
+{
+    "id": 64346468,
+    "name": "Panda",
+    "class": "demon-hunter",
+    "gender": 1,
+    "level": 70,
+    "paragonLevel": 139,
+    "hardcore": false,
+    "seasonal": true,
+    "seasonCreated": 3,
+    "skills": {
+        "active": [{
+            "skill": {
+                "slug": "evasive-fire",
+                "name": "Evasive Fire",
+                "icon": "x1_demonhunter_evasivefire",
+                "level": 14,
+                "categorySlug": "primary",
+                "tooltipUrl": "skill/demon-hunter/evasive-fire",
+                "description": "Generate: 4 Hatred\r\n\r\nShoot a spread of bolts that hits the primary enemy for 200% weapon damage and two additional enemies for 100% weapon damage.\r\n\r\nIf an enemy is in front of you at close range, you will backflip away 5 yards.",
+                "simpleDescription": "Generate: 4 Hatred\r\n\r\nFire at three enemies and occasionally perform an evasive backflip if any enemies are close.",
+                "skillCalcId": "U"
+            },
+            "rune": {
+                "slug": "evasive-fire-e",
+                "type": "e",
+                "name": "Focus",
+                "level": 42,
+                "description": "Instead of backflipping, increase Hatred generated to 7.\r\n\r\nEvasive Fire's damage turns into Cold.",
+                "simpleDescription": "Increase Hatred generated instead of backflipping.",
+                "tooltipParams": "rune/evasive-fire/e",
+                "skillCalcId": "Y",
+                "order": 3
+            }
+        }, {
+            "skill": {
+                "slug": "rapid-fire",
+                "name": "Rapid Fire",
+                "icon": "demonhunter_rapidfire",
+                "level": 5,
+                "categorySlug": "secondary",
+                "tooltipUrl": "skill/demon-hunter/rapid-fire",
+                "description": "Cost: 20 Hatred initially, and an additional 6 Hatred while channeling\r\n\r\nRapidly fire for 685% weapon damage as Physical.",
+                "simpleDescription": "Cost: 20 Hatred initially, and an additional 6 Hatred while channeling\r\n\r\nHold your ground and continually fire a stream of arrows.",
+                "skillCalcId": "c"
+            },
+            "rune": {
+                "slug": "rapid-fire-e",
+                "type": "e",
+                "name": "Frost Shots",
+                "level": 19,
+                "description": "Enemies hit by Rapid Fire are Chilled by 80% for 2 seconds.\r\n\r\nRapid Fire's damage turns into Cold.",
+                "simpleDescription": "Enemies hit by Rapid Fire are Chilled.",
+                "tooltipParams": "rune/rapid-fire/e",
+                "skillCalcId": "Z",
+                "order": 1
+            }
+        }, {
+            "skill": {
+                "slug": "companion",
+                "name": "Companion",
+                "icon": "x1_demonhunter_companion",
+                "level": 17,
+                "categorySlug": "hunting",
+                "tooltipUrl": "skill/demon-hunter/companion",
+                "description": "Cooldown: 30 seconds\r\n\r\nActive: Your raven deals an additional 500% damage on its next attack.\r\n\r\nPassive: Summons a raven companion that pecks at enemies for 100% of your weapon damage as Physical.",
+                "simpleDescription": "Cooldown: 30 seconds\r\n\r\nActive: Your raven deals additional damage on its next attack.\r\n\r\nPassive: Summons a raven companion from the shadows.",
+                "skillCalcId": "S"
+            },
+            "rune": {
+                "slug": "companion-c",
+                "type": "c",
+                "name": "Wolf Companion",
+                "level": 59,
+                "description": "Active: Your wolf howls, granting you and your allies within 60 yards 30% increased damage for 10 seconds.\r\n\r\nPassive: Summons a wolf companion that attacks enemies in front of him for 100% of your weapon damage as Physical.",
+                "simpleDescription": "Active: Your wolf howls, granting you and your allies increased damage for a short duration.\r\n\r\nPassive: Summons a wolf companion that fights alongside you.",
+                "tooltipParams": "rune/companion/c",
+                "skillCalcId": "c",
+                "order": 4
+            }
+        }, {
+            "skill": {
+                "slug": "fan-of-knives",
+                "name": "Fan of Knives",
+                "icon": "demonhunter_fanofknives",
+                "level": 14,
+                "categorySlug": "devices",
+                "tooltipUrl": "skill/demon-hunter/fan-of-knives",
+                "description": "Cooldown: 10 seconds\r\n\r\nThrow knives out in a spiral around you, dealing 620% weapon damage to all enemies within 20 yards. Your knives will also Slow the movement of enemies by 60% for 1 seconds.",
+                "simpleDescription": "Cooldown: 10 seconds\r\n\r\nUnleash a flurry of knives that strike and Slow all nearby enemies.",
+                "skillCalcId": "f"
+            },
+            "rune": {
+                "slug": "fan-of-knives-b",
+                "type": "b",
+                "name": "Assassin's Knives",
+                "level": 59,
+                "description": "Also throw long-range knives that deal 620% weapon damage to 5 additional enemies.",
+                "simpleDescription": "Also throw long-range knives at random enemies.",
+                "tooltipParams": "rune/fan-of-knives/b",
+                "skillCalcId": "c",
+                "order": 4
+            }
+        }, {
+            "skill": {
+                "slug": "strafe",
+                "name": "Strafe",
+                "icon": "demonhunter_strafe",
+                "level": 19,
+                "categorySlug": "archery",
+                "tooltipUrl": "skill/demon-hunter/strafe",
+                "description": "Cost: 12 Hatred\r\n\r\nShoot at random nearby enemies for 675% weapon damage while moving at 75% of normal movement speed.",
+                "simpleDescription": "Cost: 12 Hatred\r\n\r\nShoot at nearby enemies while moving.",
+                "skillCalcId": "i"
+            },
+            "rune": {
+                "slug": "strafe-b",
+                "type": "b",
+                "name": "Icy Trail",
+                "level": 24,
+                "description": "Leave an icy trail in your wake that deals 300% weapon damage as Cold over 3 seconds and Chills enemies for 3 seconds.",
+                "simpleDescription": "Leave an icy trail as you move.",
+                "tooltipParams": "rune/strafe/b",
+                "skillCalcId": "a",
+                "order": 0
+            }
+        }, {
+            "skill": {
+                "slug": "rain-of-vengeance",
+                "name": "Rain of Vengeance",
+                "icon": "demonhunter_rainofvengeance",
+                "level": 30,
+                "categorySlug": "archery",
+                "tooltipUrl": "skill/demon-hunter/rain-of-vengeance",
+                "description": "Cooldown: 30 seconds\r\n\r\nFire a massive volley of arrows at a large area. Arrows fall from the sky dealing 1500% weapon damage over 5 seconds to all enemies in the area.",
+                "simpleDescription": "Cooldown: 30 seconds\r\n\r\nUnleash a torrent of arrows from the sky.",
+                "skillCalcId": "l"
+            },
+            "rune": {
+                "slug": "rain-of-vengeance-e",
+                "type": "e",
+                "name": "Stampede",
+                "level": 47,
+                "description": "Summon a wave of 10 Shadow Beasts to tear across the ground, knocking back enemies and dealing 4600% total weapon damage as Fire over 3 seconds.",
+                "simpleDescription": "Summon Shadow Beasts that swoop along the ground and damage enemies they hit.",
+                "tooltipParams": "rune/rain-of-vengeance/e",
+                "skillCalcId": "b",
+                "order": 2
+            }
+        }],
+        "passive": [{
+            "skill": {
+                "slug": "ambush",
+                "name": "Ambush",
+                "icon": "x1_demonhunter_passive_ambush",
+                "level": 64,
+                "tooltipUrl": "skill/demon-hunter/ambush",
+                "description": "You deal 40% additional damage to enemies above 75% health.",
+                "flavor": "\"The art of surprise is difficult, but rewarding to master.\" —Mynton, Demon Hunter",
+                "skillCalcId": "S"
+            }
+        }, {
+            "skill": {
+                "slug": "night-stalker",
+                "name": "Night Stalker",
+                "icon": "demonhunter_passive_nightstalker",
+                "level": 20,
+                "tooltipUrl": "skill/demon-hunter/night-stalker",
+                "description": "Your primary skills generate an additional 4 Hatred.",
+                "flavor": "\"How did I learn to hate, to kill, to flay the flesh from the bones of my prey without pity? You taught me.\" —Tyla Shrikewing's final words to Naragh the Sin Eater",
+                "skillCalcId": "X"
+            }
+        }, {
+            "skill": {
+                "slug": "cull-the-weak",
+                "name": "Cull the Weak",
+                "icon": "demonhunter_passive_culltheweak",
+                "level": 20,
+                "tooltipUrl": "skill/demon-hunter/cull-the-weak",
+                "description": "Increase damage against Slowed or Chilled enemies by 20%.",
+                "flavor": "\"I'll show you the same mercy you showed my helpless family.\" —Tyla Shrikewing",
+                "skillCalcId": "c"
+            }
+        }, {
+            "skill": {
+                "slug": "single-out",
+                "name": "Single Out",
+                "icon": "x1_demonhunter_passive_singleout",
+                "level": 68,
+                "tooltipUrl": "skill/demon-hunter/single-out",
+                "description": "Gain 25% Critical Hit Chance against enemies who are more than 20 yards away from any other enemies.",
+                "flavor": "Wield your focus like a weapon.",
+                "skillCalcId": "R"
+            }
+        }]
+    },
+    "items": {
+        "head": {
+            "id": "Unique_Helm_009_x1",
+            "name": "Natalya's Sight",
+            "icon": "unique_helm_009_x1_demonhunter_male",
+            "displayColor": "green",
+            "tooltipParams": "item/CogBCNGLsp8FEgcIBBV8Su8THWYjBlAdyfq8oB2bBgDLHTp12owdcYt38B0BYC2xMIsSOJECQABQElgEYJECaisKDAgAEOW41uGEgICAExIbCL-4z94GEgcIBBWEJ5SxMI8SOABAAVgEkAEDgAFGpQEBYC2xrQFLtflLtQF_-U5duAG7gvvcCcABBBj4qfq-AlAAWAKgAanSi8wIoAGx0s3EAaABxa2bsAGgAbqwxNMBoAH4qfq-AqAB7Mytuw4",
+            "setItemsEquipped": ["Unique_Boots_011_x1", "Unique_Cloak_006_x1", "P2_Unique_Pants_01", "Unique_Helm_009_x1", "Unique_HandXBow_003_x1", "P2_Unique_Gloves_01"]
+        },
+        "torso": {
+            "id": "Unique_Cloak_006_x1",
+            "name": "Natalya's Embrace",
+            "icon": "unique_cloak_006_x1_demonhunter_female",
+            "displayColor": "green",
+            "tooltipParams": "item/CuEBCNv1jp8GEgcIBBUdjDgNHazTmTkdAWAtsR0mtR2VHaLPFFYdcyMGUB3x02rVMIsSOOMCQABQElgEYOMCaisKDAgAEKm9pKGBgIDAPBIbCLnPjsoNEgcIBBUYn9irMI8SOABAAVgEkAEDaisKDAgAEPK9pKGBgIDAPBIbCK_3u58FEgcIBBUilq6YMIsSOABAAVgEkAEDaisKDAgAENe-pKGBgIDAPBIbCNX5sJoDEgcIBBUYn9irMI8SOABAAVgEkAEDgAFGpQEmtR2VrQEX75putQEBcG8CuAGkxKhZwAEFGLqwxNMBUABYAqABqdKLzAigAbHSzcQBoAHFrZuwAaABurDE0wGgAfip-r4CoAHszK27Dg",
+            "setItemsEquipped": ["Unique_Boots_011_x1", "Unique_Cloak_006_x1", "P2_Unique_Pants_01", "Unique_Helm_009_x1", "Unique_HandXBow_003_x1", "P2_Unique_Gloves_01"]
+        },
+        "feet": {
+            "id": "Unique_Boots_011_x1",
+            "name": "Natalya's Bloody Footprints",
+            "icon": "unique_boots_011_x1_demonhunter_male",
+            "displayColor": "green",
+            "tooltipParams": "item/ClsIhu3IpQoSBwgEFTaztXMdOydvJB3x02rVHUNORFEdXIlRdh1xi3fwHay801MwixI44gJAAFASWARg4gKAAUalAay801OtAXKOHSG1AaBFm3-4Aazk1-QBwAEEGOzMrbsOUABYAqABqdKLzAigAbHSzcQBoAHFrZuwAaABurDE0wGgAfip-r4CoAHszK27Dg",
+            "setItemsEquipped": ["Unique_Boots_011_x1", "Unique_Cloak_006_x1", "P2_Unique_Pants_01", "Unique_Helm_009_x1", "Unique_HandXBow_003_x1", "P2_Unique_Gloves_01"]
+        },
+        "hands": {
+            "id": "P2_Unique_Gloves_01",
+            "name": "Natalya's Touch",
+            "icon": "p2_unique_gloves_01_demonhunter_male",
+            "displayColor": "green",
+            "tooltipParams": "item/CkUIo7eAlgUSBwgEFWdLtvMdP_IJ2B0do43EHRAvyiodmwYAyx1-VrMuHcn6vKAwixI4kwJAAFASWARgkwKAAUa1AclbkqQYsdLNxAFQAFgCoAGp0ovMCKABsdLNxAGgAcWtm7ABoAG6sMTTAaAB-Kn6vgKgAezMrbsO",
+            "setItemsEquipped": ["Unique_Boots_011_x1", "Unique_Cloak_006_x1", "P2_Unique_Pants_01", "Unique_Helm_009_x1", "Unique_HandXBow_003_x1", "P2_Unique_Gloves_01"]
+        },
+        "shoulders": {
+            "id": "Unique_Shoulder_102_x1",
+            "name": "Spaulders of Zakara",
+            "icon": "unique_shoulder_102_x1_demonhunter_male",
+            "displayColor": "orange",
+            "tooltipParams": "item/ClII7Z6-9gcSBwgEFRbAhY0d8dNq1R0gjTdUHXRFp4kduLwgeh04ssDVMIsSOI0DQABQElgEYI0DgAFGpQE4ssDVrQE4ssDVtQHS-MgVuAEAwAEBGNP_0acOUABYAg"
+        },
+        "legs": {
+            "id": "P2_Unique_Pants_01",
+            "name": "Natalya's Leggings",
+            "icon": "p2_unique_pants_01_demonhunter_male",
+            "displayColor": "green",
+            "tooltipParams": "item/Cp4BCNfO2ZMLEgcIBBWdlPz0HfHTatUdj5DKUB07J28kHUNORFEdP_IJ2B3ZP9SfMIsSOKcDQABQElgEYKcDaisKDAgAEKHS_JqCgICAHBIbCLjwwMkBEgcIBBUilq6YMI8SOABAAVgEkAEDaioKDAgAEPDS_JqCgICAHBIaCMGN1V0SBwgEFSKWrpgwixI4AEABWASQAQOAAUa1AZ-S1aUYxa2bsAFQAFgCoAGp0ovMCKABsdLNxAGgAcWtm7ABoAG6sMTTAaAB-Kn6vgKgAezMrbsO",
+            "setItemsEquipped": ["Unique_Boots_011_x1", "Unique_Cloak_006_x1", "P2_Unique_Pants_01", "Unique_Helm_009_x1", "Unique_HandXBow_003_x1", "P2_Unique_Gloves_01"]
+        },
+        "bracers": {
+            "id": "Unique_Bracer_007_x1",
+            "name": "Strongarm Bracers",
+            "icon": "unique_bracer_007_x1_demonhunter_male",
+            "displayColor": "orange",
+            "tooltipParams": "item/CkAIo8qixAESBwgEFSPaCDcd5hXbDR0yicdaHYQDodYdYUKU2R0bXc9EMIsaOJMDQABQElgEYJMDgAFGtQHbLMrLGMboxvAGUABYAg"
+        },
+        "mainHand": {
+            "id": "Unique_HandXBow_003_x1",
+            "name": "Natalya's Slayer",
+            "icon": "unique_handxbow_003_x1_demonhunter_male",
+            "displayColor": "green",
+            "tooltipParams": "item/CogBCPe8gYcLEgcIBBVriz67HYBmXEYdFplnOx07yaFiHZ5Pg9wdyfq8oB37F4jsMIsSOL8CQABQElgEYL8CaisKDAgAEPqfkuGAgICgHBIbCK6ZhqUDEgcIBBUjlq6YMI8SOABAAVgEkAEDgAFGpQGeT4PcrQFmIwZQtQEPIlfquAHQkM-RC8ABBBip0ovMCFAAWAKgAanSi8wIoAGx0s3EAaABxa2bsAGgAbqwxNMBoAH4qfq-AqAB7Mytuw4",
+            "setItemsEquipped": ["Unique_Boots_011_x1", "Unique_Cloak_006_x1", "P2_Unique_Pants_01", "Unique_Helm_009_x1", "Unique_HandXBow_003_x1", "P2_Unique_Gloves_01"]
+        },
+        "offHand": {
+            "id": "Unique_HandXBow_006_x1",
+            "name": "Blitzbolter",
+            "icon": "unique_handxbow_006_x1_demonhunter_male",
+            "displayColor": "orange",
+            "tooltipParams": "item/CjwI7sSI6AESBwgEFY4wQLsddeBaRB1qSWnqHZ5Pg9wdmwYAyx2AZlxGHXKOHSEwjxI4kgNAAFASWARgkgMY473-ywhQAFgC"
+        },
+        "waist": {
+            "id": "P2_Unique_Belt_01",
+            "name": "Crashing Rain",
+            "icon": "p2_unique_belt_01_demonhunter_male",
+            "displayColor": "orange",
+            "tooltipParams": "item/ClYI0LriqwkSBwgEFb56xj8dibfFdh07J28kHdhZPmcdQ05EUR3x02rVMIsSOKQDQABQElgEYKQDgAFGpQHYWT5nrQGizxRWtQHAp0LUuAGj4YL2AcABAxj86rP8B1AAWAI"
+        },
+        "rightFinger": {
+            "id": "Unique_Ring_Set_001_x1",
+            "name": "Focus",
+            "icon": "unique_ring_set_001_x1_demonhunter_male",
+            "displayColor": "green",
+            "tooltipParams": "item/CncIi4_Gxw8SBwgEFYmo53UdP_IJ2B1LtflLHUNORFEdi_F6Qh3x02rVHWYjBlAwixI4gwJAAFASWARggwJqMAoMCAAQxK_9xImAgKAiEiAIn6_TlA0SBwgEFejloMEwixI4AEAAUBJYBJABA9gBFIABRrUBNlVdRBiSor3eDlAAWAKgAZKivd4OoAHU08HeDg",
+            "setItemsEquipped": ["Unique_Ring_Set_001_x1", "Unique_Ring_Set_002_x1"]
+        },
+        "leftFinger": {
+            "id": "Unique_Ring_Set_002_x1",
+            "name": "Restraint",
+            "icon": "unique_ring_set_002_x1_demonhunter_male",
+            "displayColor": "green",
+            "tooltipParams": "item/CowBCMyfuugFEgcIBBXqNOh1HT_yCdgdOLLA1R0gjTdUHRAvyiodqSA2uh1mIwZQMIsSOMADQABQElgEYMADajAKDAgAELOM2L6IgIDgMRIgCO_sjuwCEgcIBBWq_qHBMIsSOABAAFASWASQAQPYARaAAUalARAvyiqtAeYV2w21ATZVXUS4AYO872rAAQIY1NPB3g5QAFgCoAGSor3eDqAB1NPB3g4",
+            "setItemsEquipped": ["Unique_Ring_Set_001_x1", "Unique_Ring_Set_002_x1"]
+        },
+        "neck": {
+            "id": "Unique_Amulet_008_x1",
+            "name": "The Traveler's Pledge",
+            "icon": "unique_amulet_008_x1_demonhunter_male",
+            "displayColor": "green",
+            "tooltipParams": "item/Co0BCOmTvvoPEgcIBBUddwpbHbHk6hEdRXvG3R1ADVULHWYjBlAdsMEJch3J-rygMIsSOMEDQABQElgEYMEDajAKDAgAEK2KlYyHgICgMhIgCNL-goAOEgcIBBWMo7TBMIsSOABAAFASWASQAQPYARaAAUalAbDBCXKtAbDBCXK1AbDFRGS4AYSuv68KwAEMGLrc07ALUABYAqAButzTsAs",
+            "setItemsEquipped": ["Unique_Amulet_008_x1"]
+        }
+    },
+    "followers": {
+        "templar": {
+            "slug": "templar",
+            "level": 70,
+            "items": {
+                "special": {
+                    "id": "Templar_Special_206",
+                    "name": "Grand Master's Treasure",
+                    "icon": "templar_special_206_demonhunter_male",
+                    "displayColor": "yellow",
+                    "tooltipParams": "item/CkMIxfDZvQgSBwgEFewLY0QdgIHGxB0gneQEHZoGAMsdkpTcCB2w5OoRHelwL7siCwgAFbH-AQAYJCAKMIkSOABAAFAQGNivmMYI"
+                },
+                "mainHand": {
+                    "id": "Unique_Sword_1H_019_x1",
+                    "name": "Griswold's Perfection",
+                    "icon": "unique_sword_1h_019_x1_demonhunter_male",
+                    "displayColor": "orange",
+                    "tooltipParams": "item/CjwItKHZxQ0SBwgEFT4KPE4d0bBQxx3J-rygHZsGAMsdKBM35x1yjh0hHbHk6hEwjxI4iAJAAFASWARgiAIY_Kjg4wk"
+                },
+                "offHand": {
+                    "id": "Shield_209",
+                    "name": "Phalanx Guide",
+                    "icon": "shield_209_demonhunter_male",
+                    "displayColor": "yellow",
+                    "tooltipParams": "item/CkII6u_shg4SBwgEFRMMO2wdyPq8oB1hGrjQHZoGAMsdlU9ZaR3pcC-7IgsIARVxQgMAGAggHDCJEjjQBEAAUA5g0AQYprDYww0"
+                },
+                "rightFinger": {
+                    "id": "Unique_Ring_006_p2",
+                    "name": "Broken Promises",
+                    "icon": "unique_ring_006_p2_demonhunter_male",
+                    "displayColor": "orange",
+                    "tooltipParams": "item/CkAIwIOhrwUSBwgEFRziJLkdAWAtsR1DTkRRHSCNN1QddEWniR3x02rVMIsSOIwDQABQElgEYIwDgAFGtQE2VV1EGMf32O0I"
+                },
+                "leftFinger": {
+                    "id": "Unique_Ring_020_x1",
+                    "name": "Bul-Kathos's Wedding Band",
+                    "icon": "unique_ring_020_x1_demonhunter_male",
+                    "displayColor": "orange",
+                    "tooltipParams": "item/CkAI5b78mAwSBwgEFd_JRbkdrNOZOR07J28kHWc-7OQdmKeOwB3x02rVMIsSOP0BQABQElgEYP0BgAFGtQE2VV1EGMHY0esI"
+                },
+                "neck": {
+                    "id": "Unique_Amulet_012_x1",
+                    "name": "Talisman of Aranoch",
+                    "icon": "unique_amulet_012_x1_demonhunter_male",
+                    "displayColor": "orange",
+                    "tooltipParams": "item/CkAI5_aC6AoSBwgEFVhFGVsdRXvG3R2bBgDLHRAvyiod3Ne-BB3J-rygMIsSOOcCQABQElgEYOcCgAFGtQGwxURkGLCVyrEL"
+                }
+            },
+            "stats": {
+                "goldFind": 0,
+                "magicFind": 0,
+                "experienceBonus": 84
+            },
+            "skills": [{
+                "skill": {
+                    "slug": "heal",
+                    "name": "Heal",
+                    "icon": "templar_heal_110",
+                    "level": 5,
+                    "tooltipUrl": "skill/templar/heal",
+                    "description": "Cooldown: 30 seconds\r\n\r\nHeals you and the Templar for 193112 Life.",
+                    "simpleDescription": "Cooldown: 30 seconds\r\n\r\nHeals you and the Templar.",
+                    "skillCalcId": "a"
+                }
+            }, {
+                "skill": {
+                    "slug": "loyalty",
+                    "name": "Loyalty",
+                    "icon": "templar_loyalty",
+                    "level": 10,
+                    "tooltipUrl": "skill/templar/loyalty",
+                    "description": "Regenerates 6437 Life per second for you and the Templar.",
+                    "simpleDescription": "Provides Life regeneration for you and the Templar.",
+                    "skillCalcId": "b"
+                }
+            }, {
+                "skill": {
+                    "slug": "onslaught",
+                    "name": "Onslaught",
+                    "icon": "templar_onslaught",
+                    "level": 15,
+                    "tooltipUrl": "skill/templar/onslaught",
+                    "description": "Cooldown: 10 seconds\r\n\r\nDelivers a massive blow to an enemy for 800% weapon damage.",
+                    "simpleDescription": "Cooldown: 10 seconds\r\n\r\nDelivers a massive blow to an enemy.",
+                    "skillCalcId": "X"
+                }
+            }, {
+                "skill": {
+                    "slug": "guardian",
+                    "name": "Guardian",
+                    "icon": "templar_guardian",
+                    "level": 20,
+                    "tooltipUrl": "skill/templar/guardian",
+                    "description": "Cooldown: 30 seconds\r\n\r\nRush to your aid, knocking back enemies within 15 yards and healing you for 182383 Life.",
+                    "simpleDescription": "Cooldown: 30 seconds\r\n\r\nWhen your Life is low, the Templar will come to your aid, knocking back nearby enemies and healing you.",
+                    "skillCalcId": "W"
+                }
+            }]
+        }
+    },
+    "stats": {
+        "life": 524316,
+        "damage": 346389.0,
+        "toughness": 6388540.0,
+        "healing": 487572.0,
+        "attackSpeed": 1.6390244146672692,
+        "armor": 13395,
+        "strength": 560,
+        "dexterity": 7000,
+        "vitality": 5265,
+        "intelligence": 77,
+        "physicalResist": 578,
+        "fireResist": 436,
+        "coldResist": 450,
+        "lightningResist": 292,
+        "poisonResist": 292,
+        "arcaneResist": 433,
+        "critDamage": 3.41,
+        "blockChance": 0.0,
+        "blockAmountMin": 0,
+        "blockAmountMax": 0,
+        "damageIncrease": 0.0,
+        "critChance": 0.23000000075,
+        "damageReduction": 0.0,
+        "thorns": 0.0,
+        "lifeSteal": 0.0,
+        "lifePerKill": 13724.0,
+        "goldFind": 1.3399999999999999,
+        "magicFind": 0.0,
+        "lifeOnHit": 15816.0,
+        "primaryResource": 125,
+        "secondaryResource": 54
+    },
+    "kills": {
+        "elites": 3403
+    },
+    "progression": {
+        "act1": {
+            "completed": false,
+            "completedQuests": [{
+                "slug": "the-fallen-star",
+                "name": "The Fallen Star"
+            }, {
+                "slug": "the-legacy-of-cain",
+                "name": "The Legacy of Cain"
+            }, {
+                "slug": "a-shattered-crown",
+                "name": "A Shattered Crown"
+            }]
+        },
+        "act2": {
+            "completed": false,
+            "completedQuests": []
+        },
+        "act3": {
+            "completed": false,
+            "completedQuests": []
+        },
+        "act4": {
+            "completed": false,
+            "completedQuests": []
+        },
+        "act5": {
+            "completed": false,
+            "completedQuests": []
+        }
+    },
+    "dead": false,
+    "last-updated": 1439389396
+}
