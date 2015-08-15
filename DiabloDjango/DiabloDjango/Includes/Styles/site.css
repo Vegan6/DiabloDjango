@@ -1,4 +1,4 @@
-﻿body {
+body {
     padding-top: 50px;
     padding-bottom: 20px;
     height:100vh;
@@ -56,3 +56,99 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px black inset;
     -webkit-text-fill-color: white !important;
 }
+
+div.demonhunter-female {
+    background: url("http://us.battle.net/d3/static/images/profile/hero/hero-nav-portraits.jpg") no-repeat;
+    width: 83px;
+    height: 66px;
+    border-radius: 5px;
+    background-position: -83px -66px;
+}
+
+div.demonhunter-male {
+    background: url("http://us.battle.net/d3/static/images/profile/hero/hero-nav-portraits.jpg") no-repeat;
+    width: 83px;
+    height: 66px;
+    border-radius: 5px;
+    background-position: -0px -66px;
+}
+
+
+
+/*#region Hero List*/
+/*Taken from Bob's Style.css*/
+    div#HeroList {
+    	 text-align:right; position:absolute; left:19px; top:19px; right:19px;
+    }
+    div#HeroList div.hero {
+    	position:relative; width:83px; margin:0 2px 0 2px; background-color:#000; border:1px solid #750; border-radius:5px; display:inline-block; opacity:0.3;
+    }
+    div#HeroList div.clickable {
+    	cursor:pointer; opacity:1;
+    }
+    div#HeroList div.selected {
+    	border-color:#f90;
+    }
+    div#HeroList div.hero div.face {
+    	background:url("http://us.battle.net/d3/static/images/profile/hero/hero-nav-portraits.jpg") no-repeat; width:83px; height:66px; border-radius:5px;
+    }
+    div#HeroList div.hero div.barbarian-Female {
+    	background-position: -83px 0;
+    }
+    div#HeroList div.hero div.demon-hunter-Female {
+    	background-position: -83px -66px;
+    }
+    div#HeroList div.hero div.monk-Female {
+    	background-position: -83px -132px;
+    }
+    div#HeroList div.hero div.witch-doctor-Female {
+    	background-position: -83px -198px;
+    }
+    div#HeroList div.hero div.wizard-Female {
+    	background-position: -83px -264px;
+    }
+    div#HeroList div.hero div.crusader-Female {
+    	background-position: -83px -330px;
+    }
+    div#HeroList div.hero div.barbarian-Male {
+    	background-position: 0 0;
+    }
+    div#HeroList div.hero div.demon-hunter-Male {
+    	background-position: 0 -66px;
+    }
+    div#HeroList div.hero div.monk-Male {
+    	background-position: 0 -132px;
+    }
+    div#HeroList div.hero div.witch-doctor-Male {
+    	background-position: 0 -198px;
+    }
+    div#HeroList div.hero div.wizard-Male {
+    	background-position: 0 -264px;
+    }
+    div#HeroList div.hero div.crusader-Male {
+    	background-position: 0 -330px;
+    }
+    div#HeroList div.hero div.name {
+    	color:#F3E6D0; font-weight:bold; background-color:rgba(0, 0, 0, 0.5); padding:3px; margin:2px; border:1px solid #970; border-radius:4px; text-align:left;
+    	text-overflow:ellipsis; overflow:hidden;
+    }
+    div#HeroList div.hero div.name span.level {
+    	color:#f90; margin-right:5px;
+    }
+    div#HeroList div.hero div.name span.paragon-level {
+    	color:#aaf; margin-right:5px;
+    }
+    div#HeroList div.hero div.hardcore {
+    	background-color:rgba(80, 0, 0, 0.5); border-color:#900;
+    }
+    div#HeroList div.hero div.seasonal {
+    	background-color:rgba(0, 80, 0, 0.5); border-color:#690;
+    }
+    div#HeroList div.seasonal-true {
+    	background:url("http://us.battle.net/d3/static/images/profile/seasonal-leaf.png") no-repeat; position:absolute; width:24px; height:31px; top:-8px; left:-8px;
+    }
+    div#HeroList div.seasonal-false {
+    	display:none;
+    }
+
+/*#endregion*/

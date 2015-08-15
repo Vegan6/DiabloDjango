@@ -1,11 +1,11 @@
-﻿"""
+"""
 Definition of views.
 """
 
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
-from datetime import datetime, timedelta
+from datetime import datetime
 from DiabloDjango.AppCode.DiabloAPI import *
 
 # Convert SecondsFromEpoch to local datetime
@@ -46,12 +46,14 @@ def hero(request):
         {
             'title': 'Diablo 3',
             'year': datetime.now().year,
+            'HeroPortrait': Hero.Portrait,
             'HeroProfile':
-                "\nHero Name: " + Hero['name']
-                + "\nParagon Level: " + str(Hero['paragonLevel'])
-                + "\nClass: " + Hero.Class()
-                + "\nGender: " + Hero.Gender()
-                + "\nLast Update: " + str(GetUpdateTime(int(Hero['last-updated']))),
+                "\nHero Name: " + Hero.Name
+                + "\nParagon Level: " + str(Hero.ParagonLevel)
+                + "\nClass: " + Hero.Class
+                + "\nGender: " + Hero.Gender
+                + "\nLast Update: " + str(GetUpdateTime(int(Hero.LastUpdated)))
+                + "\n\n\nJSON Dump: \n" + str(Hero),
         })
     )
 
@@ -62,9 +64,8 @@ def career(request):
     if (request.GET.get('GetCareer')):
         BattleTag = request.GET.get('battletagcareer')
         CareerDetails = GetCareer(US_SERVER, BattleTag)
-        CareerKills = CareerDetails.Kills()
     else:
-        CareerInfo = ''
+        CareerDetails = ''
     return render(
         request,
         'hero.html',
@@ -73,12 +74,13 @@ def career(request):
             'title': 'Diablo 3',
             'year': datetime.now().year,
             'HeroProfile':
-                "\nBattleTag: " + CareerDetails['battleTag']
-                + "\nParagon Level: " + str(CareerDetails['paragonLevel'])
-                + "\nSeasonal Paragon Level: " + str(CareerDetails['paragonLevelSeason'])
-                + "\nElite Kills: " + str(CareerKills['elites'])
+                "\nBattleTag: " + CareerDetails.BattleTag
+                + "\nParagon Level: " + str(CareerDetails.ParagonLevel)
+                + "\nSeasonal Paragon Level: " + str(CareerDetails.ParagonLevelSeason)
+                + "\nElite Kills: " + str(CareerDetails.Kills()['elites'])
                 + "\nHeroes: " + str(CareerDetails.Heroes())
-                + "\nLast Update: " + str(GetUpdateTime(int(CareerDetails['lastUpdated']))),
+                + "\nLast Update: " + str(GetUpdateTime(int(CareerDetails.LastUpdated)))
+                + "\n\n\nJSON Dump: \n" + str(CareerDetails),
         })
     )
 

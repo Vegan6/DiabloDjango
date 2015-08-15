@@ -2,11 +2,18 @@
 
 {% block content %}
 
+
+<div id="HeroList">
+    {% autoescape off %}{{HeroPortrait}}{% endautoescape %}
+</div>
+
 <div class="jumbotron">
     <div class="lead">
 		<a href="/">Home</a>
         <div class="large-txt">
-            <textarea id="json_display" class="large-text" disabled="disabled" style="height:300px;width:600px;background-color: #000000">{{HeroProfile}}</textarea>
+            <textarea id="json_display" class="large-text" disabled="disabled" style="height:300px;width:600px;background-color: #000000">
+                {{HeroProfile}}
+            </textarea>
         </div>
     </div>
 </div>
