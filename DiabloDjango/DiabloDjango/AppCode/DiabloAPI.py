@@ -137,7 +137,7 @@ class Hero(dict):
 
     @property
     def DisplayLevel(self):
-        if (self.Level > self.ParagonLevel):
+        if (self.Level < 70):
             return self.Level
         else:
             return self.ParagonLevel
