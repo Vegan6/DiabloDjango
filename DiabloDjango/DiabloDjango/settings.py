@@ -1,4 +1,4 @@
-﻿"""
+"""
 Django settings for DiabloDjango project.
 """
 
@@ -80,6 +80,7 @@ STATICFILES_DIRS = (
     PROJECT_ROOT + '/DiabloDjango/Includes/Images/',
     PROJECT_ROOT + '/DiabloDjango/Includes/Styles/',
     PROJECT_ROOT + '/DiabloDjango/Includes/Scripts/',
+    PROJECT_ROOT + '/DiabloDjango/Includes/Fonts/',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

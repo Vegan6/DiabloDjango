@@ -1,10 +1,23 @@
-/*#region Variables */
-	/*#region Colors*/
-	
+@font-face {
+    font-family:'Exocet';
+    src:url('Exocet Light.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+}
 
-	/*#endregion*/
+@font-face {
+    font-family:'ExocetMedium';
+    src:url('ExocetHeavy Medium.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+}
 
-/*#endregion*/
+@font-face {
+    font-family:'ExocetHeavy';
+    src:url('Exocet Heavy.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+}
 
 body {
     padding-top: 50px;
@@ -16,6 +29,7 @@ body {
 	overflow:hidden;
 
 	background-repeat:no-repeat;
+    font-family: 'Exocet'
 }
 
 /*#region Main Menu */
@@ -54,11 +68,22 @@ body {
 }
 /*#endregion */
 
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 780px;
+}
+
+/* styles for validation helpers */
+#json-dispaly{
+	width:100%;
 }
 
 /* Below is used to stop chromes autofill color change*/
@@ -67,31 +92,22 @@ input:-webkit-autofill {
     -webkit-text-fill-color: white !important;
 }
 
-div.demonhunter-female {
-    background: url("http://us.battle.net/d3/static/images/profile/hero/hero-nav-portraits.jpg") no-repeat;
-    width: 83px;
-    height: 66px;
-    border-radius: 5px;
-    background-position: -83px -66px;
+a.fill-div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
 }
-
-div.demonhunter-male {
-    background: url("http://us.battle.net/d3/static/images/profile/hero/hero-nav-portraits.jpg") no-repeat;
-    width: 83px;
-    height: 66px;
-    border-radius: 5px;
-    background-position: -0px -66px;
-}
-
 
 
 /*#region Hero List*/
 /*Taken from Bob's Style.css*/
     div#HeroList {
-    	 text-align:right; position:absolute; left:19px; top:19px; right:19px;
+    	 text-align:right; position:absolute; left:19px; top:19px; right:19px; font-size:6pt;
     }
     div#HeroList div.hero {
-    	position:relative; width:83px; margin:0 2px 0 2px; background-color:#000; border:1px solid #750; border-radius:5px; display:inline-block; opacity:0.3;
+    	position:relative; width:83px; margin:0 2px 0 2px; background-color:#000; border:1px solid #750;
+    	border-radius:5px; display:inline-block; opacity:0.3;
     }
     div#HeroList div.clickable {
     	cursor:pointer; opacity:1;
@@ -100,7 +116,8 @@ div.demonhunter-male {
     	border-color:#f90;
     }
     div#HeroList div.hero div.face {
-    	background:url("http://us.battle.net/d3/static/images/profile/hero/hero-nav-portraits.jpg") no-repeat; width:83px; height:66px; border-radius:5px;
+    	background:url("http://us.battle.net/d3/static/images/profile/hero/hero-nav-portraits.jpg") no-repeat;
+    	width:83px; height:66px; border-radius:5px;
     }
     div#HeroList div.hero div.barbarian-Female {
     	background-position: -83px 0;
@@ -139,8 +156,8 @@ div.demonhunter-male {
     	background-position: 0 -330px;
     }
     div#HeroList div.hero div.name {
-    	color:#F3E6D0; font-weight:bold; background-color:rgba(0, 0, 0, 0.5); padding:3px; margin:2px; border:1px solid #970; border-radius:4px; text-align:left;
-    	text-overflow:ellipsis; overflow:hidden;
+    	color:#F3E6D0; font-weight:bold; background-color:rgba(0, 0, 0, 0.5); padding:3px; margin:2px;
+    	border:1px solid #970; border-radius:4px; text-align:left;text-overflow:ellipsis; overflow:hidden;
     }
     div#HeroList div.hero div.name span.level {
     	color:#f90; margin-right:5px;
@@ -155,7 +172,8 @@ div.demonhunter-male {
     	background-color:rgba(0, 80, 0, 0.5); border-color:#690;
     }
     div#HeroList div.seasonal-true {
-    	background:url("http://us.battle.net/d3/static/images/profile/seasonal-leaf.png") no-repeat; position:absolute; width:24px; height:31px; top:-8px; left:-8px;
+    	background:url("http://us.battle.net/d3/static/images/profile/seasonal-leaf.png") no-repeat;
+    	position:absolute; width:24px; height:31px; top:-8px; left:-8px;
     }
     div#HeroList div.seasonal-false {
     	display:none;

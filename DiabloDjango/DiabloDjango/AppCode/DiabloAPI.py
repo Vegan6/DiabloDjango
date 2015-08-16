@@ -22,12 +22,15 @@ classes = {
     'wizard': 'Wizard'
 }
 
+_battleTag = ''
 
 # Load Career
 # Returns Career Class
 
 
 def GetCareer(Host, BattleTag):
+    global _battleTag
+    _battleTag = BattleTag
     url = "%s/d3/profile/%s/?%s&%s" % (Host, BattleTag, EN_LOCALE, API_KEY)
     response = requests.get(url)
     if response.status_code == 200:
@@ -37,20 +40,18 @@ def GetCareer(Host, BattleTag):
 
 
 class Career(dict):
-    Host = US_SERVER
-
     # Create Career Object
     def Kills(self):
         return self['kills']
 
     def Heroes(self):
         #set this to return Hero Object
-        global US_SERVER
+        US_SERVER = 'https://us.api.battle.net'
         #heroes = dict()
         heroProfiles = list()
-        #for hero in self['heroes']:
+        for hero in self['heroes']:
             #heroes[hero['id']] = hero['name']
-            #heroProfiles.append(HeroProfile(Career.Host, self['battleTag'], hero['id']))
+            heroProfiles.append(HeroProfile(US_SERVER, self.BattleTagURI, int(hero['id'])))
         #return heroes
         return heroProfiles
 
@@ -63,6 +64,10 @@ class Career(dict):
     @property
     def BattleTag(self):
         return self['battleTag']
+
+    @property
+    def BattleTagURI(self):
+        return str(self['battleTag']).replace("#", "-")
 
     @property
     def ParagonLevel(self):
@@ -84,6 +89,8 @@ class Career(dict):
 def HeroProfile(Host, BattleTag, HeroId):
     # Load Hero Profile
     # Returns Hero Class
+    global _battleTag
+    _battleTag = BattleTag
     url = "%s/d3/profile/%s/hero/%s?%s&%s" % (Host, BattleTag, HeroId, EN_LOCALE, API_KEY)
     response = requests.get(url)
     if response.status_code == 200:
@@ -105,6 +112,10 @@ class Hero(dict):
     @property
     def ParagonLevel(self):
         return self['paragonLevel']
+
+    @property
+    def HeroId(self):
+        return self['id']
 
     @property
     def Gender(self):
@@ -137,17 +148,21 @@ class Hero(dict):
 
     @property
     def Portrait(self):
+        global _battleTag
         #Return the div for individual hero
-        if (self['seasonal'] == 'true'):
+        if (self['seasonal']):
             nameDisplay = str('<div class="name seasonal">' +
-            '<span class="level">' + str(self.DisplayLevel) + '</span>' + str(self.Name) + '</div>' +
+            '<span class="level" type="submit" value="Get Hero" name="GetHero" >' +
+                str(self.DisplayLevel) + '</span>' + str(self.Name) + '</div>' +
             '<div class="seasonal-true">&nbsp;</div>')
         else:
             nameDisplay = str('<div class="name">' +
-            '<span class="level">' + str(self.DisplayLevel) + '</span>' + str(self.Name) + '</div>' +
+            '<span class="level" type="submit" value="Get Hero" name="GetHero" >' +
+                str(self.DisplayLevel) + '</span>' + str(self.Name) + '</div>' +
             '<div class="seasonal-false">&nbsp;</div>')
 
-        return str('<div class="hero clickable" data-id="' + str(self['id']) + '">' +
+        return str('<div class="hero clickable" value="' + str(self['id']) + '">' +
+                    '<a href="/hero?battletag=' + _battleTag + '&heroid=' + str(self.HeroId) + '" class="fill-div" />' +
                     '<div class="face ' + self['class'] + '-' + self.Gender + '">&nbsp;</div>' +
                     nameDisplay +
-                '</div>')
+                '</form></div>')
