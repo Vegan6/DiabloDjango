@@ -162,7 +162,7 @@ class Hero(dict):
             '<div class="seasonal-false">&nbsp;</div>')
 
         return str('<div class="hero clickable" value="' + str(self['id']) + '">' +
-                    '<a href="/hero?battletag=' + _battleTag + '&heroid=' + str(self.HeroId) + '" class="fill-div" />' +
+                    '<a href="/hero?battletag=' + _battleTag + '&heroid=' + str(self.HeroId) + '" class="fill-div">' +
                     '<div class="face ' + self['class'] + '-' + self.Gender + '">&nbsp;</div>' +
                     nameDisplay +
-                '</form></div>')
+                '</a></div>')
