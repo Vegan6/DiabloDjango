@@ -1,54 +1,64 @@
+/*#region Variables */
+	/*#region Colors*/
+	
+
+	/*#endregion*/
+
+/*#endregion*/
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;
     height:100vh;
     width:100vw;
+	position:page;
+
+	overflow:hidden;
+
+	background-repeat:no-repeat;
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+/*#region Main Menu */
+.mainMenu {
+	background-color:black; height:100%; display:inline-block; width:20%; vertical-align:top;
 }
+
+.mainMenu > ul{
+	padding:0; margin:0;
+}
+
+.menuItem{
+	color:white; border:1px solid white; text-align:center; padding:10px; list-style-type:none; 
+
+	background: linear-gradient(to bottom left, #00000f, #dd3400 180%);
+	background: -webkit-linear-gradient(to bottom left, #00000f, #dd3400 180%); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(to bottom left, #00000f, #dd3400 180%); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(to bottom left, #00000f, #dd3400 180%); /* For Firefox 3.6 to 15 */
+}
+
+.menuItem > a{
+	text-decoration:none; color:white;
+}
+
+.menuItem:hover{
+	cursor:pointer;
+}
+
+/*#endregion */
+
+/*#region Main Body */
+.mainBody{
+	margin:auto; padding:0 50px; display:inline-block; margin-left:50px; height:800px; width:60%;
+	
+	background:rgba(0,0,0,0.5); box-shadow:0 0 500px rgba(0,0,0,0.5);
+}
+/*#endregion */
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 780px;
-}
-
-/* styles for validation helpers */
-.field-validation-error {
-    color: #b94a48;
-}
-
-.field-validation-valid {
-    display: none;
-}
-
-input.input-validation-error {
-    border: 1px solid #b94a48;
-}
-
-input[type="checkbox"].input-validation-error {
-    border: 0 none;
-}
-
-.validation-summary-errors {
-    color: #b94a48;
-}
-
-.validation-summary-valid {
-    display: none;
-}
-
-.large-txt{
-	height:800px; width:800px;
-}
-
-#json-dispaly{
-	width:100%;
 }
 
 /* Below is used to stop chromes autofill color change*/
@@ -152,3 +162,9 @@ div.demonhunter-male {
     }
 
 /*#endregion*/
+
+/*#region Footer */
+footer{
+	margin-bottom:0; width:100%
+}
+/*#endregion
