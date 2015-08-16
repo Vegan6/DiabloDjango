@@ -114,6 +114,10 @@ class Hero(dict):
         return self['paragonLevel']
 
     @property
+    def HeroId(self):
+        return self['id']
+
+    @property
     def Gender(self):
         genderId = int(self['gender'])
         return genders[genderId]
@@ -148,15 +152,17 @@ class Hero(dict):
         #Return the div for individual hero
         if (self['seasonal']):
             nameDisplay = str('<div class="name seasonal">' +
-            '<span class="level" type="submit" value="Get Hero" name="GetHero" >' + str(self.DisplayLevel) + '</span>' + str(self.Name) + '</div>' +
+            '<span class="level" type="submit" value="Get Hero" name="GetHero" >' +
+                str(self.DisplayLevel) + '</span>' + str(self.Name) + '</div>' +
             '<div class="seasonal-true">&nbsp;</div>')
         else:
             nameDisplay = str('<div class="name">' +
-            '<span class="level" type="submit" value="Get Hero" name="GetHero" >' + str(self.DisplayLevel) + '</span>' + str(self.Name) + '</div>' +
+            '<span class="level" type="submit" value="Get Hero" name="GetHero" >' +
+                str(self.DisplayLevel) + '</span>' + str(self.Name) + '</div>' +
             '<div class="seasonal-false">&nbsp;</div>')
 
-        return str('<div class="hero clickable" value="' + str(self['id']) + '" name="heroid">' +
-                    '<form action="/hero" method="get">'
-                    '<div class="face ' + self['class'] + '-' + self.Gender + '" name="battletag" value="' + _battleTag + '">&nbsp;</div>' +
+        return str('<div class="hero clickable" value="' + str(self['id']) + '">' +
+                    '<a href="/hero?battletag=' + _battleTag + '&heroid=' + str(self.HeroId) + '" class="fill-div" />' +
+                    '<div class="face ' + self['class'] + '-' + self.Gender + '">&nbsp;</div>' +
                     nameDisplay +
                 '</form></div>')

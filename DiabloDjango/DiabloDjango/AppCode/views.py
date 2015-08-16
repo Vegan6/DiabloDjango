@@ -8,17 +8,15 @@ from django.template import RequestContext
 from datetime import datetime
 from DiabloDjango.AppCode.DiabloAPI import *
 
-# Convert SecondsFromEpoch to local datetime
-
 
 def GetUpdateTime(epochSeconds):
+    # Convert SecondsFromEpoch to local datetime
     return datetime.fromtimestamp(epochSeconds)
 
 
 def home(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
-    #query = request.GET.get('hello', '')
     return render(
         request,
         'index.html',
@@ -33,12 +31,9 @@ def home(request):
 def hero(request):
     """Renders the hero page."""
     assert isinstance(request, HttpRequest)
-    if (request.GET.get('GetHero')):
-        BattleTag = request.GET.get('battletag')
-        HeroID = int(request.GET.get('heroid'))
-        Hero = HeroProfile(US_SERVER, BattleTag, HeroID)
-    else:
-        Hero = ''
+    BattleTag = request.GET.get('battletag', '')
+    HeroID = request.GET.get('heroid', '')
+    Hero = HeroProfile(US_SERVER, BattleTag, HeroID)
     return render(
         request,
         'hero.html',
@@ -46,7 +41,7 @@ def hero(request):
         {
             'title': 'Diablo 3',
             'year': datetime.now().year,
-            'HeroPortrait': Hero.Portrait,
+            #'HeroPortrait': Hero.Portrait,
             'HeroProfile':
                 "\nHero Name: " + Hero.Name
                 + "\nParagon Level: " + str(Hero.ParagonLevel)
@@ -61,24 +56,21 @@ def hero(request):
 def career(request):
     """Renders the Career page."""
     assert isinstance(request, HttpRequest)
-    if (request.GET.get('GetCareer')):
-        BattleTag = request.GET.get('battletagcareer')
-        CareerDetails = GetCareer(US_SERVER, BattleTag)
-        HeroPortrait = ""
-        heroes = CareerDetails.Heroes()
-        for hero in heroes:
-            HeroPortrait += hero.Portrait
-    else:
-        CareerDetails = ''
+    BattleTag = request.GET.get('battletagcareer')
+    CareerDetails = GetCareer(US_SERVER, BattleTag)
+    HeroPortrait = ""
+    heroes = CareerDetails.Heroes()
+    for hero in heroes:
+        HeroPortrait += hero.Portrait
     return render(
         request,
-        'hero.html',
+        'career.html',
         context_instance=RequestContext(request,
         {
             'title': 'Diablo 3',
             'year': datetime.now().year,
             'HeroPortrait': HeroPortrait,
-            'HeroProfile':
+            'CareerProfile':
                 "\nBattleTag: " + CareerDetails.BattleTag
                 + "\nParagon Level: " + str(CareerDetails.ParagonLevel)
                 + "\nSeasonal Paragon Level: " + str(CareerDetails.ParagonLevelSeason)
