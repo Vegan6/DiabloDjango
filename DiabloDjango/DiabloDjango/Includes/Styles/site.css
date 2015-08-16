@@ -57,21 +57,6 @@ input:-webkit-autofill {
     -webkit-text-fill-color: white !important;
 }
 
-div.demonhunter-female {
-    background: url("http://us.battle.net/d3/static/images/profile/hero/hero-nav-portraits.jpg") no-repeat;
-    width: 83px;
-    height: 66px;
-    border-radius: 5px;
-    background-position: -83px -66px;
-}
-
-div.demonhunter-male {
-    background: url("http://us.battle.net/d3/static/images/profile/hero/hero-nav-portraits.jpg") no-repeat;
-    width: 83px;
-    height: 66px;
-    border-radius: 5px;
-    background-position: -0px -66px;
-}
 
 
 

@@ -64,6 +64,10 @@ def career(request):
     if (request.GET.get('GetCareer')):
         BattleTag = request.GET.get('battletagcareer')
         CareerDetails = GetCareer(US_SERVER, BattleTag)
+        HeroPortrait = ""
+        heroes = CareerDetails.Heroes()
+        for hero in heroes:
+            HeroPortrait += hero.Portrait
     else:
         CareerDetails = ''
     return render(
@@ -73,13 +77,14 @@ def career(request):
         {
             'title': 'Diablo 3',
             'year': datetime.now().year,
+            'HeroPortrait': HeroPortrait,
             'HeroProfile':
                 "\nBattleTag: " + CareerDetails.BattleTag
                 + "\nParagon Level: " + str(CareerDetails.ParagonLevel)
                 + "\nSeasonal Paragon Level: " + str(CareerDetails.ParagonLevelSeason)
                 + "\nElite Kills: " + str(CareerDetails.Kills()['elites'])
-                + "\nHeroes: " + str(CareerDetails.Heroes())
                 + "\nLast Update: " + str(GetUpdateTime(int(CareerDetails.LastUpdated)))
+                + "\n\nHeroes JSON Dump: " + str(CareerDetails.Heroes())
                 + "\n\n\nJSON Dump: \n" + str(CareerDetails),
         })
     )
