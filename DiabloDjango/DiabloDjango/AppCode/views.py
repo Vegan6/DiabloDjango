@@ -1,4 +1,4 @@
-"""
+﻿"""
 Definition of views.
 """
 
@@ -33,7 +33,15 @@ def hero(request):
     assert isinstance(request, HttpRequest)
     BattleTag = request.GET.get('battletag', '')
     HeroID = request.GET.get('heroid', '')
-    Hero = HeroProfile(US_SERVER, BattleTag, HeroID)
+    #Hero = HeroProfile(US_SERVER, BattleTag, HeroID)
+    CareerProfile = request.session['CareerProfile']
+    Heroes = CareerProfile.Heroes
+    """
+        for hero in Heroes:
+            if hero.HeroId == HeroID:
+                Hero = hero
+    """
+    Hero = find(lambda hero: hero.HeroId == HeroID, Heroes)
     return render(
         request,
         'hero.html',
@@ -58,6 +66,7 @@ def career(request):
     assert isinstance(request, HttpRequest)
     BattleTag = request.GET.get('battletagcareer')
     CareerDetails = GetCareer(US_SERVER, BattleTag)
+    request.session['CareerProfile'] = CareerDetails
     HeroPortrait = ""
     heroes = CareerDetails.Heroes()
     for hero in heroes:

@@ -46,6 +46,7 @@
     <Compile Include="DiabloDjango\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DiabloDjango\Includes\Fonts\" />
     <Folder Include="DiabloDjango\Includes\Images\" />
     <Folder Include="DiabloDjango\" />
     <Folder Include="DiabloDjango\AppCode\" />
@@ -56,7 +57,11 @@
     <Folder Include="DiabloDjango\Pages\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DiabloDjango\Includes\Fonts\Exocet Heavy.ttf" />
+    <Content Include="DiabloDjango\Includes\Fonts\Exocet Light.ttf" />
+    <Content Include="DiabloDjango\Includes\Fonts\ExocetHeavy Medium.ttf" />
     <Content Include="DiabloDjango\Includes\Images\Background.jpg" />
+    <Content Include="DiabloDjango\Pages\career.html" />
     <Content Include="DiabloDjango\Pages\hero.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />

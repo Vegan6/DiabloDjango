@@ -1,4 +1,4 @@
-import requests
+﻿import requests
 import json
 
 # Static Variables
@@ -145,6 +145,10 @@ class Hero(dict):
     @property
     def Name(self):
         return self['name']
+
+    @property
+    def HeroList(self):
+        return ""
 
     @property
     def Portrait(self):
