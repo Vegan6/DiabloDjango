@@ -70,6 +70,10 @@ class Career(dict):
         return str(self['battleTag']).replace("#", "-")
 
     @property
+    def BattleTagDisplay(self):
+        return '<li class="menuItem">' + str(self['battleTag']).replace("#", "-") + '</li>'
+
+    @property
     def ParagonLevel(self):
         return self['paragonLevel']
 

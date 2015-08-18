@@ -14,6 +14,7 @@
 
      <div id="menuBar" class="mainMenu">
         <ul>
+            {% autoescape off %}{{UserName}}{% endautoescape %}
             <li class="menuItem">
                 <a class="link" href="/">Home</a>
             </li>

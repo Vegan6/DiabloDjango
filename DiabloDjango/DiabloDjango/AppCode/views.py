@@ -32,16 +32,14 @@ def hero(request):
     """Renders the hero page."""
     assert isinstance(request, HttpRequest)
     BattleTag = request.GET.get('battletag', '')
-    HeroID = request.GET.get('heroid', '')
+    HeroID = int(request.GET.get('heroid', ''))
     #Hero = HeroProfile(US_SERVER, BattleTag, HeroID)
-    CareerProfile = request.session['CareerProfile']
-    Heroes = CareerProfile.Heroes
-    """
-        for hero in Heroes:
-            if hero.HeroId == HeroID:
-                Hero = hero
-    """
-    Hero = find(lambda hero: hero.HeroId == HeroID, Heroes)
+    CareerProfile = Career(request.session['CareerProfile'])
+    Heroes = CareerProfile.Heroes()
+    CurrentHero = list()
+    for hero in Heroes:
+        if hero.HeroId == HeroID:
+            CurrentHero = hero
     return render(
         request,
         'hero.html',
@@ -49,14 +47,15 @@ def hero(request):
         {
             'title': 'Diablo 3',
             'year': datetime.now().year,
+            'UserName': CareerProfile.BattleTagDisplay,
             #'HeroPortrait': Hero.Portrait,
             'HeroProfile':
-                "\nHero Name: " + Hero.Name
-                + "\nParagon Level: " + str(Hero.ParagonLevel)
-                + "\nClass: " + Hero.Class
-                + "\nGender: " + Hero.Gender
-                + "\nLast Update: " + str(GetUpdateTime(int(Hero.LastUpdated)))
-                + "\n\n\nJSON Dump: \n" + str(Hero),
+                "\nHero Name: " + CurrentHero.Name
+                + "\nParagon Level: " + str(CurrentHero.ParagonLevel)
+                + "\nClass: " + CurrentHero.Class
+                + "\nGender: " + CurrentHero.Gender
+                + "\nLast Update: " + str(GetUpdateTime(int(CurrentHero.LastUpdated)))
+                + "\n\n\nJSON Dump: \n" + str(CurrentHero),
         })
     )
 
@@ -65,12 +64,12 @@ def career(request):
     """Renders the Career page."""
     assert isinstance(request, HttpRequest)
     BattleTag = request.GET.get('battletagcareer')
-    CareerDetails = GetCareer(US_SERVER, BattleTag)
-    request.session['CareerProfile'] = CareerDetails
+    CareerDetails = GetCareer(US_SERVER, BattleTag)    
     HeroPortrait = ""
     heroes = CareerDetails.Heroes()
     for hero in heroes:
         HeroPortrait += hero.Portrait
+    request.session['CareerProfile'] = CareerDetails
     return render(
         request,
         'career.html',
@@ -79,6 +78,7 @@ def career(request):
             'title': 'Diablo 3',
             'year': datetime.now().year,
             'HeroPortrait': HeroPortrait,
+            'UserName': CareerDetails.BattleTagDisplay,
             'CareerProfile':
                 "\nBattleTag: " + CareerDetails.BattleTag
                 + "\nParagon Level: " + str(CareerDetails.ParagonLevel)
