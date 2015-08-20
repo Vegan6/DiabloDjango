@@ -1,23 +1,23 @@
-@font-face {
-    font-family:'Exocet';
-    src:url('Exocet Light.ttf') format('truetype');
-    font-weight:normal;
-    font-style:normal;
-}
+/*#region Blizzard Fonts*/
+	@font-face {
+	  font-family: "Exocet Blizzard";
+	  src: url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-medium.eot");
+	  src: url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-medium.eot?#iefix") format("embedded-opentype"),
+		   url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-medium.woff") format("woff"),
+		   url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-medium.ttf")  format("truetype"),
+		   url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-medium.svg#svgExocetReaper") format("svg");
+	}
 
-@font-face {
-    font-family:'ExocetMedium';
-    src:url('ExocetHeavy Medium.ttf') format('truetype');
-    font-weight:normal;
-    font-style:normal;
-}
+	@font-face {
+	  font-family: "Exocet Blizzard Light";
+	  src: url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-light.eot");
+	  src: url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-light.eot?#iefix") format("embedded-opentype"),
+		   url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-light.woff") format("woff"),
+		   url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-light.ttf")  format("truetype"),
+		   url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-light.svg#svgExocetReaper") format("svg");
+	}
 
-@font-face {
-    font-family:'ExocetHeavy';
-    src:url('Exocet Heavy.ttf') format('truetype');
-    font-weight:normal;
-    font-style:normal;
-}
+	/*#endregion*/
 
 body {
     padding-top: 100px;
@@ -29,7 +29,7 @@ body {
 	overflow:hidden;
 
 	background-repeat:no-repeat;
-    font-family: 'Exocet'
+    font-family: 'Exocet Blizzard'
 }
 
 /*#region Main Menu */

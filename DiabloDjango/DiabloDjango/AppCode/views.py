@@ -32,14 +32,24 @@ def hero(request):
     """Renders the hero page."""
     assert isinstance(request, HttpRequest)
     BattleTag = request.GET.get('battletag', '')
-    HeroID = int(request.GET.get('heroid', ''))
-    #Hero = HeroProfile(US_SERVER, BattleTag, HeroID)
+    HeroID = request.GET.get('heroid', '')
     CareerProfile = Career(request.session['CareerProfile'])
     Heroes = CareerProfile.Heroes()
     CurrentHero = list()
-    for hero in Heroes:
-        if hero.HeroId == HeroID:
-            CurrentHero = hero
+    # If HeroID not passed in use current hero or last played hero
+    if not HeroID:
+        CurrentHero = Hero(request.session['CurrentHero'])
+        if not CurrentHero:
+            HeroID = int(CareerProfile.LastHeroPlayed)
+            for hero in Heroes:
+                if hero.HeroId == HeroID:
+                    CurrentHero = hero
+    else:
+        HeroID = int(HeroID)        
+        for hero in Heroes:
+            if hero.HeroId == HeroID:
+                CurrentHero = hero
+    request.session['CurrentHero'] = CurrentHero
     return render(
         request,
         'hero.html',
@@ -54,6 +64,8 @@ def hero(request):
                 + "\nParagon Level: " + str(CurrentHero.ParagonLevel)
                 + "\nClass: " + CurrentHero.Class
                 + "\nGender: " + CurrentHero.Gender
+                + "\nCritical Hit Chance: " + str(CurrentHero.CriticalChance) + "%"
+                + "\nCritical Hit Damage: " + str(CurrentHero.CriticalDamage) + "%"
                 + "\nLast Update: " + str(GetUpdateTime(int(CurrentHero.LastUpdated)))
                 + "\n\n\nJSON Dump: \n" + str(CurrentHero),
         })
@@ -64,12 +76,15 @@ def career(request):
     """Renders the Career page."""
     assert isinstance(request, HttpRequest)
     BattleTag = request.GET.get('battletagcareer')
-    CareerDetails = GetCareer(US_SERVER, BattleTag)    
+    if not BattleTag:
+        CareerDetails = Career(request.session['CareerProfile'])
+    else:
+        CareerDetails = GetCareer(US_SERVER, BattleTag)
+        request.session['CareerProfile'] = CareerDetails
     HeroPortrait = ""
     heroes = CareerDetails.Heroes()
     for hero in heroes:
         HeroPortrait += hero.Portrait
-    request.session['CareerProfile'] = CareerDetails
     return render(
         request,
         'career.html',

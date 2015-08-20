@@ -113,6 +113,9 @@ class Hero(dict):
         skills = self['skills']
         return skills['passive']
 
+    def Stats(self):
+        return self['stats']
+
     @property
     def ParagonLevel(self):
         return self['paragonLevel']
@@ -125,6 +128,16 @@ class Hero(dict):
     def Gender(self):
         genderId = int(self['gender'])
         return genders[genderId]
+
+    @property
+    def CriticalDamage(self):
+        StatList = self.Stats()
+        return int(StatList['critDamage'] * 100)
+
+    @property
+    def CriticalChance(self):
+        StatList = self.Stats()
+        return int(StatList['critChance'] * 100)
 
     @property
     def Class(self):
