@@ -33,6 +33,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DiabloDjango\AppCode\__init__.py" />
+    <Compile Include="DiabloDjango\AppData\Diablo3.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DiabloDjango\AppData\models.py" />
     <Compile Include="DiabloDjango\AppCode\tests.py" />
     <Compile Include="DiabloDjango\AppCode\views.py" />
