@@ -64,6 +64,7 @@
     <Content Include="DiabloDjango\Includes\Fonts\Exocet Light.ttf" />
     <Content Include="DiabloDjango\Includes\Fonts\ExocetHeavy Medium.ttf" />
     <Content Include="DiabloDjango\Includes\Images\Background.jpg" />
+    <Content Include="DiabloDjango\Includes\Scripts\Diablo3.js" />
     <Content Include="DiabloDjango\Pages\career.html" />
     <Content Include="DiabloDjango\Pages\hero.html" />
     <Content Include="requirements.txt" />
