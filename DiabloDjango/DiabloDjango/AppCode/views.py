@@ -1,4 +1,4 @@
-﻿"""
+"""
 Definition of views.
 """
 
@@ -45,7 +45,7 @@ def hero(request):
                 if hero.HeroId == HeroID:
                     CurrentHero = hero
     else:
-        HeroID = int(HeroID)        
+        HeroID = int(HeroID)
         for hero in Heroes:
             if hero.HeroId == HeroID:
                 CurrentHero = hero
