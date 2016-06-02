@@ -103,17 +103,17 @@ a.fill-div {
 /*#region Hero List*/
 /*Taken from Bob's Style.css*/
     div#HeroList {
-    	 text-align:right; position:absolute; left:19px; top:19px; right:19px; font-size:6pt;
+    	 right:19px; font-size:6pt;
     }
     div#HeroList div.hero {
-    	position:relative; width:83px; margin:0 2px 0 2px; background-color:#000; border:1px solid #750;
+    	position:relative; width:83px; margin:0 2px 0 2px; background-color:#000; border:1px solid #FF0000;
     	border-radius:5px; display:inline-block; opacity:0.3;
     }
     div#HeroList div.clickable {
     	cursor:pointer; opacity:1;
     }
     div#HeroList div.selected {
-    	border-color:#f90;
+    	border-color:#FF0000;
     }
     div#HeroList div.hero div.face {
     	background:url("http://us.battle.net/d3/static/images/profile/hero/hero-nav-portraits.jpg") no-repeat;
@@ -156,24 +156,24 @@ a.fill-div {
     	background-position: 0 -330px;
     }
     div#HeroList div.hero div.name {
-    	color:#F3E6D0; font-weight:bold; background-color:rgba(0, 0, 0, 0.5); padding:3px; margin:2px;
-    	border:1px solid #970; border-radius:4px; text-align:left;text-overflow:ellipsis; overflow:hidden;
+    	color:#FFFFFF; font-weight:bold; background-color:rgba(0, 0, 0, 0.5); padding:3px; margin:2px;
+    	border:1px solid #FF0000; border-radius:4px; text-align:left; text-overflow:ellipsis; overflow:hidden;
     }
     div#HeroList div.hero div.name span.level {
-    	color:#f90; margin-right:5px;
+    	color:#FFFFFF; margin-right:5px;
     }
     div#HeroList div.hero div.name span.paragon-level {
-    	color:#aaf; margin-right:5px;
+    	color:#FF0000; margin-right:5px;
     }
     div#HeroList div.hero div.hardcore {
     	background-color:rgba(80, 0, 0, 0.5); border-color:#900;
     }
-    div#HeroList div.hero div.seasonal {
-    	background-color:rgba(0, 80, 0, 0.5); border-color:#690;
-    }
+    /*div#HeroList div.hero div.seasonal {
+    	color:#FF0000; background-color:rgba(0, 80, 0, 0.5); border-color:#690;
+    }*/
     div#HeroList div.seasonal-true {
     	background:url("http://us.battle.net/d3/static/images/profile/seasonal-leaf.png") no-repeat;
-    	position:absolute; width:24px; height:31px; top:-8px; left:-8px;
+    	position:absolute; width:24px; height:31px; top:42px; left:61px;
     }
     div#HeroList div.seasonal-false {
     	display:none;

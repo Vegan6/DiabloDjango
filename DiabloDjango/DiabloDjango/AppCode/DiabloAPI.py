@@ -1,4 +1,4 @@
-﻿import requests
+import requests
 import json
 
 # Static Variables
@@ -145,6 +145,11 @@ class Hero(dict):
         return classes[classId]
 
     @property
+    def Damage(self):
+        StatList = self.Stats()
+        return int(StatList['damage'])
+
+    @property
     def LastUpdated(self):
         return int(self['last-updated'])
 
@@ -170,15 +175,17 @@ class Hero(dict):
     @property
     def Portrait(self):
         global _battleTag
+        LevelType = 'level' if (self.Level < 70) else 'paragon-level'
         #Return the div for individual hero
+        #Need to add a span to distinguish paragon from standard
         if (self['seasonal']):
             nameDisplay = str('<div class="name seasonal">' +
-            '<span class="level" type="submit" value="Get Hero" name="GetHero" >' +
+            '<span class="' + LevelType + '" type="submit" value="Get Hero" name="GetHero" >' +
                 str(self.DisplayLevel) + '</span>' + str(self.Name) + '</div>' +
             '<div class="seasonal-true">&nbsp;</div>')
         else:
             nameDisplay = str('<div class="name">' +
-            '<span class="level" type="submit" value="Get Hero" name="GetHero" >' +
+            '<span class="' + LevelType + '" type="submit" value="Get Hero" name="GetHero" >' +
                 str(self.DisplayLevel) + '</span>' + str(self.Name) + '</div>' +
             '<div class="seasonal-false">&nbsp;</div>')
 

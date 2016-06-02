@@ -3,13 +3,20 @@
 {% block content %}
 
 
-<div id="HeroList">
-    {% autoescape off %}{{HeroPortrait}}{% endautoescape %}
-</div>
-
 <div class="mainBody">
     <div class="lead">
+        <div id="HeroList">
+            {% autoescape off %}{{HeroPortrait}}{% endautoescape %}
+        </div>
+        <!--
+        <div id="HeroList">
+            Portrait: {% autoescape off %}{{Portrait}}{% endautoescape %} </br>
+        </div>
+        -->
+        Hero Name: {{HeroName}}</br>
+        Damage: {{Damage}}
         <div class="large-txt">
+
             <textarea id="json_display" class="large-text" disabled="disabled" style="height:300px;width:600px;background-color: #000000">
                 {{HeroProfile}}
             </textarea>

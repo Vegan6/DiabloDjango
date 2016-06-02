@@ -49,16 +49,25 @@ def hero(request):
         for hero in Heroes:
             if hero.HeroId == HeroID:
                 CurrentHero = hero
+    # Grab Details for the Hero portraits
+    HeroPortrait = ""
+    heroes = CareerProfile.Heroes()
+    for hero in heroes:
+        HeroPortrait += hero.Portrait
+
     request.session['CurrentHero'] = CurrentHero
     return render(
         request,
         'hero.html',
         context_instance=RequestContext(request,
         {
-            'title': 'Diablo 3',
-            'year': datetime.now().year,
+            'Title': 'Diablo 3',
+            'Year': datetime.now().year,
             'UserName': CareerProfile.BattleTagDisplay,
-            #'HeroPortrait': Hero.Portrait,
+            'HeroPortrait': HeroPortrait,
+            'Damage': "{:,}".format(CurrentHero.Damage),
+            'HeroName': CurrentHero.Name,
+            'Portrait': CurrentHero.Portrait,
             'HeroProfile':
                 "\nHero Name: " + CurrentHero.Name
                 + "\nParagon Level: " + str(CurrentHero.ParagonLevel)
@@ -67,6 +76,7 @@ def hero(request):
                 + "\nCritical Hit Chance: " + str(CurrentHero.CriticalChance) + "%"
                 + "\nCritical Hit Damage: " + str(CurrentHero.CriticalDamage) + "%"
                 + "\nLast Update: " + str(GetUpdateTime(int(CurrentHero.LastUpdated)))
+                + "\nDamage: " + str(CurrentHero.Damage)
                 + "\n\n\nJSON Dump: \n" + str(CurrentHero),
         })
     )
@@ -90,8 +100,8 @@ def career(request):
         'career.html',
         context_instance=RequestContext(request,
         {
-            'title': 'Diablo 3',
-            'year': datetime.now().year,
+            'Title': 'Diablo 3',
+            'Year': datetime.now().year,
             'HeroPortrait': HeroPortrait,
             'UserName': CareerDetails.BattleTagDisplay,
             'CareerProfile':
