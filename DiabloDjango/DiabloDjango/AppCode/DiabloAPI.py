@@ -130,6 +130,30 @@ class Hero(dict):
         return genders[genderId]
 
     @property
+    def CharacterMenuItem(self):
+        global _battleTag
+        LevelType = 'level' if (self.Level < 70) else 'paragon-level'
+        #Return the div for individual hero
+        #Need to add a span to distinguish paragon from standard
+        if (self['seasonal']):
+            nameDisplay = str('<div class="name seasonal">' +
+            '<span class="' + LevelType + '" type="submit" value="Get Hero" name="GetHero" >' +
+                str(self.DisplayLevel) + '</span>' + str(self.Name) + '</div>' +
+            '<div class="seasonal-true">&nbsp;</div>')
+        else:
+            nameDisplay = str('<div class="name">' +
+            '<span class="' + LevelType + '" type="submit" value="Get Hero" name="GetHero" >' +
+                str(self.DisplayLevel) + '</span>' + str(self.Name) + '</div>' +
+            '<div class="seasonal-false">&nbsp;</div>')
+
+        #return str(nameDisplay)
+        return str('<li><div class="hero clickable" value="' + str(self['id']) + '">' +
+                    '<a href="/hero?battletag=' + _battleTag + '&heroid=' + str(self.HeroId) + '" class="fill-div">' +
+                    '<div class="face ' + self['class'] + '-' + self.Gender + '">&nbsp;</div>' +
+                    nameDisplay +
+                '</a></div></li>')
+
+    @property
     def CriticalDamage(self):
         StatList = self.Stats()
         return int(StatList['critDamage'] * 100)
@@ -189,8 +213,8 @@ class Hero(dict):
                 str(self.DisplayLevel) + '</span>' + str(self.Name) + '</div>' +
             '<div class="seasonal-false">&nbsp;</div>')
 
-        return str('<div class="hero clickable" value="' + str(self['id']) + '">' +
+        return str('<li class="heroMenuItem"><div class="hero clickable" value="' + str(self['id']) + '">' +
                     '<a href="/hero?battletag=' + _battleTag + '&heroid=' + str(self.HeroId) + '" class="fill-div">' +
                     '<div class="face ' + self['class'] + '-' + self.Gender + '">&nbsp;</div>' +
                     nameDisplay +
-                '</a></div>')
+                '</a></div></li>')

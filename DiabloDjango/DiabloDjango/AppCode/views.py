@@ -68,6 +68,7 @@ def hero(request):
             'Damage': "{:,}".format(CurrentHero.Damage),
             'HeroName': CurrentHero.Name,
             'Portrait': CurrentHero.Portrait,
+            'CharacterMenu': HeroPortrait,
             'HeroProfile':
                 "\nHero Name: " + CurrentHero.Name
                 + "\nParagon Level: " + str(CurrentHero.ParagonLevel)
@@ -104,6 +105,7 @@ def career(request):
             'Year': datetime.now().year,
             'HeroPortrait': HeroPortrait,
             'UserName': CareerDetails.BattleTagDisplay,
+            'CharacterMenu': HeroPortrait,
             'CareerProfile':
                 "\nBattleTag: " + CareerDetails.BattleTag
                 + "\nParagon Level: " + str(CareerDetails.ParagonLevel)

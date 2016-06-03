@@ -24,6 +24,9 @@
             <li class="menuItem">
                 <a class="link" href="/career">Characters</a>
             </li>
+                <div id="HeroList">
+                {% autoescape off %}{{CharacterMenu}}{% endautoescape %}
+                </div>
             <li class="menuItem">
                 <a class="link" href="/hero">Profile</a>
             </li>
