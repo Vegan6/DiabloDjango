@@ -1,4 +1,39 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
+
+<style>
+    .heroListItem{
+        padding:10px 0 10px 0 !important; 
+    }
+
+    .menuItem{
+        padding:0; margin:0;
+    }
+
+    #heroContainer{
+        text-align:center; padding:0; width:100% !important; position:relative;
+    }
+
+    #HeroList{
+        padding:0 !important; margin:10px 0 -10px 0 !important; width:100% !important;
+
+        /*transition: width 2s, height 2s, background-color 2s, transform 2s;
+        -webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;*/
+        transition: display 0.5s ease-in;
+        -webkit-transition: display 0.5s ease-in;
+    }
+
+    #HeroList > ul{
+        padding:0 !important; width:100%;
+    }
+
+    #HeroList > ul li{
+        border: none !important; border-top:1px solid white !important;
+    }
+
+
+
+</style>
+
 <html>
 <head>
     <meta charset="utf-8" />
@@ -21,12 +56,15 @@
             <li class="menuItem">
                 <a class="link" href="/">Home</a>
             </li>
-            <li class="menuItem">
-                <a class="link" href="/career">Characters</a>
-            </li>
-                <div id="HeroList">
+            <li class="menuItem heroListItem">
+                <a id="heroContainer" class="link" href="#">Characters</a>
+                 <div id="HeroList">
+                     <ul>
                 {% autoescape off %}{{CharacterMenu}}{% endautoescape %}
+                         </ul>
                 </div>
+            </li>
+               
             <li class="menuItem">
                 <a class="link" href="/hero">Profile</a>
             </li>

@@ -211,3 +211,16 @@ GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
 *.nja
+/DiabloDjango/app/__pycache__/admin.cpython-34.pyc
+/DiabloDjango/app/__pycache__/forms.cpython-34.pyc
+/DiabloDjango/app/__pycache__
+/DiabloDjango/DiabloDjango/AppCode/DiabloAPI.pyc
+/DiabloDjango/DiabloDjango/AppCode/urls.pyc
+/DiabloDjango/DiabloDjango/AppCode/views.pyc
+/DiabloDjango/DiabloDjango/AppCode/__init__.pyc
+/DiabloDjango/DiabloDjango/Includes/Background.jpg
+/DiabloDjango/DiabloDjango/Includes/site.css
+/DiabloDjango/DiabloDjango/__pycache__
+/DiabloDjango/DiabloDjango/wsgi.pyc
+/DiabloDjango/DiabloDjango/web.config
+/DiabloDjango/DiabloDjango/settings.pyc

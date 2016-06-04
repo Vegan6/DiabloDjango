@@ -99,7 +99,7 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'DiabloDjango.AppData.urls'
+ROOT_URLCONF = 'DiabloDjango.AppCode.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'DiabloDjango.wsgi.application'

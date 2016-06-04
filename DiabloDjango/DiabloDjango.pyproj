@@ -45,7 +45,7 @@
     <Compile Include="manage.py" />
     <Compile Include="DiabloDjango\__init__.py" />
     <Compile Include="DiabloDjango\settings.py" />
-    <Compile Include="DiabloDjango\AppData\urls.py" />
+    <Compile Include="DiabloDjango\AppCode\urls.py" />
     <Compile Include="DiabloDjango\wsgi.py" />
   </ItemGroup>
   <ItemGroup>

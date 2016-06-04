@@ -1,19 +1,37 @@
-﻿(function () {
+﻿/// Menu
+(function () {
 	var layout = function () {
-		//alert('Hello World');
-
-
-
-
+	    
+        
 	};
 
+	var collapseMenuItem = function (obj) {
+	    var item = obj.target.nextElementSibling;
+        
+	    if (item.style.display == "none") {
+	        item.style.display = "block";
+	    } else {
+	        item.style.display = "none";
+	    }
+	    
+	};
 
-	// #region Handles the event when the window loads
-	this.onload = function () {
-		layout();
+	var events = function () {
+	    //var items = document.getElementsByClassName("menuItem");
+
+	    //for (var i = 0; i < items.length; i += 1) {
+	    //    items[i].addEventListener("click", collapseMenuItem);
+	    //}
+
+	    document.getElementsByClassName("heroListItem")[0].addEventListener("click", collapseMenuItem);
 	}
 
-	// #endregion
+	//#region Handles the event when the window loads
+	this.onload = function () {
+	    events();
+	}
+
+	//#endregion
 
 }());
 
