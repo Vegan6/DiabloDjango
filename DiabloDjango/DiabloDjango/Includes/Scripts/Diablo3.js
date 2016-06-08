@@ -1,18 +1,16 @@
 ﻿/// Menu
 (function () {
-	var layout = function () {
-	    
-        
-	};
-
-	var collapseMenuItem = function (obj) {
-	    var item = obj.target.nextElementSibling;
-        
-	    if (item.style.display == "none") {
-	        item.style.display = "block";
-	    } else {
-	        item.style.display = "none";
-	    }
+	
+    var collapseMenuItem = function (obj) {
+        if (obj.target.nextElementSibling.className !== "menuItem") {
+            var item = obj.target.nextElementSibling;
+            
+            if (item.style.display == "none") {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        }
 	    
 	};
 
@@ -26,12 +24,9 @@
 	    document.getElementsByClassName("heroListItem")[0].addEventListener("click", collapseMenuItem);
 	}
 
-	//#region Handles the event when the window loads
 	this.onload = function () {
 	    events();
 	}
-
-	//#endregion
-
+    
 }());
 
