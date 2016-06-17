@@ -1,8 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <style>
     .heroListItem{
-        padding:10px 0 10px 0 !important; 
+        padding:10px 0 10px 0 !important;
     }
 
     .menuItem{
@@ -42,35 +42,67 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ Title }} - My Django Application</title>
+    <title>{{ Title }}</title>
     {% load staticfiles %}
 
     <link rel="stylesheet" type="text/css" href="{% static 'site.css' %}" />
+
+    <link rel="shortcut icon" type="image/png" href="{%static 'favicon.ico'%}"/>
 
     <script type="text/javascript" src="{% static 'Diablo3.js' %}"></script>
 
 </head>
 
 <body class="container" style="background-image:url({%static 'Background.jpg' %}); background-size: 100% 100%; ">
+
 <div class="container body-content">
 
      <div id="menuBar" class="mainMenu">
         <ul>
+
             {% autoescape off %}{{UserName}}{% endautoescape %}
+
             <li class="menuItem">
                 <a class="link" href="/">Home</a>
             </li>
-            <li class="menuItem heroListItem">
-                <a id="heroContainer" class="link" href="#">Characters</a>
-                 <div id="HeroList">
-                     <ul>
-                {% autoescape off %}{{CharacterMenu}}{% endautoescape %}
-                         </ul>
-                </div>
-            </li>
-               
+
             <li class="menuItem">
+
+                <a class="link" href="/career">Career</a>
+
+            </li>
+
+            <li class="menuItem heroListItem">
+
+                <a id="heroContainer" class="link" href="#">Characters</a>
+
+                 <div id="HeroList">
+
+                     <ul id="heroMenuList">
+                        {% autoescape off %}{{CharacterMenu}}{% endautoescape %}
+
+                     </ul>
+
+                </div>
+
+            </li>
+
+            <li class="menuItem">
+
                 <a class="link" href="/hero">Profile</a>
+
+            </li>
+
+            <li class="menuItem">
+
+                <a class="link" href="/contact">Contact</a>
+
+            </li>
+
+            <li class="menuItem">
+
+                <a class="link" href="/about">About</a>
+
             </li>
         </ul>
     </div>
@@ -82,8 +114,11 @@
 {% block scripts %}{% endblock %}
 
 <hr/>
-<footer>
+
+    <footer>
         <p>&copy; {{ Year }} - Diablo 3 Profile</p>
     </footer>
+
 </body>
+
 </html>

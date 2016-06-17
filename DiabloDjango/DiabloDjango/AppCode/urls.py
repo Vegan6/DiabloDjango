@@ -1,4 +1,4 @@
-﻿"""
+"""
 Definition of urls for DiabloDjango.
 """
 
@@ -12,6 +12,8 @@ urlpatterns = patterns('',
     url(r'^$', 'DiabloDjango.AppCode.views.home', name='home'),
     url(r'^hero', 'DiabloDjango.AppCode.views.hero', name='hero'),
     url(r'^career', 'DiabloDjango.AppCode.views.career', name='career'),
+    url(r'^contact', 'DiabloDjango.AppCode.views.contact', name='contact'),
+    url(r'^about', 'DiabloDjango.AppCode.views.about', name='about'),
 
    #url(r'^login/$',
    #     'django.contrib.auth.views.login',

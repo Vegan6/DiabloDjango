@@ -123,7 +123,7 @@ def contact(request):
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'Pages/contact.html',
+        'contact.html',
         context_instance=RequestContext(request,
         {
             'title': 'Contact',
@@ -138,7 +138,7 @@ def about(request):
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'Pages/about.html',
+        'about.html',
         context_instance=RequestContext(request,
         {
             'title': 'About',

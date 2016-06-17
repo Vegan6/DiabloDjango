@@ -1,0 +1,267 @@
+{
+	'blacksmith': {
+		'level': 12,
+		'stepCurrent': 0,
+		'stepMax': 1,
+		'slug': 'blacksmith'
+	},
+	'timePlayed': {
+		'demon-hunter': 1.0,
+		'witch-doctor': 0.042,
+		'crusader': 0.0,
+		'barbarian': 0.0,
+		'wizard': 0.593,
+		'monk': 0.271
+	},
+	'jewelerHardcore': {
+		'level': 0,
+		'stepCurrent': 0,
+		'stepMax': 1,
+		'slug': 'jeweler'
+	},
+	'lastUpdated': 1465884301,
+	'mystic': {
+		'level': 12,
+		'stepCurrent': 0,
+		'stepMax': 1,
+		'slug': 'mystic'
+	},
+	'paragonLevelSeasonHardcore': 0,
+	'paragonLevelHardcore': 0,
+	'blacksmithSeason': {
+		'level': 12,
+		'stepCurrent': 0,
+		'stepMax': 1,
+		'slug': 'blacksmith'
+	},
+	'progression': {
+		'act2': True,
+		'act5': True,
+		'act3': True,
+		'act4': True,
+		'act1': True
+	},
+	'mysticSeason': {
+		'level': 12,
+		'stepCurrent': 0,
+		'stepMax': 1,
+		'slug': 'mystic'
+	},
+	'kills': {
+		'hardcoreMonsters': 0,
+		'monsters': 441060,
+		'elites': 23250
+	},
+	'guildName': '',
+	'mysticSeasonHardcore': {
+		'level': 0,
+		'stepCurrent': 0,
+		'stepMax': 1,
+		'slug': 'mystic'
+	},
+	'fallenHeroes': [],
+	'heroes': [{
+		'seasonal': False,
+		'level': 70,
+		'id': 64346468,
+		'last-updated': 1452319948,
+		'paragonLevel': 332,
+		'class': 'demon-hunter',
+		'gender': 1,
+		'kills': {
+			'elites': 8288
+		},
+		'hardcore': False,
+		'dead': False,
+		'name': 'Panda'
+	}, {
+		'seasonal': True,
+		'level': 70,
+		'id': 76254722,
+		'last-updated': 1465884301,
+		'paragonLevel': 240,
+		'class': 'wizard',
+		'gender': 1,
+		'kills': {
+			'elites': 3048
+		},
+		'hardcore': False,
+		'dead': False,
+		'name': 'Possum'
+	}, {
+		'seasonal': False,
+		'level': 70,
+		'id': 66649320,
+		'last-updated': 1451504641,
+		'paragonLevel': 332,
+		'class': 'monk',
+		'gender': 1,
+		'kills': {
+			'elites': 1267
+		},
+		'hardcore': False,
+		'dead': False,
+		'name': 'Platypus'
+	}, {
+		'seasonal': False,
+		'level': 28,
+		'id': 64003251,
+		'last-updated': 1439881872,
+		'paragonLevel': 332,
+		'class': 'witch-doctor',
+		'gender': 0,
+		'kills': {
+			'elites': 231
+		},
+		'hardcore': False,
+		'dead': False,
+		'name': 'Penguin'
+	}],
+	'jewelerSeasonHardcore': {
+		'level': 0,
+		'stepCurrent': 0,
+		'stepMax': 1,
+		'slug': 'jeweler'
+	},
+	'paragonLevel': 332,
+	'blacksmithSeasonHardcore': {
+		'level': 0,
+		'stepCurrent': 0,
+		'stepMax': 1,
+		'slug': 'blacksmith'
+	},
+	'seasonalProfiles': {
+		'season3': {
+			'timePlayed': {
+				'demon-hunter': 1.0,
+				'witch-doctor': 0.0,
+				'crusader': 0.0,
+				'barbarian': 0.0,
+				'wizard': 0.0,
+				'monk': 0.0
+			},
+			'seasonId': 3,
+			'paragonLevel': 255,
+			'progression': {
+				'act2': True,
+				'act5': True,
+				'act3': True,
+				'act4': True,
+				'act1': True
+			},
+			'kills': {
+				'hardcoreMonsters': 0,
+				'monsters': 94237,
+				'elites': 6031
+			},
+			'highestHardcoreLevel': 0,
+			'paragonLevelHardcore': 0
+		},
+		'season0': {
+			'timePlayed': {
+				'demon-hunter': 1.0,
+				'witch-doctor': 0.072,
+				'crusader': 0.0,
+				'barbarian': 0.0,
+				'wizard': 0.505,
+				'monk': 0.231
+			},
+			'seasonId': 0,
+			'paragonLevel': 332,
+			'progression': {
+				'act2': False,
+				'act5': False,
+				'act3': False,
+				'act4': False,
+				'act1': True
+			},
+			'kills': {
+				'hardcoreMonsters': 0,
+				'monsters': 244322,
+				'elites': 12904
+			},
+			'highestHardcoreLevel': 0,
+			'paragonLevelHardcore': 0
+		},
+		'season4': {
+			'timePlayed': {
+				'demon-hunter': 0.0,
+				'witch-doctor': 0.0,
+				'crusader': 0.0,
+				'barbarian': 0.0,
+				'wizard': 0.0,
+				'monk': 1.0
+			},
+			'seasonId': 4,
+			'paragonLevel': 48,
+			'progression': {
+				'act2': False,
+				'act5': False,
+				'act3': False,
+				'act4': False,
+				'act1': False
+			},
+			'kills': {
+				'hardcoreMonsters': 0,
+				'monsters': 31615,
+				'elites': 1267
+			},
+			'highestHardcoreLevel': 0,
+			'paragonLevelHardcore': 0
+		},
+		'season6': {
+			'timePlayed': {
+				'demon-hunter': 0.0,
+				'witch-doctor': 0.0,
+				'crusader': 0.0,
+				'barbarian': 0.0,
+				'wizard': 1.0,
+				'monk': 0.0
+			},
+			'seasonId': 6,
+			'paragonLevel': 240,
+			'progression': {
+				'act2': False,
+				'act5': False,
+				'act3': False,
+				'act4': False,
+				'act1': False
+			},
+			'kills': {
+				'hardcoreMonsters': 0,
+				'monsters': 70886,
+				'elites': 3048
+			},
+			'highestHardcoreLevel': 0,
+			'paragonLevelHardcore': 0
+		}
+	},
+	'highestHardcoreLevel': 0,
+	'battleTag': 'Heretic#1984',
+	'mysticHardcore': {
+		'level': 0,
+		'stepCurrent': 0,
+		'stepMax': 1,
+		'slug': 'mystic'
+	},
+	'lastHeroPlayed': 76254722,
+	'blacksmithHardcore': {
+		'level': 0,
+		'stepCurrent': 0,
+		'stepMax': 1,
+		'slug': 'blacksmith'
+	},
+	'paragonLevelSeason': 240,
+	'jewelerSeason': {
+		'level': 12,
+		'stepCurrent': 0,
+		'stepMax': 1,
+		'slug': 'jeweler'
+	},
+	'jeweler': {
+		'level': 12,
+		'stepCurrent': 0,
+		'stepMax': 1,
+		'slug': 'jeweler'
+	}
+}
