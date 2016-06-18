@@ -4,16 +4,17 @@ Definition of urls for DiabloDjango.
 
 from datetime import datetime
 from django.conf.urls import patterns, url
+import DiabloDjango.AppCode.views
 
 # Uncomment the next lines to enable the admin:
 #from django.conf.urls import include
 
 urlpatterns = patterns('',
-    url(r'^$', 'DiabloDjango.AppCode.views.home', name='home'),
-    url(r'^hero', 'DiabloDjango.AppCode.views.hero', name='hero'),
-    url(r'^career', 'DiabloDjango.AppCode.views.career', name='career'),
-    url(r'^contact', 'DiabloDjango.AppCode.views.contact', name='contact'),
-    url(r'^about', 'DiabloDjango.AppCode.views.about', name='about'),
+    url(r'^$', DiabloDjango.AppCode.views.home),
+    url(r'^hero', DiabloDjango.AppCode.views.hero),
+    url(r'^career', DiabloDjango.AppCode.views.career),
+    url(r'^contact', DiabloDjango.AppCode.views.contact),
+    url(r'^about', DiabloDjango.AppCode.views.about),
 
    #url(r'^login/$',
    #     'django.contrib.auth.views.login',
