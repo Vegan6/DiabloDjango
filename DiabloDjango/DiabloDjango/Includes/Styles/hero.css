@@ -1,0 +1,31 @@
+
+.StatsTable{
+    background: rgba(0,0,0,.6);
+}
+
+#HeroStats thead{
+    color: #9F9F9F;
+}
+
+#HeroStats td{
+    vertical-align: top;
+    line-height: 1.9em;
+
+}
+
+#HeroStats div span {
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+#HeroStats div span:first-child {
+    color: dimgray;
+    width: calc(100% - 6.500em);
+    text-align: left
+}
+
+#HeroStats div span:last-child {
+    color: #B20000;
+    width: 6.250em;
+    text-align: right;
+}

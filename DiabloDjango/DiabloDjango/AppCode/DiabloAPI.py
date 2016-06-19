@@ -1,5 +1,6 @@
 import requests
 import json
+from decimal import Decimal
 
 # Static Variables
 EU_SERVER = 'https://eu.api.battle.net'
@@ -104,6 +105,8 @@ def HeroProfile(Host, BattleTag, HeroId):
 
 
 class Hero(dict):
+    global _battleTag
+
     # Create Hero Object
     def ActiveSkillsDictionary(self):
         skills = self['skills']
@@ -116,28 +119,34 @@ class Hero(dict):
     def Stats(self):
         return self['stats']
 
+    # Create Hero Properties
     @property
-    def ParagonLevel(self):
-        return self['paragonLevel']
+    def statList(self):
+        return self.Stats()
 
     @property
-    def HeroId(self):
-        return self['id']
+    def ArcaneResist(self):
+        return int(self.Stats()['arcaneResist'])
 
     @property
-    def Gender(self):
-        genderId = int(self['gender'])
-        return genders[genderId]
+    def Armor(self):
+        return int(self.Stats()['armor'])
+
+    @property
+    def AttackSpeed(self):
+        return round(Decimal(self.Stats()['attackSpeed']), 2)
+
+    @property
+    def ColdResist(self):
+        return int(self.Stats()['coldResist'])
 
     @property
     def CriticalDamage(self):
-        StatList = self.Stats()
-        return int(StatList['critDamage'] * 100)
+        return int(self.Stats()['critDamage'] * 100)
 
     @property
     def CriticalChance(self):
-        StatList = self.Stats()
-        return int(StatList['critChance'] * 100)
+        return int(self.Stats()['critChance'] * 100)
 
     @property
     def Class(self):
@@ -146,8 +155,43 @@ class Hero(dict):
 
     @property
     def Damage(self):
-        StatList = self.Stats()
-        return int(StatList['damage'])
+        return int(self.Stats()['damage'])
+
+    @property
+    def DamageIncrease(self):
+        return int(self.Stats()['damageIncrease'] * 100)
+
+    @property
+    def DamageReduction(self):
+        return int(self.Stats()['damageReduction'] * 100)
+
+    @property
+    def DisplayLevel(self):
+        if (self.Level < 70):
+            return self.Level
+        else:
+            return self.ParagonLevel
+
+    @property
+    def FireResist(self):
+        return int(self.Stats()['fireResist'])
+
+    @property
+    def Gender(self):
+        genderId = int(self['gender'])
+        return genders[genderId]
+
+    @property
+    def GoldFind(self):
+        return int(self.Stats()['goldFind'] * 100)
+
+    @property
+    def Healing(self):
+        return int(self.Stats()['healing'])
+
+    @property
+    def HeroId(self):
+        return self['id']
 
     @property
     def LastUpdated(self):
@@ -158,23 +202,39 @@ class Hero(dict):
         return int(self['level'])
 
     @property
-    def DisplayLevel(self):
-        if (self.Level < 70):
-            return self.Level
-        else:
-            return self.ParagonLevel
+    def Life(self):
+        return int(self.Stats()['life'])
+
+    @property
+    def LifeOnHit(self):
+        return int(self.Stats()['lifeOnHit'])
+
+    @property
+    def LifeSteal(self):
+        return int(self.Stats()['lifeSteal'])
+
+    @property
+    def MagicFind(self):
+        return int(self.Stats()['magicFind'] * 100)
 
     @property
     def Name(self):
         return self['name']
 
     @property
-    def HeroList(self):
-        return ""
+    def ParagonLevel(self):
+        return self['paragonLevel']
+
+    @property
+    def PhysicalResist(self):
+        return int(self.Stats()['physicalResist'])
+
+    @property
+    def PoisonResist(self):
+        return int(self.Stats()['poisonResist'])
 
     @property
     def Portrait(self):
-        global _battleTag
         LevelType = 'level' if (self.Level < 70) else 'paragon-level'
         #Return the div for individual hero
         #Need to add a span to distinguish paragon from standard
@@ -192,3 +252,7 @@ class Hero(dict):
         return str('<li class="heroMenuItem"><div class="hero clickable" value="' + str(self['id']) + '">' +
                     '<a href="/hero?battletag=' + _battleTag + '&heroid=' + str(self.HeroId) + '" class="fill-div">' +
                     '<div class="face ' + self['class'] + '-' + self.Gender + '">&nbsp;</div>' + nameDisplay + '</a></div></li>')
+
+    @property
+    def Toughness(self):
+        return int(self.Stats()['toughness'])

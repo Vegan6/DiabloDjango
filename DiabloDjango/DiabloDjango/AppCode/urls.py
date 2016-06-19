@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^$', DiabloDjango.AppCode.views.home),
     url(r'^hero', DiabloDjango.AppCode.views.hero),
     url(r'^career', DiabloDjango.AppCode.views.career),
+    url(r'^toolbox', DiabloDjango.AppCode.views.toolbox),
     url(r'^contact', DiabloDjango.AppCode.views.contact),
     url(r'^about', DiabloDjango.AppCode.views.about),
 

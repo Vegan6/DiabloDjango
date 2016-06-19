@@ -4,21 +4,34 @@
 
 
 <div class="mainBody">
-    <div class="lead">
-        <!--
-        <div id="HeroList">
-            Portrait: {% autoescape off %}{{Portrait}}{% endautoescape %} </br>
-        </div>
-        -->
-        Hero Name: {{HeroName}}</br>
-        Damage: {{Damage}}
-        <div class="large-txt">
-
-            <textarea id="json_display" class="large-text" disabled="disabled" style="height:300px;width:600px;background-color: #000000">
-                {{HeroProfile}}
-            </textarea>
-        </div>
-    </div>
+    <h1 style="color:#B20000">{{HeroName}}</h1>
+    <!--<span>{{StatList}}</span>-->
+    <table id="HeroStats" class="StatsTable">
+        <thead>
+            <tr>
+                <td>Attack Stats</td>
+                <td>Life Stats</td>
+                <td>Resistance</td>
+                <td>Buffs</td>
+            </tr>
+        </thead>
+        <tbody style="font-size:11px">
+            <tr>
+                <td>
+                    {% autoescape off %}{{AttackStats}}{% endautoescape %}
+                </td>
+                <td>
+                    {% autoescape off %}{{LifeStats}}{% endautoescape %}
+                </td>
+                <td>
+                    {% autoescape off %}{{ResistanceStats}}{% endautoescape %}
+                </td>
+                <td>
+                    {% autoescape off %}{{BuffStats}}{% endautoescape %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 
