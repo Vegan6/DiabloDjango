@@ -13,6 +13,11 @@
 
 }
 
+.HeroEquip {
+    height: 813px;
+    width: 813px;
+}
+
 #HeroStats div span {
     display: inline-block;
     box-sizing: border-box;

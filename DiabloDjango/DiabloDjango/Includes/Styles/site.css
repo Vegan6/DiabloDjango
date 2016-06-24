@@ -20,10 +20,11 @@
 /*#endregion*/
 
 body {
-    padding-top: 100px;
+    padding-top: 10px;
     padding-bottom: 20px;
     height:100vh;
     width:100vw;
+    min-width: 1280px;
     position:page;
     overflow:auto;
     background-color:black;
@@ -35,15 +36,15 @@ body {
 
 /*#region Main Body */
 .mainBody{
-	margin:auto;
-	padding: 0 50px;
-	display: inline-block;
-	margin-left: 50px;
-	height: 800px;
-	width: 60%;
-	overflow: auto;	
-	background: rgba(0,0,0,0.5);
-	box-shadow: 0 0 500px rgba(0,0,0,0.5);
+    margin:auto;
+    padding: 0 50px;
+    display: inline-block;
+    margin-top: 50px;
+    height: 566px;
+    width: 813px;
+    overflow: auto;	
+    background: rgba(0,0,0,0.5);
+    box-shadow: 0 0 500px rgba(0,0,0,0.5);
 }
 /*#endregion */
 
@@ -78,10 +79,30 @@ a.fill-div {
     text-decoration: none;
 }
 
+/*#region Scroll bar*/
+::-webkit-scrollbar {
+    width: 11px;
+}
 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.8);
+    -webkit-box-shadow: inset 0 0 6px rgba(105,105,105,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(105,105,105,0.6);
+}
+/*#endregion*/
 
 /*#region Footer */
 footer{
-	margin-bottom:0; width:100%; color:white;
+    margin-bottom:0; width:100%; color:white;
 }
 /*#endregion
