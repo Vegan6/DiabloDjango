@@ -33,6 +33,7 @@ def GetCareer(Host, BattleTag):
     _battleTag = BattleTag
     url = "%s/d3/profile/%s/?%s&%s" % (Host, BattleTag, EN_LOCALE, API_KEY)
     response = requests.get(url)
+    response
     if response.status_code == 200:
         return Career(json.loads(response.text))
     else:
@@ -49,9 +50,10 @@ class Career(dict):
         US_SERVER = 'https://us.api.battle.net'
         #heroes = dict()
         heroProfiles = list()
-        for hero in self['heroes']:
-            #heroes[hero['id']] = hero['name']
-            heroProfiles.append(HeroProfile(US_SERVER, self.BattleTagURI, int(hero['id'])))
+        if len(self['heroes']) > 0:
+            for hero in self['heroes']:
+                #heroes[hero['id']] = hero['name']
+                heroProfiles.append(HeroProfile(US_SERVER, self.BattleTagURI, int(hero['id'])))
         #return heroes
         return heroProfiles
 
