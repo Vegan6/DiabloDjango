@@ -2,14 +2,15 @@
 Definition of urls for DiabloDjango.
 """
 
-from datetime import datetime
-from django.conf.urls import patterns, url
+#from datetime import datetime
+#from django.conf.urls import patterns, url
+from django.conf.urls import url
 import DiabloDjango.AppCode.views
 
 # Uncomment the next lines to enable the admin:
 #from django.conf.urls import include
 
-urlpatterns = patterns('',
+urlpatterns = [
     url(r'^$', DiabloDjango.AppCode.views.home),
     url(r'^hero', DiabloDjango.AppCode.views.hero),
     url(r'^career', DiabloDjango.AppCode.views.career),
@@ -41,5 +42,4 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     #url(r'^admin/', include(admin.site.urls)),
-
-)
+    ]

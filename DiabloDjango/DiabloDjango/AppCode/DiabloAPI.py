@@ -18,8 +18,7 @@ classes = {
     'crusader': 'Crusader',
     'barbarian': 'Barbarian',
     'monk': 'Monk',
-    'witch-doctor':
-    'Witch Doctor',
+    'witch-doctor': 'Witch Doctor',
     'wizard': 'Wizard'
 }
 
@@ -135,6 +134,14 @@ class Hero(dict):
     @property
     def AttackSpeed(self):
         return round(Decimal(self.Stats()['attackSpeed']), 2)
+
+    @property
+    def BackImage(self):
+        if (int(self['gender']) == 0):
+            backImage = 'VitruvianMan.jpg'
+        else:
+            backImage = 'VitruvianWoman640px.jpg'
+        return str(backImage)
 
     @property
     def ColdResist(self):

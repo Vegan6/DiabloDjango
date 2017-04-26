@@ -7,7 +7,6 @@ PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 MEDIA_ROOT = PROJECT_ROOT + '/DiabloDjango/Includes/Images/'
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 #ALLOWED_HOSTS = (
 #    'localhost',
@@ -84,11 +83,6 @@ STATICFILES_FINDERS = (
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'n(bd1f1c%e8=_xad02x5qtfn%wgwpi492e$8_erx+d)!tpeoim'
 
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-)
-
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -104,9 +98,29 @@ ROOT_URLCONF = 'DiabloDjango.AppCode.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'DiabloDjango.wsgi.application'
 
-TEMPLATE_DIRS = (
-    PROJECT_ROOT + '/DiabloDjango/Pages/',
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            PROJECT_ROOT + '/DiabloDjango/Pages/',
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'debug':DEBUG,
+            'context_processors': [
+                # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
+                # list if you haven't customized them:
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 INSTALLED_APPS = (
     'django.contrib.auth',
