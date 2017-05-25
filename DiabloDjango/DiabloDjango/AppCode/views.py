@@ -63,6 +63,8 @@ def hero(request):
         'HeroName': CurrentHero.Name,
         'CharacterMenu': HeroPortrait,
         'HeroVitru': CurrentHero.BackImage,
+        'HandsIcon': CurrentHero.Hands.IconURL,
+        'HandsToolTip': CurrentHero.Hands.ToolTipURL,
 
         'AttackStats': '<div><span>Damage</span><span>' + "{:,}".format(CurrentHero.Damage) + '</span></div>'
             + '<div><span>Critical Hit Chance</span><span>' + str(CurrentHero.CriticalChance) + "%" + '</span></div>'

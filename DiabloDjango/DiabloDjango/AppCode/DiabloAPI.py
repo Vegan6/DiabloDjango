@@ -12,6 +12,22 @@ EN_LOCALE = 'locale=en_US'
 # Heretic Key
 API_KEY = 'apikey=wszpeaq9nkmskx58ra68yknst4dage85'
 
+ICON_URL = 'http://media.blizzard.com/d3/icons/items/large/<ITEM>.png'
+#TOOLTIP_URL = '<SERVER>/d3/data/<TOOLTIP>?' + EN_LOCALE + '&' + API_KEY
+TOOLTIP_URL = 'https://us.battle.net/d3/en/<ITEM>'
+
+BATTLETAG = ''
+CURRENTSERVER = ''
+
+#Icon
+#http://media.blizzard.com/d3/icons/items/small/unique_gloves_set_13_x1_demonhunter_male.png
+#http://media.blizzard.com/d3/icons/items/large/<itemname>.png
+#Tooltip
+#https://us.api.battle.net/d3/data/item/CkUIlaL0zggSBwgEFVyXwXod89VHtB1yjh0hHTp12owdmKeOwB1-
+#VrMuHfNwB60wi1I4lQJAAFASWARglQKAAUa1AclbkqQYuN2MrA9QBFgCoAG43YysDw?locale=en_US&apikey=wszpeaq9nkmskx58ra68yknst4dage85
+#https://us.api.battle.net/d3/data/<tooltip params>
+
+
 genders = {0: 'Male', 1: 'Female'}
 classes = {
     'demon-hunter': 'Demon Hunter',
@@ -22,16 +38,15 @@ classes = {
     'wizard': 'Wizard'
 }
 
-_battleTag = ''
-
 # Load Career
 # Returns Career Class
 
 
 def GetCareer(Host, BattleTag):
-    global _battleTag
-    _battleTag = BattleTag
-    url = "%s/d3/profile/%s/?%s&%s" % (Host, BattleTag, EN_LOCALE, API_KEY)
+    global BATTLETAG, CURRENTSERVER
+    CURRENTSERVER = Host
+    BATTLETAG = BattleTag
+    url = "%s/d3/profile/%s/?%s&%s" % (CURRENTSERVER, BATTLETAG, EN_LOCALE, API_KEY)
     response = requests.get(url)
     response
     if response.status_code == 200:
@@ -41,19 +56,20 @@ def GetCareer(Host, BattleTag):
 
 
 class Career(dict):
+    global CURRENTSERVER
+
     # Create Career Object
     def Kills(self):
         return self['kills']
 
     def Heroes(self):
         #set this to return Hero Object
-        US_SERVER = 'https://us.api.battle.net'
         #heroes = dict()
         heroProfiles = list()
         if len(self['heroes']) > 0:
             for hero in self['heroes']:
                 #heroes[hero['id']] = hero['name']
-                heroProfiles.append(HeroProfile(US_SERVER, self.BattleTagURI, int(hero['id'])))
+                heroProfiles.append(HeroProfile(CURRENTSERVER, self.BattleTagURI, int(hero['id'])))
         #return heroes
         return heroProfiles
 
@@ -95,8 +111,6 @@ class Career(dict):
 def HeroProfile(Host, BattleTag, HeroId):
     # Load Hero Profile
     # Returns Hero Class
-    global _battleTag
-    _battleTag = BattleTag
     url = "%s/d3/profile/%s/hero/%s?%s&%s" % (Host, BattleTag, HeroId, EN_LOCALE, API_KEY)
     response = requests.get(url)
     if response.status_code == 200:
@@ -106,8 +120,6 @@ def HeroProfile(Host, BattleTag, HeroId):
 
 
 class Hero(dict):
-    global _battleTag
-
     # Create Hero Object
     def ActiveSkillsDictionary(self):
         skills = self['skills']
@@ -119,6 +131,14 @@ class Hero(dict):
 
     def Stats(self):
         return self['stats']
+
+    def Items(self):
+        return self['items']
+
+    # Create Item Properties
+    @property
+    def Hands(self):
+        return Item(self.Items()['hands'])
 
     # Create Hero Properties
     @property
@@ -259,9 +279,39 @@ class Hero(dict):
             '<div class="seasonal-false">&nbsp;</div>')
 
         return str('<li class="heroMenuItem"><div class="hero clickable" value="' + str(self['id']) + '">' +
-                    '<a href="/hero?battletag=' + _battleTag + '&heroid=' + str(self.HeroId) + '" class="fill-div">' +
+                    '<a href="/hero?battletag=' + BATTLETAG + '&heroid=' + str(self.HeroId) + '" class="fill-div">' +
                     '<div class="face ' + self['class'] + '-' + self.Gender + '">&nbsp;</div>' + nameDisplay + '</a></div></li>')
 
     @property
     def Toughness(self):
         return int(self.Stats()['toughness'])
+
+
+class Item(dict):
+    global ICON_URL, TOOLTIP_URL
+    iconURL = ICON_URL
+    toolTipURL = TOOLTIP_URL
+
+    @property
+    def IconURL(self):
+        return self.iconURL.replace("<ITEM>", str(self['icon']))
+
+    @property
+    def ToolTipURL(self):
+        return self.toolTipURL.replace("<ITEM>", str(self['tooltipParams']))
+
+    @property
+    def DisplayColor(self):
+        return self['displayColor']
+
+    @property
+    def Name(self):
+        return self['name']
+
+    @property
+    def ID(self):
+        return self['id']
+
+    @property
+    def SetItemsEquipped(self):
+        return self['setItemsEquipped']

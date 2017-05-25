@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% load staticfiles %}
 
+
 {% block content %}
 
 
@@ -33,10 +34,19 @@
             </tr>
         </tbody>
     </table>
+
+
     <div class="HeroEquip" style="background-image:url({%static ""%}{{HeroVitru}}); background-size: 100% 100%; ">
+        <!--<div class="tooltip">
+            <span class="tooltiptext">{{HandsToolTip}}</span>
+            <img src="{{HandsIcon}}">
+        </div>-->
+        <a href="{{HandsToolTip}}"><img src="{{HandsIcon}}"></a>
 
     </div>
+
 </div>
+<script src="http://us.battle.net/d3/static/js/tooltips.js"></script>
 
 
 {% endblock %}
