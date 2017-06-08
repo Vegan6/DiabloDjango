@@ -140,6 +140,14 @@ class Hero(dict):
     def Hands(self):
         return Item(self.Items()['hands'])
 
+    @property
+    def Chest(self):
+        return Item(self.Items()['torso'])
+
+    @property
+    def Legs(self):
+        return Item(self.Items()['legs'])
+
     # Create Hero Properties
     @property
     def statList(self):
@@ -162,7 +170,7 @@ class Hero(dict):
         if (int(self['gender']) == 0):
             backImage = 'VitruvianMan.jpg'
         else:
-            backImage = 'VitruvianWoman640px.jpg'
+            backImage = 'VitruvianWoman.jpg'
         return str(backImage)
 
     @property
