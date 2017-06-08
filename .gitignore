@@ -224,3 +224,5 @@ ModelManifest.xml
 /DiabloDjango/DiabloDjango/wsgi.pyc
 /DiabloDjango/DiabloDjango/web.config
 /DiabloDjango/DiabloDjango/settings.pyc
+/DiabloDjango/DiabloDjango/db.sqlite3
+/DiabloDjango/DiabloDjango/web.debug.config
