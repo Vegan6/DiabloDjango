@@ -21,6 +21,11 @@
     background: -moz-linear-gradient(to bottom left, #00000f, #dd3400 180%); /* For Firefox 3.6 to 15 */
 }
 
+.menuItem > div {
+    -webkit-transition: height 1s ease;
+    transition: height 1s ease;
+}
+
 .menuItem > a{
     text-decoration:none; color:white;
 }
