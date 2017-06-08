@@ -6,6 +6,7 @@
     width: 20%;
     vertical-align: top;
     overflow: auto;
+    position:fixed;
 }
 
 .mainMenu > ul{
@@ -13,7 +14,7 @@
 }
 
 .menuItem{
-    color:white; border:1px solid white; text-align:center; padding:10px; list-style-type:none;
+    color:white; border:1px solid white; text-align:center; padding:10px; list-style-type:none; height:auto;
 
     background: linear-gradient(to bottom left, #00000f, #dd3400 180%);
     background: -webkit-linear-gradient(to bottom left, #00000f, #dd3400 180%); /* For Safari 5.1 to 6.0 */

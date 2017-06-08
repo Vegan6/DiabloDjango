@@ -22,14 +22,14 @@
 body {
     padding-top: 10px;
     padding-bottom: 20px;
-    height:100vh;
-    width:100vw;
+    height: 100%;
+    width:100%;
     min-width: 1280px;
-    position:page;
-    overflow:auto;
-    background-color:black;
-    background-repeat:no-repeat;
-    font-family: 'Exocet Blizzard'
+    position: fixed;
+    overflow: auto;
+    background-color: black;
+    background-repeat: no-repeat;
+    font-family: 'Exocet Blizzard';
 }
 
 /*#region Header */
@@ -48,14 +48,15 @@ p.header{
 
 /*#region Main Body */
 .mainBody{
-    margin:auto;
+    margin: auto;
+    margin-left: 20%;
     padding: 0 50px;
     display: inline-block;
     margin-top: 50px;
-    height: 566px;
-    width: 813px;
-    overflow: auto;	
-    background: rgba(0,0,0,0.5);
+    height: auto;
+    width: 75%;
+    overflow: hidden;
+    /* background: rgba(0,0,0,0.5); */
     box-shadow: 0 0 500px rgba(0,0,0,0.5);
 }
 /*#endregion */
@@ -64,6 +65,10 @@ p.header{
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    height: 90%;
+    overflow-y: scroll;
+    width: auto;
+    overflow-x: hidden;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
