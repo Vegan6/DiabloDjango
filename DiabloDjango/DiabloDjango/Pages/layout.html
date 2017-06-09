@@ -56,9 +56,9 @@
     <p class="header">DIABLO 3 PROFILE VIEWER</p>
 </header>
 
-<body class="container" style="background-image:url({%static 'Background.jpg' %}); background-size:100%; ">
+<body class="container">
 
-<div class="container body-content">
+{#<div class="container body-content">#}
 
      <div id="menuBar" class="mainMenu">
         <ul>
@@ -115,10 +115,12 @@
             </li>
         </ul>
     </div>
-
+<div class="mainBody">
 {% block content %}{% endblock %}
-
 </div>
+
+
+{#</div>#}
 
 {% block scripts %}{% endblock %}
 

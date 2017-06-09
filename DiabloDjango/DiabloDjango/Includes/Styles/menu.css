@@ -1,21 +1,28 @@
 /*#region Main Menu */
 .mainMenu {
-    background-color: clear;
-    height: 100%;
+    background: linear-gradient(to bottom left, #00000f, #dd3400 180%);
+    border:1px solid white;
+    height: 100% ;
     display: inline-block;
     width: 20%;
     vertical-align: top;
     overflow: auto;
-    position:fixed;
+    position: fixed;
+    top: 3em;
+    left: 0;
+    border-right: 1px solid white;
 }
 
 .mainMenu > ul{
-    padding:0; margin:0;
+    padding:0; margin:0; border:1px solid white; border-top:none;
 }
 
 .menuItem{
-    color:white; border:1px solid white; text-align:center; padding:10px; list-style-type:none; height:auto;
-
+    color:white; 
+    text-align:center; 
+    padding:10px; 
+    list-style-type:none; 
+    height:auto;
     background: linear-gradient(to bottom left, #00000f, #dd3400 180%);
     background: -webkit-linear-gradient(to bottom left, #00000f, #dd3400 180%); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(to bottom left, #00000f, #dd3400 180%); /* For Opera 11.1 to 12.0 */
@@ -66,8 +73,7 @@
         right:19px; font-size:11pt;
         width: 90%;
         padding-left: 10%;
-        height:50%;
-        overflow:auto;
+        overflow:hidden;
     }
     div#HeroList div.hero {
     	position:relative;
@@ -155,7 +161,5 @@
 /*#endregion*/
 
     div#HeroList ul {
-        max-height: 333px;
         width: 100%;
-        overflow: auto;
     }

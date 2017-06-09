@@ -16,6 +16,7 @@
 .HeroEquip {
     height: 813px;
     width: 813px;
+    text-align:center;
 }
 
 #HeroStats div span {

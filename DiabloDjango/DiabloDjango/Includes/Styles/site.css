@@ -25,14 +25,23 @@ body {
     height: 100%;
     width:100%;
     min-width: 1280px;
-    position: fixed;
-    overflow: auto;
+    overflow-y: scroll;
+    overflow-x:hidden;
     background-color: black;
-    background-repeat: no-repeat;
     font-family: 'Exocet Blizzard';
 }
 
 /*#region Header */
+header {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 3em;
+    border-bottom: 1px solid white;
+    background-color:black;
+    z-index:1000;
+}
+
 p.header{
     width: 50%;
     margin: auto;
@@ -52,12 +61,18 @@ p.header{
     margin-left: 20%;
     padding: 0 50px;
     display: inline-block;
-    margin-top: 50px;
     height: auto;
     width: 75%;
     overflow: hidden;
-    /* background: rgba(0,0,0,0.5); */
-    box-shadow: 0 0 500px rgba(0,0,0,0.5);
+    background-image: url(/Includes/Background.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    top:2em;
+    position:relative;
+}
+
+.content {
+    text-align:-webkit-center;
 }
 /*#endregion */
 

@@ -2,17 +2,6 @@
 (function () {
 	
     var collapseMenuItem = function (obj) {
-        /*
-        if (obj.target.nextElementSibling.className !== "menuItem") {
-            var item = obj.target.nextElementSibling;
-            
-            if (item.style.display == "none") {
-                item.style.display = "block";
-            } else {
-                item.style.display = "none";
-            }
-        }
-        */
         var div = obj.target, child;
 
         while (!div.className.includes("menuItem")) {
@@ -42,7 +31,7 @@
 	        if (item) {
 	            item.attributes['data-height'] = item.offsetHeight + "px";
 
-	            item.addEventListener("click", collapseMenuItem);
+	            //item.addEventListener("click", collapseMenuItem);
 
 	            item.parentElement.addEventListener("click", collapseMenuItem);
 	            console.log(item.attributes['data-height']);
