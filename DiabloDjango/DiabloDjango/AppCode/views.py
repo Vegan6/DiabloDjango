@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from datetime import datetime
 from DiabloDjango.AppCode.DiabloAPI import *
+from DiabloDjango.AppCode.DiabloObjects import *
 
 
 def GetUpdateTime(epochSeconds):
@@ -27,11 +28,45 @@ def home(request):
     )
 
 
+def career(request):
+    """Renders the Career page."""
+    assert isinstance(request, HttpRequest)
+    BattleTag = request.GET.get('battletagcareer')
+    if not BattleTag:
+        CareerDetails = Career.Career(request.session['CareerProfile'])
+    else:
+        CareerDetails = GetCareer(DiabloAPIConfig.US_SERVER, BattleTag)
+        request.session['CareerProfile'] = CareerDetails
+    HeroPortrait = ""
+    heroes = CareerDetails.Heroes()
+    for hero in heroes:
+        HeroPortrait += hero.Portrait
+    context_instance = {
+        'Title': 'Diablo 3',
+        'Year': datetime.now().year,
+        'UserName': CareerDetails.BattleTagDisplay,
+        'CharacterMenu': HeroPortrait,
+        'CareerProfile':
+            "\nBattleTag: " + CareerDetails.BattleTag
+            + "\nParagon Level: " + str(CareerDetails.ParagonLevel)
+            + "\nSeasonal Paragon Level: " + str(CareerDetails.ParagonLevelSeason)
+            + "\nElite Kills: " + str(CareerDetails.Kills()['elites'])
+            + "\nLast Update: " + str(GetUpdateTime(int(CareerDetails.LastUpdated)))
+            + "\n\nHeroes JSON Dump: " + str(CareerDetails.Heroes())
+            + "\n\n\nJSON Dump: \n" + str(CareerDetails),
+    }
+    return render(
+        request,
+        'career.html',
+        context_instance
+    )
+
+
 def hero(request):
     """Renders the hero page."""
     assert isinstance(request, HttpRequest)
     HeroID = request.GET.get('heroid', '')
-    CareerProfile = Career(request.session['CareerProfile'])
+    CareerProfile = Career.Career(request.session['CareerProfile'])
     Heroes = CareerProfile.Heroes()
     CurrentHero = list()
     # If HeroID not passed in use current hero or last played hero
@@ -113,46 +148,12 @@ def hero(request):
     )
 
 
-def career(request):
-    """Renders the Career page."""
-    assert isinstance(request, HttpRequest)
-    BattleTag = request.GET.get('battletagcareer')
-    if not BattleTag:
-        CareerDetails = Career(request.session['CareerProfile'])
-    else:
-        CareerDetails = GetCareer(US_SERVER, BattleTag)
-        request.session['CareerProfile'] = CareerDetails
-    HeroPortrait = ""
-    heroes = CareerDetails.Heroes()
-    for hero in heroes:
-        HeroPortrait += hero.Portrait
-    context_instance = {
-        'Title': 'Diablo 3',
-        'Year': datetime.now().year,
-        'UserName': CareerDetails.BattleTagDisplay,
-        'CharacterMenu': HeroPortrait,
-        'CareerProfile':
-            "\nBattleTag: " + CareerDetails.BattleTag
-            + "\nParagon Level: " + str(CareerDetails.ParagonLevel)
-            + "\nSeasonal Paragon Level: " + str(CareerDetails.ParagonLevelSeason)
-            + "\nElite Kills: " + str(CareerDetails.Kills()['elites'])
-            + "\nLast Update: " + str(GetUpdateTime(int(CareerDetails.LastUpdated)))
-            + "\n\nHeroes JSON Dump: " + str(CareerDetails.Heroes())
-            + "\n\n\nJSON Dump: \n" + str(CareerDetails),
-    }
-    return render(
-        request,
-        'career.html',
-        context_instance
-    )
-
-
 def toolbox(request):
     """Renders the Toolbox page."""
     assert isinstance(request, HttpRequest)
     BattleTag = request.GET.get('battletagcareer')
     if not BattleTag:
-        CareerDetails = Career(request.session['CareerProfile'])
+        CareerDetails = Career.Career(request.session['CareerProfile'])
     else:
         CareerDetails = GetCareer(US_SERVER, BattleTag)
         request.session['CareerProfile'] = CareerDetails
