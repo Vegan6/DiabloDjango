@@ -1,5 +1,7 @@
 import requests
 import json
+import logging
+import os.path
 from .DiabloObjects import DiabloAPIConfig
 from .DiabloObjects import Hero
 from .DiabloObjects import Career
@@ -15,7 +17,11 @@ def GetCareer(Host, BattleTag):
     response = requests.get(url)
     response
     if response.status_code == 200:
-        return Career.Career(json.loads(response.text))
+        log(response.text)
+        if not response.text[0] and response.text[0] != 'REQUEST_TIMEOUT':
+            return Career.Career(json.loads(response.text))
+        else:
+            raise Exception('Ooops Error:\n' + response.text)
     else:
         raise Exception('Error:\n' + response.text)
 
@@ -29,3 +35,14 @@ def HeroProfile(Host, BattleTag, HeroId):
         return Hero.Hero(json.loads(response.text))
     else:
         raise Exception('Error:\n' + response.text)
+
+def log(text):
+    logger = logging.getLogger()
+    logger.setLevel(logging.DEBUG)
+    # create debug file handler and set level to debug
+    handler = logging.StreamHandler()
+    handler.setLevel(logging.INFO)
+    formatter = logging.Formatter("%(levelname)s - %(message)s")
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    logging.error("!!!Problem:" + text)

@@ -32,6 +32,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DiabloDjango\AppCode\DiabloObjects\Career.py" />
+    <Compile Include="DiabloDjango\AppCode\DiabloObjects\DiabloAPIConfig.py" />
+    <Compile Include="DiabloDjango\AppCode\DiabloObjects\Hero.py" />
+    <Compile Include="DiabloDjango\AppCode\DiabloObjects\Item.py" />
+    <Compile Include="DiabloDjango\AppCode\DiabloObjects\Rune.py" />
+    <Compile Include="DiabloDjango\AppCode\DiabloObjects\Skill.py" />
+    <Compile Include="DiabloDjango\AppCode\DiabloObjects\__init__.py" />
     <Compile Include="DiabloDjango\AppCode\__init__.py" />
     <Compile Include="DiabloDjango\AppData\Diablo3.py">
       <SubType>Code</SubType>
@@ -49,6 +56,8 @@
     <Compile Include="DiabloDjango\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DiabloDjango\AppCode\DiabloObjects\" />
+    <Folder Include="DiabloDjango\AppCode\DiabloObjects\__pycache__\" />
     <Folder Include="DiabloDjango\Includes\Fonts\" />
     <Folder Include="DiabloDjango\Includes\Images\" />
     <Folder Include="DiabloDjango\" />
@@ -60,6 +69,11 @@
     <Folder Include="DiabloDjango\Pages\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DiabloDjango\AppCode\DiabloObjects\__pycache__\Career.cpython-36.pyc" />
+    <Content Include="DiabloDjango\AppCode\DiabloObjects\__pycache__\DiabloAPIConfig.cpython-36.pyc" />
+    <Content Include="DiabloDjango\AppCode\DiabloObjects\__pycache__\Hero.cpython-36.pyc" />
+    <Content Include="DiabloDjango\AppCode\DiabloObjects\__pycache__\Item.cpython-36.pyc" />
+    <Content Include="DiabloDjango\AppCode\DiabloObjects\__pycache__\__init__.cpython-36.pyc" />
     <Content Include="DiabloDjango\Includes\Fonts\Exocet Heavy.ttf" />
     <Content Include="DiabloDjango\Includes\Fonts\Exocet Light.ttf" />
     <Content Include="DiabloDjango\Includes\Fonts\ExocetHeavy Medium.ttf" />
