@@ -1,4 +1,4 @@
-from DiabloDjango.AppCode import *
+from DiabloDjango.AppCode import DiabloAPI
 from . import DiabloAPIConfig
 
 

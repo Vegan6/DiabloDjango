@@ -5,8 +5,10 @@ Definition of views.
 from django.shortcuts import render
 from django.http import HttpRequest
 from datetime import datetime
-from DiabloDjango.AppCode.DiabloAPI import *
-from DiabloDjango.AppCode.DiabloObjects import *
+from DiabloDjango.AppCode import DiabloAPI
+from DiabloDjango.AppCode.DiabloObjects import DiabloAPIConfig
+from DiabloDjango.AppCode.DiabloObjects import Career
+from DiabloDjango.AppCode.DiabloObjects import Hero
 
 
 def GetUpdateTime(epochSeconds):
@@ -35,7 +37,7 @@ def career(request):
     if not BattleTag:
         CareerDetails = Career.Career(request.session['CareerProfile'])
     else:
-        CareerDetails = GetCareer(DiabloAPIConfig.US_SERVER, BattleTag)
+        CareerDetails = DiabloAPI.GetCareer(DiabloAPIConfig.US_SERVER, BattleTag)
         request.session['CareerProfile'] = CareerDetails
     HeroPortrait = ""
     heroes = CareerDetails.Heroes()
@@ -71,7 +73,7 @@ def hero(request):
     CurrentHero = list()
     # If HeroID not passed in use current hero or last played hero
     if not HeroID:
-        CurrentHero = Hero(request.session['CurrentHero'])
+        CurrentHero = Hero.Hero(request.session['CurrentHero'])
         if not CurrentHero:
             HeroID = int(CareerProfile.LastHeroPlayed)
             for hero in Heroes:
@@ -155,7 +157,7 @@ def toolbox(request):
     if not BattleTag:
         CareerDetails = Career.Career(request.session['CareerProfile'])
     else:
-        CareerDetails = GetCareer(US_SERVER, BattleTag)
+        CareerDetails = DiabloAPI.GetCareer(DiabloAPIConfig.US_SERVER, BattleTag)
         request.session['CareerProfile'] = CareerDetails
     HeroPortrait = ""
     heroes = CareerDetails.Heroes()

@@ -7,6 +7,7 @@ PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 MEDIA_ROOT = PROJECT_ROOT + '/DiabloDjango/Includes/Images/'
 
 DEBUG = True
+#ALLOWED_HOSTS = ['*']
 
 #ALLOWED_HOSTS = (
 #    'localhost',
