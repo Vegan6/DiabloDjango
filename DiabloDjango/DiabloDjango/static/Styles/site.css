@@ -1,0 +1,198 @@
+/*#region Blizzard Fonts*/
+@font-face {
+    font-family: "Exocet Blizzard";
+    src: url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-medium.eot");
+    src: url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-medium.eot?#iefix") format("embedded-opentype"),
+    url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-medium.woff") format("woff"),
+    url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-medium.ttf")  format("truetype"),
+    url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-medium.svg#svgExocetReaper") format("svg");
+}
+
+@font-face {
+    font-family: "Exocet Blizzard Light";
+    src: url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-light.eot");
+    src: url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-light.eot?#iefix") format("embedded-opentype"),
+    url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-light.woff") format("woff"),
+    url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-light.ttf")  format("truetype"),
+    url("http://us.battle.net/d3/static/fonts/exocet/exocet-blizzard-light.svg#svgExocetReaper") format("svg");
+}
+
+/*#endregion*/
+
+body {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    height: 100%;
+    width:100%;
+    min-width: 1280px;
+    overflow-y: scroll;
+    overflow-x:hidden;
+    background-color: black;
+    font-family: 'Exocet Blizzard';
+}
+
+/*#region Header */
+header {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 3em;
+    border-bottom: 1px solid white;
+    background-color:black;
+    z-index:1000;
+}
+
+p.header{
+    width: 50%;
+    margin: auto;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    color: navy;
+    background: rgba(0,0,0,0.5);
+    box-shadow: 0 0 500px rgba(0,0,0,0.5);
+}
+
+/*#endregion */
+
+/*#region Main Body */
+.mainBody{
+    margin: auto;
+    margin-left: 20%;
+    padding: 0 50px;
+    display: inline-block;
+    height: auto;
+    width: 75%;
+    overflow: hidden;
+    background-image: url(/static/Background.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    top:2em;
+    position:relative;
+}
+
+.content {
+    text-align:-webkit-center;
+}
+/*#endregion */
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 90%;
+    overflow-y: scroll;
+    width: auto;
+    overflow-x: hidden;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 780px;
+}
+
+/* styles for validation helpers */
+#json-dispaly{
+	width:100%;
+}
+
+/* Below is used to stop chromes autofill color change*/
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px black inset;
+    -webkit-text-fill-color: white !important;
+}
+
+a.fill-div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+}
+
+/*#region Scroll bar*/
+::-webkit-scrollbar {
+    width: 11px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.8);
+    -webkit-box-shadow: inset 0 0 6px rgba(105,105,105,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(105,105,105,0.6);
+}
+/*#endregion*/
+
+/*#region Footer */
+footer{
+    margin-bottom:0; width:100%; color:white;
+}
+/*#endregion
+
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+/**/
+.tooltip .tooltiptext {
+    top: -5px;
+    right: 105%;
+}
+
+div.error {
+    color:white;
+    padding:3em;
+}

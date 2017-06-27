@@ -1,6 +1,8 @@
+import logging
+import os.path
 from DiabloDjango.AppCode import *
+import DiabloDjango.AppCode.DiabloAPI
 from . import DiabloAPIConfig
-
 
 class Career(dict):
     # Create Career Object
@@ -10,11 +12,16 @@ class Career(dict):
     def Heroes(self):
         #set this to return Hero Object
         #heroes = dict()
+        global DiabloAPI
         heroProfiles = list()
         if len(self['heroes']) > 0:
             for hero in self['heroes']:
-                #heroes[hero['id']] = hero['name']
-                heroProfiles.append(DiabloAPI.HeroProfile(DiabloAPIConfig.CURRENTSERVER, self.BattleTagURI, int(hero['id'])))
+                try:
+                    heroProfiles.append(DiabloAPI.HeroProfile(DiabloAPIConfig.CURRENTSERVER, self.BattleTagURI, int(hero['id'])))               
+                except Exception as excp:
+                    self.log(excp)
+                except:
+                    self.log("Unexpected error:", sys.exc_info()[0])
         #return heroes
         return heroProfiles
 
@@ -23,6 +30,10 @@ class Career(dict):
 
     def Progression(self):
         return self['progression']
+
+    def log(text):
+        logging.basicConfig(filename="py_log.txt",level=logging.ERROR)
+        logging.info("!!!Problem:" + text)
 
     @property
     def BattleTag(self):

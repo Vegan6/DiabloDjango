@@ -4,10 +4,13 @@ Definition of views.
 
 from django.shortcuts import render
 from django.http import HttpRequest
+#from django.template import RequestContext
 from datetime import datetime
 from DiabloDjango.AppCode.DiabloAPI import *
 from DiabloDjango.AppCode.DiabloObjects import *
 
+import traceback
+import sys
 
 def GetUpdateTime(epochSeconds):
     # Convert SecondsFromEpoch to local datetime
@@ -58,6 +61,28 @@ def career(request):
     return render(
         request,
         'career.html',
+        context_instance
+    )
+
+def handler400(request):
+    response = render_to_response('error.html', {}, context_instance=RequestContext(request))
+    response.status_code = 400
+    return response
+
+def handler404(request):
+    response = render_to_response('404.html', {}, context_instance=RequestContext(request))
+    response.status_code = 404
+    return response
+
+def handler500(request):
+    #response = render_to_response('500.html', {}, context_instance=RequestContext(request))
+    response.status_code = 500
+    context_instance = {
+        "error": "Test Return"
+    }
+    return render(
+        request,
+        '500.html',
         context_instance
     )
 

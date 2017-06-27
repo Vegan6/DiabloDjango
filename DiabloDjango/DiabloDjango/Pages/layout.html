@@ -41,10 +41,10 @@
     <title>{{ Title }}</title>
     {% load staticfiles %}
 
-    <link rel="stylesheet" type="text/css" href="{% static 'site.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'hero.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'menu.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'toolmenu.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'Styles/site.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'Styles/hero.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'Styles/menu.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'Styles/toolmenu.css' %}" />
 
     <link rel="shortcut icon" type="image/png" href="{%static 'favicon.ico'%}"/>
 
@@ -117,8 +117,10 @@
     </div>
 <div class="mainBody">
     <div class="content">
-{% block content %}{% endblock %}
-        </div>
+        
+        {% block content %}{% endblock %}
+    
+    </div>
 </div>
 
 

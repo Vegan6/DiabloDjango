@@ -9,6 +9,11 @@
     <InterpreterVersion>
     </InterpreterVersion>
     <IsWindowsApplication>False</IsWindowsApplication>
+    <WebBrowserUrl>http://diablodjango.dev</WebBrowserUrl>
+    <WebBrowserPort>
+    </WebBrowserPort>
+    <PythonRunWebServerCommandArguments />
+    <PythonRunWebServerCommandType />
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -20,8 +25,14 @@
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
-    <LaunchProvider>Django launcher</LaunchProvider>
+    <LaunchProvider>Web launcher</LaunchProvider>
     <OutputPath>.</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <TransformWebConfigEnabled>False</TransformWebConfigEnabled>
+    <AutoParameterizationWebConfigConnectionStrings>
+      False
+    </AutoParameterizationWebConfigConnectionStrings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,6 +60,11 @@
     <Compile Include="DiabloDjango\AppCode\DiabloAPI.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DiabloDjango\management\commands\fcgi.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DiabloDjango\management\commands\__init__.py" />
+    <Compile Include="DiabloDjango\management\__init__.py" />
     <Compile Include="manage.py" />
     <Compile Include="DiabloDjango\__init__.py" />
     <Compile Include="DiabloDjango\settings.py" />
@@ -58,14 +74,16 @@
   <ItemGroup>
     <Folder Include="DiabloDjango\AppCode\DiabloObjects\" />
     <Folder Include="DiabloDjango\AppCode\DiabloObjects\__pycache__\" />
-    <Folder Include="DiabloDjango\Includes\Fonts\" />
-    <Folder Include="DiabloDjango\Includes\Images\" />
+    <Folder Include="DiabloDjango\static\Fonts\" />
+    <Folder Include="DiabloDjango\static\Images\" />
     <Folder Include="DiabloDjango\" />
     <Folder Include="DiabloDjango\AppCode\" />
     <Folder Include="DiabloDjango\AppData\" />
-    <Folder Include="DiabloDjango\Includes\" />
-    <Folder Include="DiabloDjango\Includes\Scripts\" />
-    <Folder Include="DiabloDjango\Includes\Styles\" />
+    <Folder Include="DiabloDjango\static\Scripts\" />
+    <Folder Include="DiabloDjango\static\Styles\" />
+    <Folder Include="DiabloDjango\management\" />
+    <Folder Include="DiabloDjango\management\commands\" />
+    <Folder Include="DiabloDjango\static\" />
     <Folder Include="DiabloDjango\Pages\" />
   </ItemGroup>
   <ItemGroup>
@@ -74,23 +92,26 @@
     <Content Include="DiabloDjango\AppCode\DiabloObjects\__pycache__\Hero.cpython-36.pyc" />
     <Content Include="DiabloDjango\AppCode\DiabloObjects\__pycache__\Item.cpython-36.pyc" />
     <Content Include="DiabloDjango\AppCode\DiabloObjects\__pycache__\__init__.cpython-36.pyc" />
-    <Content Include="DiabloDjango\Includes\Fonts\Exocet Heavy.ttf" />
-    <Content Include="DiabloDjango\Includes\Fonts\Exocet Light.ttf" />
-    <Content Include="DiabloDjango\Includes\Fonts\ExocetHeavy Medium.ttf" />
-    <Content Include="DiabloDjango\Includes\Images\Background.jpg" />
-    <Content Include="DiabloDjango\Includes\Scripts\Diablo3.js" />
-    <Content Include="DiabloDjango\Includes\Styles\hero.css" />
-    <Content Include="DiabloDjango\Includes\Styles\menu.css" />
-    <Content Include="DiabloDjango\Includes\Styles\toolmenu.css" />
+    <Content Include="DiabloDjango\static\Fonts\Exocet Heavy.ttf" />
+    <Content Include="DiabloDjango\static\Fonts\Exocet Light.ttf" />
+    <Content Include="DiabloDjango\static\Fonts\ExocetHeavy Medium.ttf" />
+    <Content Include="DiabloDjango\static\Images\Background.jpg" />
+    <Content Include="DiabloDjango\static\Scripts\Diablo3.js" />
+    <Content Include="DiabloDjango\static\Styles\hero.css" />
+    <Content Include="DiabloDjango\static\Styles\menu.css" />
+    <Content Include="DiabloDjango\static\Styles\toolmenu.css" />
+    <Content Include="DiabloDjango\Pages\404.html" />
+    <Content Include="DiabloDjango\Pages\500.html" />
     <Content Include="DiabloDjango\Pages\career.html" />
     <Content Include="DiabloDjango\Pages\hero.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
-    <Content Include="DiabloDjango\Includes\Styles\site.css" />
+    <Content Include="DiabloDjango\static\Styles\site.css" />
     <Content Include="DiabloDjango\Pages\about.html" />
     <Content Include="DiabloDjango\Pages\contact.html" />
     <Content Include="DiabloDjango\Pages\index.html" />
     <Content Include="DiabloDjango\Pages\layout.html" />
+    <Content Include="web.live.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

@@ -6,11 +6,13 @@ from os import path
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
 MEDIA_ROOT = PROJECT_ROOT + '/DiabloDjango/Includes/Images/'
 
-DEBUG = True
+DEBUG = False
 
-#ALLOWED_HOSTS = (
-#    'localhost',
-#)
+ALLOWED_HOSTS = (
+    'localhost',
+    'diablodjango.dev',
+    'diablodjango.localhost'
+)
 
 #Used for session variables
 DATABASES = {
@@ -59,18 +61,18 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = PROJECT_ROOT + '/DiabloDjango/Includes/'
+STATIC_ROOT = PROJECT_ROOT + '/DiabloDjango/static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/Includes/'
+STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    PROJECT_ROOT + '/DiabloDjango/Includes/Images/',
-    PROJECT_ROOT + '/DiabloDjango/Includes/Styles/',
-    PROJECT_ROOT + '/DiabloDjango/Includes/Scripts/',
-    PROJECT_ROOT + '/DiabloDjango/Includes/Fonts/',
+    PROJECT_ROOT + '/DiabloDjango/static/Images/',
+    PROJECT_ROOT + '/DiabloDjango/static/Styles/',
+    PROJECT_ROOT + '/DiabloDjango/static/Scripts/',
+    PROJECT_ROOT + '/DiabloDjango/static/Fonts/',
 )
 
 # List of finder classes that know how to find static files in

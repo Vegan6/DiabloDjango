@@ -1,0 +1,12 @@
+﻿{% extends "layout.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+<div class="error">Oops 500, something broke :)</div>
+
+<div class="error">{% autoescape off %}{{error}}{% endautoescape %}</div>
+    
+
+{% endblock %}
