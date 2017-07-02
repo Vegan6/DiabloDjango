@@ -18,10 +18,10 @@
 }
 
 .menuItem{
-    color:white; 
-    text-align:center; 
-    padding:10px; 
-    list-style-type:none; 
+    color:white;
+    text-align:center;
+    padding:10px;
+    list-style-type:none;
     height:auto;
     background: linear-gradient(to bottom left, #00000f, #dd3400 180%);
     background: -webkit-linear-gradient(to bottom left, #00000f, #dd3400 180%); /* For Safari 5.1 to 6.0 */
@@ -110,6 +110,9 @@
     div#HeroList div.hero div.crusader-Female {
     	background-position: -83px -330px;
     }
+    div#HeroList div.hero div.necromancer-Female {
+    	background-position: -83px -396px;
+    }
     div#HeroList div.hero div.barbarian-Male {
     	background-position: 0 0;
     }
@@ -127,6 +130,9 @@
     }
     div#HeroList div.hero div.crusader-Male {
     	background-position: 0 -330px;
+    }
+    div#HeroList div.hero div.necromancer-Male {
+    	background-position: 0 -396px;
     }
     div#HeroList div.hero div.name {
             color:#FFFFFF; font-weight:bold; background-color:rgba(0, 0, 0, 0.5); padding-top:9px; margin:2px;

@@ -2,7 +2,7 @@
 .mainMenu {
     background: linear-gradient(to bottom left, #00000f, #dd3400 180%);
     border:1px solid white;
-    height: calc(100% - 3em);
+    height: 100% ;
     display: inline-block;
     width: 20%;
     vertical-align: top;
@@ -110,6 +110,9 @@
     div#HeroList div.hero div.crusader-Female {
     	background-position: -83px -330px;
     }
+    div#HeroList div.hero div.necromancer-Female {
+    	background-position: -83px -396px;
+    }
     div#HeroList div.hero div.barbarian-Male {
     	background-position: 0 0;
     }
@@ -127,6 +130,9 @@
     }
     div#HeroList div.hero div.crusader-Male {
     	background-position: 0 -330px;
+    }
+    div#HeroList div.hero div.necromancer-Male {
+    	background-position: 0 -396px;
     }
     div#HeroList div.hero div.name {
             color:#FFFFFF; font-weight:bold; background-color:rgba(0, 0, 0, 0.5); padding-top:9px; margin:2px;
