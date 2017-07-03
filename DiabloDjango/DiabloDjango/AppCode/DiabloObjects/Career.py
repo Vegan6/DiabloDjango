@@ -1,7 +1,7 @@
 import logging
 import re
 from DiabloDjango.AppCode import *
-from DiabloDjango.AppCode import DiabloAPI
+import DiabloDjango.AppCode.DiabloAPI
 from . import DiabloAPIConfig
 
 
@@ -13,7 +13,9 @@ class Career(dict):
     def Heroes(self):
         #set this to return Hero Object
         #heroes = dict()
-        global DiabloAPI
+        
+        DiabloAPI = DiabloDjango.AppCode.DiabloAPI
+
         heroProfiles = list()
         if len(self['heroes']) > 0:
             for hero in self['heroes']:

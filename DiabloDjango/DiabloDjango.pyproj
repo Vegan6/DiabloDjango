@@ -11,6 +11,8 @@
     <WebBrowserPort>8000</WebBrowserPort>
     <PythonRunWebServerCommandArguments />
     <PythonRunWebServerCommandType />
+    <InterpreterArguments>
+    </InterpreterArguments>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -47,6 +49,16 @@
     <Compile Include="DiabloDjango\AppCode\DiabloObjects\Rune.py" />
     <Compile Include="DiabloDjango\AppCode\DiabloObjects\Skill.py" />
     <Compile Include="DiabloDjango\AppCode\DiabloObjects\__init__.py" />
+    <Compile Include="DiabloDjango\AppCode\helper.py" />
+    <Compile Include="DiabloDjango\AppCode\Views\View_About.py" />
+    <Compile Include="DiabloDjango\AppCode\Views\View_Career.py" />
+    <Compile Include="DiabloDjango\AppCode\Views\View_Contact.py" />
+    <Compile Include="DiabloDjango\AppCode\Views\View_Hero.py" />
+    <Compile Include="DiabloDjango\AppCode\Views\View_Home.py" />
+    <Compile Include="DiabloDjango\AppCode\Views\View_Toolbox.py" />
+    <Compile Include="DiabloDjango\AppCode\Views\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DiabloDjango\AppCode\__init__.py" />
     <Compile Include="DiabloDjango\AppData\Diablo3.py">
       <SubType>Code</SubType>
@@ -71,6 +83,8 @@
   <ItemGroup>
     <Folder Include="DiabloDjango\AppCode\DiabloObjects\" />
     <Folder Include="DiabloDjango\AppCode\DiabloObjects\__pycache__\" />
+    <Folder Include="DiabloDjango\AppCode\Views\" />
+    <Folder Include="DiabloDjango\AppCode\Views\__pycache__\" />
     <Folder Include="DiabloDjango\static\Fonts\" />
     <Folder Include="DiabloDjango\static\Images\" />
     <Folder Include="DiabloDjango\" />
@@ -89,6 +103,12 @@
     <Content Include="DiabloDjango\AppCode\DiabloObjects\__pycache__\Hero.cpython-36.pyc" />
     <Content Include="DiabloDjango\AppCode\DiabloObjects\__pycache__\Item.cpython-36.pyc" />
     <Content Include="DiabloDjango\AppCode\DiabloObjects\__pycache__\__init__.cpython-36.pyc" />
+    <Content Include="DiabloDjango\AppCode\Views\__pycache__\View_About.cpython-36.pyc" />
+    <Content Include="DiabloDjango\AppCode\Views\__pycache__\View_Career.cpython-36.pyc" />
+    <Content Include="DiabloDjango\AppCode\Views\__pycache__\View_Contact.cpython-36.pyc" />
+    <Content Include="DiabloDjango\AppCode\Views\__pycache__\View_Hero.cpython-36.pyc" />
+    <Content Include="DiabloDjango\AppCode\Views\__pycache__\View_Home.cpython-36.pyc" />
+    <Content Include="DiabloDjango\AppCode\Views\__pycache__\View_Toolbox.cpython-36.pyc" />
     <Content Include="DiabloDjango\static\Fonts\Exocet Heavy.ttf" />
     <Content Include="DiabloDjango\static\Fonts\Exocet Light.ttf" />
     <Content Include="DiabloDjango\static\Fonts\ExocetHeavy Medium.ttf" />

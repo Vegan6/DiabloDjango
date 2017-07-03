@@ -231,3 +231,9 @@ ModelManifest.xml
 /DiabloDjango/web.config
 /DiabloDjango/web.debug.config
 /DiabloDjango/DiabloDjango/management
+/DiabloDjango/DiabloDjango/AppCode/Views/View_Toolbox.pyc
+/DiabloDjango/DiabloDjango/AppCode/Views/View_Home.pyc
+/DiabloDjango/DiabloDjango/AppCode/Views/View_Hero.pyc
+/DiabloDjango/DiabloDjango/AppCode/Views/View_Contact.pyc
+/DiabloDjango/DiabloDjango/AppCode/Views/View_Career.pyc
+/DiabloDjango/DiabloDjango/AppCode/Views/View_About.pyc
