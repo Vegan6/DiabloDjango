@@ -1,4 +1,5 @@
 import logging
+import re
 from DiabloDjango.AppCode import *
 from DiabloDjango.AppCode import DiabloAPI
 from . import DiabloAPIConfig
@@ -48,6 +49,10 @@ class Career(dict):
         return '<li class="menuItem">' + str(self['battleTag']).replace("#", "-") + '</li>'
 
     @property
+    def GuildName(self):
+        return ' <' + self['guildName'] + '>'
+
+    @property
     def ParagonLevel(self):
         return self['paragonLevel']
 
@@ -62,3 +67,7 @@ class Career(dict):
     @property
     def LastUpdated(self):
         return int(self['lastUpdated'])
+
+    @property
+    def UserName(self):
+        return re.sub('\#\d{4}', '', str(self['battleTag']))

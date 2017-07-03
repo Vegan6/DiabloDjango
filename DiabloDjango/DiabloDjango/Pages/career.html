@@ -1,14 +1,32 @@
 {% extends "layout.html" %}
+{% load staticfiles %}
 
 {% block content %}
 
 
     <div class="lead">
-        <div class="large-txt">
+        <div class="username">
+            <span class="battletag">{{BattleTag}}</span>
+            <span class="guildname">{{GuildName}}</span>
+
+        </div>
+        <table class="careertable">
+            <tr>
+                <th>Hero Name</th>
+                <th>Level</th>
+                <th>Class</th>
+                <th>Gender</th>
+                <th>Elite Kills</th>
+                <th>Last Updated</th>
+            </tr>
+            {% autoescape off %}{{CareerTable}}{% endautoescape %}
+        </table>
+
+        <!--<div class="large-txt">
             <textarea id="json_display" class="large-text" disabled="disabled" style="height:300px;width:600px;background-color: #000000">
                 {{CareerProfile}}
             </textarea>
-        </div>
+        </div>-->
     </div>
 
 

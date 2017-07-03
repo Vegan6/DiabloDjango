@@ -1,0 +1,39 @@
+div.username{
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    box-shadow: 0 0 500px rgba(0,0,0,0.5);
+    height: 28px;
+}
+
+span.battletag {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: right;
+    color: #dd3400;
+    display: block;
+    width: 40%;
+    margin: auto;
+    float: left;
+}
+
+span.guildname {
+    font-size: 16px;
+    font-weight: normal;
+    color: #dd3400;
+    width: 40%;
+    margin: auto;
+    line-height: 31px;
+}
+
+table.careertable {
+    width: 100%;
+    background: rgba(0, 0, 0, .5);
+    color: white;
+    text-align: left;
+    cursor: default;
+}
+
+table.careertable tr:hover {
+    background: rgba(0, 0, 0, 1);
+    color: crimson;
+}
