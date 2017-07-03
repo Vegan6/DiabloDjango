@@ -10,6 +10,8 @@ import DiabloDjango.AppCode.views
 # Uncomment the next lines to enable the admin:
 #from django.conf.urls import include
 
+handler500 = 'DiabloDjango.AppCode.views.handler500'
+
 urlpatterns = [
     url(r'^$', DiabloDjango.AppCode.views.home),
     url(r'^hero', DiabloDjango.AppCode.views.hero),

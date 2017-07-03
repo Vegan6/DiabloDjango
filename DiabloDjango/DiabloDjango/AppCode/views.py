@@ -4,6 +4,7 @@ Definition of views.
 
 from django.shortcuts import render
 from django.http import HttpRequest
+from django.http import HttpResponse
 #from django.template import RequestContext
 from datetime import datetime
 from DiabloDjango.AppCode import DiabloAPI
@@ -78,9 +79,9 @@ def handler404(request):
 
 def handler500(request):
     #response = render_to_response('500.html', {}, context_instance=RequestContext(request))
-    response.status_code = 500
+    #response.status_code = 500
     context_instance = {
-        "error": "Test Return"
+        "error": "Server Error"
     }
     return render(
         request,
