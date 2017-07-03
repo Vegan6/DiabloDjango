@@ -6,6 +6,12 @@ Definition of urls for DiabloDjango.
 #from django.conf.urls import patterns, url
 from django.conf.urls import url
 import DiabloDjango.AppCode.views
+import DiabloDjango.AppCode.Views.View_Career
+import DiabloDjango.AppCode.Views.View_Home
+import DiabloDjango.AppCode.Views.View_Hero
+import DiabloDjango.AppCode.Views.View_Toolbox
+import DiabloDjango.AppCode.Views.View_Contact
+import DiabloDjango.AppCode.Views.View_About
 
 # Uncomment the next lines to enable the admin:
 #from django.conf.urls import include
@@ -13,12 +19,12 @@ import DiabloDjango.AppCode.views
 handler500 = 'DiabloDjango.AppCode.views.handler500'
 
 urlpatterns = [
-    url(r'^$', DiabloDjango.AppCode.views.home),
-    url(r'^hero', DiabloDjango.AppCode.views.hero),
-    url(r'^career', DiabloDjango.AppCode.views.career),
-    url(r'^toolbox', DiabloDjango.AppCode.views.toolbox),
-    url(r'^contact', DiabloDjango.AppCode.views.contact),
-    url(r'^about', DiabloDjango.AppCode.views.about),
+    url(r'^$', DiabloDjango.AppCode.Views.View_Home.home),
+    url(r'^hero', DiabloDjango.AppCode.Views.View_Hero.hero),
+    url(r'^career', DiabloDjango.AppCode.Views.View_Career.career),
+    url(r'^toolbox', DiabloDjango.AppCode.Views.View_Toolbox.toolbox),
+    url(r'^contact', DiabloDjango.AppCode.Views.View_Contact.contact),
+    url(r'^about', DiabloDjango.AppCode.Views.View_About.about),
 
    #url(r'^login/$',
    #     'django.contrib.auth.views.login',

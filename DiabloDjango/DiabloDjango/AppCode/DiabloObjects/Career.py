@@ -1,8 +1,9 @@
-#from DiabloDjango.AppCode import *
-import DiabloDjango.AppCode.DiabloAPI
-from . import DiabloAPIConfig
 import logging
-import os.path
+import re
+from DiabloDjango.AppCode import *
+from DiabloDjango.AppCode import DiabloAPI
+from . import DiabloAPIConfig
+
 
 class Career(dict):
     # Create Career Object
@@ -12,12 +13,12 @@ class Career(dict):
     def Heroes(self):
         #set this to return Hero Object
         #heroes = dict()
-        DiabloAPI = DiabloDjango.AppCode.DiabloAPI
+        global DiabloAPI
         heroProfiles = list()
         if len(self['heroes']) > 0:
             for hero in self['heroes']:
                 try:
-                    heroProfiles.append(DiabloAPI.HeroProfile(DiabloAPIConfig.CURRENTSERVER, self.BattleTagURI, int(hero['id'])))               
+                    heroProfiles.append(DiabloAPI.HeroProfile(DiabloAPIConfig.CURRENTSERVER, self.BattleTagURI, int(hero['id'])))
                 except Exception as excp:
                     self.log(excp)
                 except:
@@ -32,7 +33,7 @@ class Career(dict):
         return self['progression']
 
     def log(text):
-        logging.basicConfig(filename="py_log.txt",level=logging.ERROR)
+        logging.basicConfig(filename="py_log.txt", level=logging.ERROR)
         logging.info("!!!Problem:" + text)
 
     @property
@@ -46,6 +47,10 @@ class Career(dict):
     @property
     def BattleTagDisplay(self):
         return '<li class="menuItem">' + str(self['battleTag']).replace("#", "-") + '</li>'
+
+    @property
+    def GuildName(self):
+        return ' <' + self['guildName'] + '>'
 
     @property
     def ParagonLevel(self):
@@ -62,3 +67,7 @@ class Career(dict):
     @property
     def LastUpdated(self):
         return int(self['lastUpdated'])
+
+    @property
+    def UserName(self):
+        return re.sub('\#\d{4}', '', str(self['battleTag']))

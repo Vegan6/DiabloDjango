@@ -61,14 +61,14 @@ p.header{
     margin-left: 20%;
     padding: 0 50px;
     display: inline-block;
-    height: auto;
+    height: 100%;
     width: 75%;
     overflow: hidden;
     background-image: url(/static/Background.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
-    top:2em;
-    position:relative;
+    top: 2em;
+    position: relative;
 }
 
 .content {

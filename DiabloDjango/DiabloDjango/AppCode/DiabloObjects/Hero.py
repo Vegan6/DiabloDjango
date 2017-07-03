@@ -1,6 +1,7 @@
 from decimal import Decimal
 from . import DiabloAPIConfig
 from . import Item
+from DiabloDjango.AppCode import helper
 
 
 class Hero(dict):
@@ -98,6 +99,15 @@ class Hero(dict):
         return str(backImage)
 
     @property
+    def CareerTableRow(self):
+        return str(
+            '<tr><td>' + str(self.Name) + '</td><td>' + str(self.DisplayLevel) +
+            '</td><td>' + str(self.Class) + '</td><td>' + str(self.Gender) +
+            '</td><td>' + str("{:,}".format(self.EliteKills)) + '</td><td>' +
+            helper.GetUpdateTime(self.LastUpdated).strftime("%Y-%m-%d") +
+            '</td></tr>')
+
+    @property
     def ColdResist(self):
         return int(self.Stats()['coldResist'])
 
@@ -131,7 +141,12 @@ class Hero(dict):
         if (self.Level < 70):
             return self.Level
         else:
-            return self.ParagonLevel
+            return "{:,}".format(self.ParagonLevel)
+
+    @property
+    def EliteKills(self):
+        kills = self['kills']
+        return kills['elites']
 
     @property
     def FireResist(self):
