@@ -13,6 +13,7 @@ span.battletag {
     display: block;
     width: 40%;
     margin: auto;
+    text-align: right;
     float: left;
 }
 
@@ -23,6 +24,8 @@ span.guildname {
     width: 40%;
     margin: auto;
     line-height: 31px;
+    text-align: left;
+    float: left;
 }
 
 table.careertable {

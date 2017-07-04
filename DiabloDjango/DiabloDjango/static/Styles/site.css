@@ -20,11 +20,10 @@
 /*#endregion*/
 
 body {
-    padding-top: 10px;
-    padding-bottom: 20px;
     height: 100%;
     width:100%;
     min-width: 1280px;
+    min-height: 1080px;
     overflow-y: scroll;
     overflow-x:hidden;
     background-color: black;
@@ -59,20 +58,22 @@ p.header{
 .mainBody{
     margin: auto;
     margin-left: 20%;
+    margin-top: 3em;
     padding: 0 50px;
     display: inline-block;
     height: 100%;
+    min-height: 1080px;
     width: 75%;
     overflow: hidden;
     background-image: url(/static/Background.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
-    top: 2em;
-    position: relative;
+    background-attachment: fixed;
 }
 
 .content {
     text-align:-webkit-center;
+    text-align: -moz-center;
 }
 /*#endregion */
 
@@ -135,7 +136,10 @@ a.fill-div {
 
 /*#region Footer */
 footer{
-    margin-bottom:0; width:100%; color:white;
+    margin-bottom: 0;
+    width: 80%;
+    color: white;
+    margin-left: 20%;
 }
 /*#endregion
 

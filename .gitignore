@@ -237,3 +237,7 @@ ModelManifest.xml
 /DiabloDjango/DiabloDjango/AppCode/Views/View_Contact.pyc
 /DiabloDjango/DiabloDjango/AppCode/Views/View_Career.pyc
 /DiabloDjango/DiabloDjango/AppCode/Views/View_About.pyc
+
+*.pyc
+
+DiabloDjango/db\.sqlite3
