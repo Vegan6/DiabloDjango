@@ -1,7 +1,7 @@
 div.username{
     width: 100%;
-    background: rgba(0,0,0,0.5);
-    box-shadow: 0 0 500px rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.7);
+    box-shadow: 0 0 500px rgba(0,0,0,0.7);
     height: 28px;
 }
 
@@ -28,15 +28,64 @@ span.guildname {
     float: left;
 }
 
-table.careertable {
+div.careerdivrow {
     width: 100%;
-    background: rgba(0, 0, 0, .5);
+    background: rgba(0, 0, 0, .7);
+    display: inline-block;
+    font-size: 9pt;
+}
+
+table.careertable {
+    width: 80%;
     color: white;
     text-align: left;
     cursor: default;
+    float: left;
 }
 
 table.careertable tr:hover {
     background: rgba(0, 0, 0, 1);
     color: crimson;
+}
+
+table.careerseasontable {
+    width: 100%;
+    color: white;
+    text-align: left;
+    cursor: default;
+    float: left;
+}
+
+table.careerseasontable tr:hover {
+    background: rgba(0, 0, 0, 1);
+    color: crimson;
+}
+
+li.actprog {
+    width: calc(20% - 6px);
+    color: white;
+    text-align: left;
+    display: inline-block;
+    cursor: default;
+    padding-top: 3px;
+    padding-left: 3px;
+}
+
+ul.actprogheader {
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+ul.actprog {
+    padding: 0;
+}
+li.actprog ul:hover {
+    background: rgba(0, 0, 0, 1);
+    color: crimson;
+}
+span.actprogcomplete {
+    color: green;
+}
+span.actprogincomplete {
+    color:red;
 }

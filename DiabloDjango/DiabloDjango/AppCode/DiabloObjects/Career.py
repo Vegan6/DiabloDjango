@@ -1,7 +1,7 @@
 import logging
 import re
 from DiabloDjango.AppCode import *
-import DiabloDjango.AppCode.DiabloAPI
+from DiabloDjango.AppCode import DiabloAPI
 from . import DiabloAPIConfig
 
 
@@ -13,9 +13,7 @@ class Career(dict):
     def Heroes(self):
         #set this to return Hero Object
         #heroes = dict()
-        
-        DiabloAPI = DiabloDjango.AppCode.DiabloAPI
-
+        global DiabloAPI
         heroProfiles = list()
         if len(self['heroes']) > 0:
             for hero in self['heroes']:
@@ -37,6 +35,51 @@ class Career(dict):
     def log(text):
         logging.basicConfig(filename="py_log.txt", level=logging.ERROR)
         logging.info("!!!Problem:" + text)
+
+    @property
+    def Act1Completed(self):
+        progression = self['progression']
+        act1 = progression['act1']
+        if (act1):
+            return '<span class="actprogcomplete">Completed</span>'
+        else:
+            return '<span class="actprogincomplete">Incomplet</span>'
+
+    @property
+    def Act2Completed(self):
+        progression = self['progression']
+        act2 = progression['act2']
+        if (act2):
+            return '<span class="actprogcomplete">Completed</span>'
+        else:
+            return '<span class="actprogincomplete">Incomplet</span>'
+
+    @property
+    def Act3Completed(self):
+        progression = self['progression']
+        act3 = progression['act3']
+        if (act3):
+            return '<span class="actprogcomplete">Completed</span>'
+        else:
+            return '<span class="actprogincomplete">Incomplet</span>'
+
+    @property
+    def Act4Completed(self):
+        progression = self['progression']
+        act4 = progression['act4']
+        if (act4):
+            return '<span class="actprogcomplete">Completed</span>'
+        else:
+            return '<span class="actprogincomplete">Incomplet</span>'
+
+    @property
+    def Act5Completed(self):
+        progression = self['progression']
+        act5 = progression['act5']
+        if (act5):
+            return '<span class="actprogcomplete">Completed</span>'
+        else:
+            return '<span class="actprogincomplete">Incomplet</span>'
 
     @property
     def BattleTag(self):
