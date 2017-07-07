@@ -1,8 +1,12 @@
 div.username{
     width: 100%;
-    background: rgba(0,0,0,0.7);
-    box-shadow: 0 0 500px rgba(0,0,0,0.7);
+    box-shadow: 0 0 500px rgba(0,0,0,0.9);
+    background-color: rgba(0,0,0,0.9);
     height: 28px;
+    padding: 10px;
+    box-shadow: inset 0 0 10px crimson;
+    -moz-box-shadow:    inset 0 0 10px crimson;
+    -webkit-box-shadow: inset 0 0 10px crimson;
 }
 
 span.battletag {
@@ -29,18 +33,24 @@ span.guildname {
 }
 
 div.careerdivrow {
+    margin-top: 5px;
     width: 100%;
-    background: rgba(0, 0, 0, .7);
+    background: rgba(0, 0, 0, .9);
     display: inline-block;
     font-size: 9pt;
+    box-shadow: inset 0 0 10px crimson;
+    -moz-box-shadow:    inset 0 0 10px crimson;
+    -webkit-box-shadow: inset 0 0 10px crimson;
 }
 
 table.careertable {
-    width: 80%;
-    color: white;
+    width: 75%;
+    color: #CECECE;
     text-align: left;
     cursor: default;
     float: left;
+    margin: 10px;
+    border-collapse: collapse;
 }
 
 table.careertable tr:hover {
@@ -48,12 +58,18 @@ table.careertable tr:hover {
     color: crimson;
 }
 
+table.careertable tr {
+    border: 2px solid #303030;
+}
+
 table.careerseasontable {
     width: 100%;
-    color: white;
+    color: #CECECE;
     text-align: left;
     cursor: default;
     float: left;
+    margin: 10px;
+    border-collapse: collapse;
 }
 
 table.careerseasontable tr:hover {
@@ -61,14 +77,21 @@ table.careerseasontable tr:hover {
     color: crimson;
 }
 
+table.careerseasontable tr {
+    border: 2px solid #303030;
+}
+
 li.actprog {
     width: calc(20% - 6px);
-    color: white;
+    color: #CECECE;
     text-align: left;
     display: inline-block;
     cursor: default;
-    padding-top: 3px;
-    padding-left: 3px;
+    padding-top: 6px;
+    padding-left: 6px;
+    box-shadow: inset 0 0 10px darkgray;
+    margin: 10px;
+    float: right;
 }
 
 ul.actprogheader {

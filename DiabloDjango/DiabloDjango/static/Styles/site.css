@@ -42,14 +42,20 @@ header {
 }
 
 p.header{
-    width: 50%;
+    width: 100%;
+    height: 100%;
     margin: auto;
     font-size: 32px;
     font-weight: bold;
     text-align: center;
-    color: navy;
-    background: rgba(0,0,0,0.5);
-    box-shadow: 0 0 500px rgba(0,0,0,0.5);
+    color: #CECECE;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+header.header {
+    background-image: url(/static/banner.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 /*#endregion */
