@@ -1,4 +1,4 @@
-﻿#"""
+#"""
 #Definition of models.
 #"""
 
@@ -28,7 +28,7 @@
 #    #Artisan Tables
 #    SeasonId = models.IntegerField()
 #    HighestHardcoreLevel = models.IntegerField()
-#    LastChecked = models.DateTimeField(auto_now_add = True)    
+#    LastChecked = models.DateTimeField(auto_now_add = True)
 #    #Heroes = List of heroes class
 
 #    # How to order the 'Table'
@@ -42,3 +42,24 @@
 #    # Link specific Profile
 #    def get_absolute_url(self):
 #        return reverse('blog.views.post', args = [self.Slug])
+
+from django.db import models
+
+
+class DimensionClass(models.Model):
+    classid = models.AutoField(db_column='ClassID', primary_key=True)
+    classname = models.CharField(db_column='ClassName', max_length=64)
+    externalclassname = models.CharField(db_column='ExternalClassName', max_length=64)
+
+    class Meta:
+        managed = False
+        db_table = 'Dimension_Class'
+
+
+class DimensionGender(models.Model):
+    genderid = models.IntegerField(db_column='GenderID', primary_key=True)
+    gendername = models.CharField(db_column='GenderName', max_length=64)
+
+    class Meta:
+        managed = False
+        db_table = 'Dimension_Gender'

@@ -36,8 +36,9 @@ def HeroProfile(Host, BattleTag, HeroId):
     else:
         raise Exception('Error:\n' + response.text)
 
+
 def log(text):
-    logging.basicConfig(filename="py_log.txt",level=logging.DEBUG)
+    logging.basicConfig(filename="py_log.txt", level=logging.DEBUG)
     #logger = logging.getLogger()
     #logger.setLevel(logging.DEBUG)
     # create debug file handler and set level to debug

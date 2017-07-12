@@ -2,6 +2,7 @@ from decimal import Decimal
 from . import DiabloAPIConfig
 from . import Item
 from DiabloDjango.AppCode import helper
+from DiabloDjango.AppData import models
 
 
 class Hero(dict):
@@ -122,7 +123,9 @@ class Hero(dict):
     @property
     def Class(self):
         classId = str(self['class'])
-        return DiabloAPIConfig.classes[classId]
+        #return DiabloAPIConfig.classes[classId]
+        ClassName = models.DimensionClass.objects.get(externalclassname=classId)
+        return ClassName.classname
 
     @property
     def Damage(self):
@@ -155,7 +158,8 @@ class Hero(dict):
     @property
     def Gender(self):
         genderId = int(self['gender'])
-        return DiabloAPIConfig.genders[genderId]
+        #return DiabloAPIConfig.genders[genderId]
+        return models.DimensionGender.objects.get(genderid=genderId).gendername
 
     @property
     def GoldFind(self):

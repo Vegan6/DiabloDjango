@@ -17,12 +17,14 @@ ALLOWED_HOSTS = (
 #Used for session variables
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': path.join(PROJECT_ROOT, 'db.sqlite3'),
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'DiabloDB',
+        'USER': 'Diablo',
+        'PASSWORD': 'qCn4HuUh9N4xH77V',
+        'HOST': '10.1.1.16',
+        'PORT': '3306',
+        #'HOST': 'vegan6.myvnc.com',
+        #'PORT': '33306',
     }
 }
 

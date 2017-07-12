@@ -14,14 +14,3 @@ API_KEY = 'apikey=wszpeaq9nkmskx58ra68yknst4dage85'
 
 BATTLETAG = ''
 CURRENTSERVER = ''
-
-genders = {0: 'Male', 1: 'Female'}
-classes = {
-    'demon-hunter': 'Demon Hunter',
-    'crusader': 'Crusader',
-    'barbarian': 'Barbarian',
-    'monk': 'Monk',
-    'witch-doctor': 'Witch Doctor',
-    'wizard': 'Wizard',
-    'necromancer': 'Necromancer'
-}

@@ -15,18 +15,18 @@
 #  cnx.close()
 
 #cursor = conn.cursor()
- 
+
 #cursor.execute("""
 #            SELECT ID, FirstName, LastName, Street, City, ST, Zip
 #            FROM Students
 #            """)
- 
+
 #rows = cursor.fetchall()
- 
+
 ## Convert query to row arrays
- 
+
 #rowarray_list = []
 #for row in rows:
-#    t = (row.ID, row.FirstName, row.LastName, row.Street, 
+#    t = (row.ID, row.FirstName, row.LastName, row.Street,
 #         row.City, row.ST, row.Zip)
 #    rowarray_list.append(t)
