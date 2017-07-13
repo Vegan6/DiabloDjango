@@ -204,4 +204,6 @@ footer{
 div.error {
     color:white;
     padding:3em;
+    background-color:#111;
+    opacity:0.8;
 }
