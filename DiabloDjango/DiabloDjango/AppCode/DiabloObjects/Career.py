@@ -16,9 +16,8 @@ class Career(dict):
         global DiabloAPI
         heroProfiles = list()
         if len(self['heroes']) > 0:
-            for hero in self['heroes']:               
+            for hero in self['heroes']:
                 heroProfiles.append(DiabloAPI.HeroProfile(DiabloAPIConfig.CURRENTSERVER, self.BattleTagURI, int(hero['id'])))
-                    
         #return heroes
         return heroProfiles
 
@@ -36,46 +35,31 @@ class Career(dict):
     def Act1Completed(self):
         progression = self['progression']
         act1 = progression['act1']
-        if (act1):
-            return '<span class="actprogcomplete">Completed</span>'
-        else:
-            return '<span class="actprogincomplete">Incomplet</span>'
+        return act1
 
     @property
     def Act2Completed(self):
         progression = self['progression']
         act2 = progression['act2']
-        if (act2):
-            return '<span class="actprogcomplete">Completed</span>'
-        else:
-            return '<span class="actprogincomplete">Incomplet</span>'
+        return act2
 
     @property
     def Act3Completed(self):
         progression = self['progression']
         act3 = progression['act3']
-        if (act3):
-            return '<span class="actprogcomplete">Completed</span>'
-        else:
-            return '<span class="actprogincomplete">Incomplet</span>'
+        return act3
 
     @property
     def Act4Completed(self):
         progression = self['progression']
         act4 = progression['act4']
-        if (act4):
-            return '<span class="actprogcomplete">Completed</span>'
-        else:
-            return '<span class="actprogincomplete">Incomplet</span>'
+        return act4
 
     @property
     def Act5Completed(self):
         progression = self['progression']
         act5 = progression['act5']
-        if (act5):
-            return '<span class="actprogcomplete">Completed</span>'
-        else:
-            return '<span class="actprogincomplete">Incomplet</span>'
+        return act5
 
     @property
     def BattleTag(self):
