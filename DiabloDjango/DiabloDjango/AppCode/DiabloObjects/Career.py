@@ -16,13 +16,9 @@ class Career(dict):
         global DiabloAPI
         heroProfiles = list()
         if len(self['heroes']) > 0:
-            for hero in self['heroes']:
-                try:
-                    heroProfiles.append(DiabloAPI.HeroProfile(DiabloAPIConfig.CURRENTSERVER, self.BattleTagURI, int(hero['id'])))
-                except Exception as excp:
-                    self.log(excp)
-                except:
-                    self.log("test")
+            for hero in self['heroes']:               
+                heroProfiles.append(DiabloAPI.HeroProfile(DiabloAPIConfig.CURRENTSERVER, self.BattleTagURI, int(hero['id'])))
+                    
         #return heroes
         return heroProfiles
 
