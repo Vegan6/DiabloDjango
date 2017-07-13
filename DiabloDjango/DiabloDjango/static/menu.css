@@ -2,7 +2,7 @@
 .mainMenu {
     background: linear-gradient(to bottom left, #00000f, #dd3400 180%);
     border:1px solid white;
-    height: 100% ;
+    height: calc(100% - 3em) ;
     display: inline-block;
     width: 20%;
     vertical-align: top;

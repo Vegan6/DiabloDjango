@@ -20,13 +20,12 @@
 /*#endregion*/
 
 body {
-    padding-top: 10px;
-    padding-bottom: 20px;
     height: 100%;
     width:100%;
     min-width: 1280px;
+    min-height: 1080px;
     overflow-y: scroll;
-    overflow-x:hidden;
+    overflow-x: hidden;
     background-color: black;
     font-family: 'Exocet Blizzard';
 }
@@ -43,14 +42,20 @@ header {
 }
 
 p.header{
-    width: 50%;
+    width: 100%;
+    height: 100%;
     margin: auto;
     font-size: 32px;
     font-weight: bold;
     text-align: center;
-    color: navy;
-    background: rgba(0,0,0,0.5);
-    box-shadow: 0 0 500px rgba(0,0,0,0.5);
+    color: #CECECE;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+header.header {
+    background-image: url(/static/banner.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 /*#endregion */
@@ -59,20 +64,21 @@ p.header{
 .mainBody{
     margin: auto;
     margin-left: 20%;
-    padding: 0 50px;
+    margin-top: 3em;
     display: inline-block;
-    height: auto;
-    width: 75%;
+    height: 100%;
+    min-height: 1080px;
+    width: 79%;
     overflow: hidden;
-    background-image: url(/Includes/Background.jpg);
+    background-image: url(/static/Background.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
-    top:2em;
-    position:relative;
+    background-attachment: fixed;
 }
 
 .content {
     text-align:-webkit-center;
+    text-align: -moz-center;
 }
 /*#endregion */
 
@@ -135,7 +141,10 @@ a.fill-div {
 
 /*#region Footer */
 footer{
-    margin-bottom:0; width:100%; color:white;
+    margin-bottom: 0;
+    width: 80%;
+    color: white;
+    margin-left: 20%;
 }
 /*#endregion
 
@@ -190,4 +199,9 @@ footer{
 .tooltip .tooltiptext {
     top: -5px;
     right: 105%;
+}
+
+div.error {
+    color:white;
+    padding:3em;
 }

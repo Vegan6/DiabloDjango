@@ -22,7 +22,7 @@ class Career(dict):
                 except Exception as excp:
                     self.log(excp)
                 except:
-                    self.log("Unexpected error:", sys.exc_info()[0])
+                    self.log("test")
         #return heroes
         return heroProfiles
 

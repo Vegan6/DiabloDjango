@@ -21,10 +21,10 @@ DATABASES = {
         'NAME': 'DiabloDB',
         'USER': 'Diablo',
         'PASSWORD': 'qCn4HuUh9N4xH77V',
-        'HOST': '10.1.1.16',
-        'PORT': '3306',
-        #'HOST': 'vegan6.myvnc.com',
-        #'PORT': '33306',
+        #'HOST': '10.1.1.16',
+        #'PORT': '3306',
+        'HOST': 'heretic.myvnc.com',
+        'PORT': '33306',
     }
 }
 
