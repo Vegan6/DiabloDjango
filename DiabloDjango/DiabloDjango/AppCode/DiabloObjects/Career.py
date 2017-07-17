@@ -1,6 +1,5 @@
 import logging
 import re
-from DiabloDjango.AppCode import *
 from DiabloDjango.AppCode import DiabloAPI
 from . import DiabloAPIConfig
 
@@ -13,13 +12,18 @@ class Career(dict):
     def Heroes(self):
         #set this to return Hero Object
         #heroes = dict()
+        #Need to remove API Call from here...
         global DiabloAPI
         heroProfiles = list()
         if len(self['heroes']) > 0:
             for hero in self['heroes']:
-                heroProfiles.append(DiabloAPI.HeroProfile(DiabloAPIConfig.CURRENTSERVER, self.BattleTagURI, int(hero['id'])))
+                heroProfiles.append(DiabloAPI.HeroProfile(DiabloAPIConfig.CURRENTSERVER,
+                    self.BattleTagURI, int(hero['id'])))
         #return heroes
         return heroProfiles
+
+    def SeasonalProfiles(self):
+        return self['seasonalProfiles']
 
     def TimePlayed(self):
         return self['timePlayed']
@@ -71,19 +75,43 @@ class Career(dict):
 
     @property
     def BattleTagDisplay(self):
-        return '<li class="menuItem">' + str(self['battleTag']).replace("#", "-") + '</li>'
+        return '<li class="menuItem">' + str(self['battleTag']) + '</li>'
+
+    @property
+    def EliteKills(self):
+        return int(self.Kills['elites'])
 
     @property
     def GuildName(self):
-        return ' <' + self['guildName'] + '>'
+        return self['guildName']
+
+    @property
+    def HardcoreMonsterKills(self):
+        return int(self.Kills['hardcoreMonsters'])
+
+    @property
+    def HighestHardcoreLevel(self):
+        return self['highestHardcoreLevel']
+
+    @property
+    def MonsterKills(self):
+        return int(self.Kills['monsters'])
 
     @property
     def ParagonLevel(self):
         return self['paragonLevel']
 
     @property
+    def ParagonLevelHardcore(self):
+        return self['paragonLevelHardcore']
+
+    @property
     def ParagonLevelSeason(self):
         return self['paragonLevelSeason']
+
+    @property
+    def ParagonLevelSeasonHardcore(self):
+        return self['paragonLevelSeasonHardcore']
 
     @property
     def LastHeroPlayed(self):

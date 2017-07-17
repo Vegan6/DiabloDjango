@@ -5,43 +5,57 @@ from datetime import datetime
 from DiabloDjango.AppCode import DiabloAPI
 from DiabloDjango.AppCode.DiabloObjects import DiabloAPIConfig
 from DiabloDjango.AppCode.DiabloObjects import Career
-from DiabloDjango.AppCode.helper import *
+from DiabloDjango.AppCode import helper
 from DiabloDjango.AppData import models
 
 
-def GetCareer(userid, seasonid, localeid):
+# Step 1 Insert career if not there, pull if it is
+# Step 2 Insert career if not there, update & pull if it is (async?)
+#On Update Career - Need to Insert/Update Hereoes listed (fallen and alive)
+def GetCareer(userid, locale):
     User = models.DimensionUser.objects.get(userid=userid, localeid=locale)
-    if not models.FactCareer.objects.filter(serID=user, SeasonID=seasonid).exists():
-        #Call API and update
-        Locale = models.DimensionLocale.objects.get(localeid=localeid)
-        CareerDetails = DiabloAPI.GetCareer(Locale.LocaleNameAPI, User.BattleTag)
-        CurrentCareer = UpdateCareer(userid, CareerDetails)
-        return CurrentCareer
-    else:
-        CurrentCareer = models.FactCareer.objects.get(userid=user, SeasonID=seasonid)
-        return CurrentCareer
+    Locale = models.DimensionLocale.objects.get(localeid=locale)
+    CareerDetails = DiabloAPI.GetCareer(Locale.LocaleNameAPI, User.BattleTag)
+    CurrentCareer = UpdateCareer(userid, CareerDetails)
+    return CurrentCareer
 
 
 def UpdateCareer(userid, careerdetails):
     User = models.DimensionUser.objects.get(userid=userid)
+    seasonid = -1
     if not models.FactCareer.objects.filter(userid=User, seasonid=seasonid).exists():
-        CareerDetails = DiabloAPI.GetCareer(DiabloAPIConfig.US_SERVER, BattleTag)
+        #Still need artisan levels
         CheckCareer = models.FactCareer(
-            UserID=User, SeasonID=seasonid, ParagonLevel=CareerDetails.ParagonLevel
-
+            UserID=User, SeasonID=seasonid, paragonlevel=careerdetails.ParagonLevel,
+            paragonlevelhardcore=careerdetails.ParagonLevelHardcore, paragonlevelseason=careerdetails.ParagonLevelSeason,
+            paragonlevelseasonhardcore=careerdetails.ParagonLevelSeasonHardcore, guildname=careerdetails.GuildName,
+            lastheroplayed=careerdetails.LastHeroPlayed, lastupdateddatetime=helper.GetUpdateTime(careerdetails.LastUpdated),
+            monsterkills=careerdetails.MonsterKills, elitekills=careerdetails.EliteKills, monsterkillshardcore=careerdetails.HardcoreMonsterKills,
+            highesthardcorelevel=careerdetails.HighestHardcoreLevel, progressionact1=careerdetails.Act1Completed, progressionact2=careerdetails.Act2Completed,
+            progressionact3=careerdetails.Act3Completed, progressionact4=careerdetails.Act4Completed, progressionact5=careerdetails.Act5Completed,
+            updatedatetime=datetime.now()
             )
         CheckCareer.save()
+        #Update each season
+    # If In DB async call to API (if update time > threshold) and return DB
     else:
         CheckCareer = models.FactCareer.objects.get(UserID=User, SeasonID=seasonid)
-        return
+    return CheckCareer
 
 
+def UpdateSeason(user, seasondetails):
+    return
+
+
+# Make sure user exists in API
 def UpdateUser(battletag, locale):
     DisplayTag = battletag.replace('-', '#')
-    #User = models.DimensionUser.objects.get(battletag=battletag)
+    # If User doesn't exist yet, insert
     if not models.DimensionUser.objects.filter(battletag=battletag, localeid=locale).exists():
-        User = models.DimensionUser(battletag=battletag, battletagdisplay=DisplayTag, lastupdated=datetime.now(), localeid=locale)
+        User = models.DimensionUser(battletag=battletag, battletagdisplay=DisplayTag,
+            lastupdated=datetime.now(), localeid=locale)
         User.save()
+    # else update lastupdated time to Now
     else:
         User = models.DimensionUser.objects.get(battletag=battletag, localeid=locale)
         User.lastupdated = datetime.now()
@@ -65,7 +79,7 @@ def career(request):
     if not BattleTag:
         CareerDetails = Career.Career(request.session['CareerProfile'])
     else:
-        #CareerDetails = GetCareer(UserID, -1, 1)
+        #CareerDetails = GetCareer(UserID, Locale)
         CareerDetails = DiabloAPI.GetCareer(DiabloAPIConfig.US_SERVER, BattleTag)
         request.session['CareerProfile'] = CareerDetails
 
@@ -93,7 +107,7 @@ def career(request):
             + "\nParagon Level: " + str(CareerDetails.ParagonLevel)
             + "\nSeasonal Paragon Level: " + str(CareerDetails.ParagonLevelSeason)
             + "\nElite Kills: " + str(CareerDetails.Kills()['elites'])
-            + "\nLast Update: " + str(GetUpdateTime(int(CareerDetails.LastUpdated)))
+            + "\nLast Update: " + str(helper.GetUpdateTime(int(CareerDetails.LastUpdated)))
             + "\n\nHeroes JSON Dump: " + str(CareerDetails.Heroes())
             + "\n\n\nJSON Dump: \n" + str(CareerDetails),
     }
