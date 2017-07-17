@@ -79,7 +79,7 @@ class Career(dict):
 
     @property
     def EliteKills(self):
-        return int(self.Kills['elites'])
+        return int(self.Kills()['elites'])
 
     @property
     def GuildName(self):
@@ -87,7 +87,7 @@ class Career(dict):
 
     @property
     def HardcoreMonsterKills(self):
-        return int(self.Kills['hardcoreMonsters'])
+        return int(self.Kills()['hardcoreMonsters'])
 
     @property
     def HighestHardcoreLevel(self):
@@ -95,7 +95,7 @@ class Career(dict):
 
     @property
     def MonsterKills(self):
-        return int(self.Kills['monsters'])
+        return int(self.Kills()['monsters'])
 
     @property
     def ParagonLevel(self):

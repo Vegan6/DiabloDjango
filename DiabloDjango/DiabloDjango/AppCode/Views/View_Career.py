@@ -3,7 +3,7 @@ from django.http import HttpRequest
 #from django.template import RequestContext
 from datetime import datetime
 from DiabloDjango.AppCode import DiabloAPI
-from DiabloDjango.AppCode.DiabloObjects import DiabloAPIConfig
+#from DiabloDjango.AppCode.DiabloObjects import DiabloAPIConfig
 from DiabloDjango.AppCode.DiabloObjects import Career
 from DiabloDjango.AppCode import helper
 from DiabloDjango.AppData import models
@@ -14,8 +14,8 @@ from DiabloDjango.AppData import models
 #On Update Career - Need to Insert/Update Hereoes listed (fallen and alive)
 def GetCareer(userid, locale):
     User = models.DimensionUser.objects.get(userid=userid, localeid=locale)
-    Locale = models.DimensionLocale.objects.get(localeid=locale)
-    CareerDetails = DiabloAPI.GetCareer(Locale.LocaleNameAPI, User.BattleTag)
+    #Locale = models.DimensionLocale.objects.get(localeid=locale)
+    CareerDetails = DiabloAPI.GetCareer(locale.serverurl, User.battletag)
     CurrentCareer = UpdateCareer(userid, CareerDetails)
     return CurrentCareer
 
@@ -26,20 +26,20 @@ def UpdateCareer(userid, careerdetails):
     if not models.FactCareer.objects.filter(userid=User, seasonid=seasonid).exists():
         #Still need artisan levels
         CheckCareer = models.FactCareer(
-            UserID=User, SeasonID=seasonid, paragonlevel=careerdetails.ParagonLevel,
+            userid=User, seasonid=seasonid, paragonlevel=careerdetails.ParagonLevel,
             paragonlevelhardcore=careerdetails.ParagonLevelHardcore, paragonlevelseason=careerdetails.ParagonLevelSeason,
             paragonlevelseasonhardcore=careerdetails.ParagonLevelSeasonHardcore, guildname=careerdetails.GuildName,
             lastheroplayed=careerdetails.LastHeroPlayed, lastupdateddatetime=helper.GetUpdateTime(careerdetails.LastUpdated),
             monsterkills=careerdetails.MonsterKills, elitekills=careerdetails.EliteKills, monsterkillshardcore=careerdetails.HardcoreMonsterKills,
-            highesthardcorelevel=careerdetails.HighestHardcoreLevel, progressionact1=careerdetails.Act1Completed, progressionact2=careerdetails.Act2Completed,
-            progressionact3=careerdetails.Act3Completed, progressionact4=careerdetails.Act4Completed, progressionact5=careerdetails.Act5Completed,
-            updatedatetime=datetime.now()
+            highesthardcorelevel=careerdetails.HighestHardcoreLevel, progressionact1=careerdetails.Act1Completed,
+            progressionact2=careerdetails.Act2Completed, progressionact3=careerdetails.Act3Completed, progressionact4=careerdetails.Act4Completed,
+            progressionact5=careerdetails.Act5Completed, updatedatetime=datetime.now()
             )
         CheckCareer.save()
         #Update each season
     # If In DB async call to API (if update time > threshold) and return DB
     else:
-        CheckCareer = models.FactCareer.objects.get(UserID=User, SeasonID=seasonid)
+        CheckCareer = models.FactCareer.objects.get(userid=User, seasonid=seasonid)
     return CheckCareer
 
 
@@ -73,14 +73,14 @@ def GetActProgHTML(actProg):
 def career(request):
     """Renders the Career page."""
     assert isinstance(request, HttpRequest)
-    #Locale = models.DimensionLocale.objects.get(localenameapi='en_US')
+    Locale = models.DimensionLocale.objects.get(localenameapi='en_US')
     BattleTag = request.GET.get('battletagcareer')
-    #UserID = UpdateUser(BattleTag, Locale)
+    UserID = UpdateUser(BattleTag, Locale).userid
     if not BattleTag:
         CareerDetails = Career.Career(request.session['CareerProfile'])
     else:
-        #CareerDetails = GetCareer(UserID, Locale)
-        CareerDetails = DiabloAPI.GetCareer(DiabloAPIConfig.US_SERVER, BattleTag)
+        CareerDetails = GetCareer(UserID, Locale)
+        #CareerDetails = DiabloAPI.GetCareer(DiabloAPIConfig.US_SERVER, BattleTag)
         request.session['CareerProfile'] = CareerDetails
 
     HeroPortrait = ""
@@ -92,7 +92,7 @@ def career(request):
     context_instance = {
         'Title': 'Diablo 3',
         'Year': datetime.now().year,
-        'UserName': CareerDetails.BattleTagDisplay,
+        'UserName': CareerDetails.battletagdisplay,
         'CharacterMenu': HeroPortrait,
         'Act1Completed': GetActProgHTML(CareerDetails.Act1Completed),
         'Act2Completed': GetActProgHTML(CareerDetails.Act2Completed),
@@ -100,7 +100,7 @@ def career(request):
         'Act4Completed': GetActProgHTML(CareerDetails.Act4Completed),
         'Act5Completed': GetActProgHTML(CareerDetails.Act5Completed),
         'BattleTag': CareerDetails.UserName,
-        'GuildName': CareerDetails.GuildName,
+        'GuildName': CareerDetails.guildname,
         'CareerTable': CareerTable,
         'CareerProfile':
             "\nBattleTag: " + CareerDetails.BattleTag
