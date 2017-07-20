@@ -92,6 +92,7 @@ class Hero(dict):
         return round(Decimal(self.Stats()['attackSpeed']), 2)
 
     @property
+    #move this to controller
     def BackImage(self):
         if (int(self['gender']) == 0):
             backImage = 'VitruvianMan.jpg'
@@ -100,6 +101,7 @@ class Hero(dict):
         return str(backImage)
 
     @property
+    #Move this to view
     def CareerTableRow(self):
         return str(
             '<tr><td>' + str(self.Name) + '</td><td>' + str(self.DisplayLevel) +
@@ -214,6 +216,7 @@ class Hero(dict):
         return int(self.Stats()['poisonResist'])
 
     @property
+    # needs moved out of here (used in menu)
     def Portrait(self):
         LevelType = 'level' if (self.Level < 70) else 'paragon-level'
         #Return the div for individual hero
@@ -230,8 +233,9 @@ class Hero(dict):
             '<div class="seasonal-false">&nbsp;</div>')
 
         return str('<li class="heroMenuItem"><div class="hero clickable" value="' + str(self['id']) + '">' +
-                    '<a href="/hero?battletag=' + DiabloAPIConfig.BATTLETAG + '&heroid=' + str(self.HeroId) + '" class="fill-div">' +
-                    '<div class="face ' + self['class'] + '-' + self.Gender + '">&nbsp;</div>' + nameDisplay + '</a></div></li>')
+                    '<a href="/hero?battletag=' + DiabloAPIConfig.BATTLETAG + '&heroid=' + str(self.HeroId) +
+                    '" class="fill-div">' + '<div class="face ' + self['class'] + '-' +
+                    self.Gender + '">&nbsp;</div>' + nameDisplay + '</a></div></li>')
 
     @property
     def Toughness(self):
