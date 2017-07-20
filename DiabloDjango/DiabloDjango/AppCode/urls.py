@@ -5,7 +5,7 @@ Definition of urls for DiabloDjango.
 #from datetime import datetime
 #from django.conf.urls import patterns
 from django.conf.urls import url
-import DiabloDjango.AppCode.views
+#import DiabloDjango.AppCode.views
 import DiabloDjango.AppCode.Views.View_Career
 import DiabloDjango.AppCode.Views.View_Home
 import DiabloDjango.AppCode.Views.View_Hero

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpRequest
-from DiabloDjango.AppCode.helper import *
+from datetime import datetime
 from DiabloDjango.AppCode import DiabloAPI
 from DiabloDjango.AppCode.DiabloObjects import DiabloAPIConfig
 from DiabloDjango.AppCode.DiabloObjects import Career

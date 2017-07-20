@@ -1,6 +1,5 @@
 import logging
 import re
-from DiabloDjango.AppCode import DiabloAPI
 from . import DiabloAPIConfig
 
 
@@ -31,7 +30,7 @@ class Career(dict):
     def Progression(self):
         return self['progression']
 
-    def log(text):
+    def log(self, text):
         logging.basicConfig(filename="py_log.txt", level=logging.ERROR)
         logging.info("!!!Problem:" + text)
 

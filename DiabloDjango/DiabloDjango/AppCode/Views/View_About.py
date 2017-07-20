@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpRequest
-from DiabloDjango.AppCode.helper import *
+from datetime import datetime
 
 
 def about(request):
