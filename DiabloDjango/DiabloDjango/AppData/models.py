@@ -112,6 +112,7 @@ class DimensionUser(models.Model):
 
 
 class FactCareer(models.Model):
+    careerid = models.IntegerField(db_column='CareerID', primary_key=True)
     userid = models.ForeignKey(DimensionUser, models.DO_NOTHING, db_column='UserID')
     seasonid = models.SmallIntegerField(db_column='SeasonID')
     paragonlevel = models.SmallIntegerField(db_column='ParagonLevel', blank=True, null=True)
