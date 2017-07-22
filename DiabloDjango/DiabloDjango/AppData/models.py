@@ -149,3 +149,66 @@ class FactCareer(models.Model):
         managed = False
         db_table = 'Fact_Career'
         unique_together = (('userid', 'seasonid'),)
+
+class FactHero(models.Model):
+    heroid = models.AutoField(db_column='HeroID', primary_key=True)
+    userid = models.ForeignKey(DimensionUser, models.DO_NOTHING, db_column='UserID')
+    apiheroid = models.IntegerField(db_column='APIHeroID')
+    name = models.CharField(db_column='Name', max_length=128)
+    classid = models.ForeignKey(DimensionClass, models.DO_NOTHING, db_column='ClassID')
+    genderid = models.ForeignKey(DimensionGender, models.DO_NOTHING, db_column='GenderID')
+    level = models.SmallIntegerField(db_column='Level', blank=True, null=True)
+    paragonlevel = models.SmallIntegerField(db_column='ParagonLevel', blank=True, null=True)
+    monsterkills = models.IntegerField(db_column='MonsterKills', blank=True, null=True)
+    elitekills = models.IntegerField(db_column='EliteKills', blank=True, null=True)
+    hardcore = models.BooleanField(db_column='Hardcore', blank=True, null=True)
+    seasonal = models.BooleanField(db_column='Seasonal', blank=True, null=True)
+    seasoncreated = models.SmallIntegerField(db_column='SeasonCreated', blank=True, null=True)
+    lastupdateddatetime = models.DateField(db_column='LastUpdatedDateTime', blank=True, null=True)
+    progressionact1 = models.BooleanField(db_column='ProgressionAct1', blank=True, null=True)
+    progressionact2 = models.BooleanField(db_column='ProgressionAct2', blank=True, null=True)
+    progressionact3 = models.BooleanField(db_column='ProgressionAct3', blank=True, null=True)
+    progressionact4 = models.BooleanField(db_column='ProgressionAct4', blank=True, null=True)
+    progressionact5 = models.BooleanField(db_column='ProgressionAct5', blank=True, null=True)
+    dead = models.BooleanField(db_column='Dead', blank=True, null=True)
+    life = models.IntegerField(db_column='Life', blank=True, null=True)
+    damage = models.FloatField(db_column='Damage', blank=True, null=True)
+    toughness = models.IntegerField(db_column='Toughness', blank=True, null=True)
+    healing = models.FloatField(db_column='Healing', blank=True, null=True)
+    attackspeed = models.FloatField(db_column='AttackSpeed', blank=True, null=True)
+    armor = models.IntegerField(db_column='Armor', blank=True, null=True)
+    strength = models.IntegerField(db_column='Strength', blank=True, null=True)
+    dexterity = models.IntegerField(db_column='Dexterity', blank=True, null=True)
+    vitality = models.IntegerField(db_column='Vitality', blank=True, null=True)
+    intelligence = models.IntegerField(db_column='Intelligence', blank=True, null=True)
+    physicalresist = models.IntegerField(db_column='PhysicalResist', blank=True, null=True)
+    fireresist = models.IntegerField(db_column='FireResist', blank=True, null=True)
+    coldresist = models.IntegerField(db_column='ColdResist', blank=True, null=True)
+    lightningresist = models.IntegerField(db_column='LightningResist', blank=True, null=True)
+    poisonresist = models.IntegerField(db_column='PoisonResist', blank=True, null=True)
+    arcaneresist = models.IntegerField(db_column='ArcaneResist', blank=True, null=True)
+    critdamage = models.FloatField(db_column='CritDamage', blank=True, null=True)
+    blockchance = models.FloatField(db_column='BlockChance', blank=True, null=True)
+    blockamountmin = models.IntegerField(db_column='BlockAmountMin', blank=True, null=True)
+    blockamountmax = models.IntegerField(db_column='BlockAmountMax', blank=True, null=True)
+    thorns = models.FloatField(db_column='Thorns', blank=True, null=True)
+    lifesteal = models.FloatField(db_column='LifeSteal', blank=True, null=True)
+    lifeperkill = models.FloatField(db_column='LifePerKill', blank=True, null=True)
+    goldfind = models.FloatField(db_column='GoldFind', blank=True, null=True)
+    magicfind = models.FloatField(db_column='MagicFind', blank=True, null=True)
+    damageincrease = models.FloatField(db_column='DamageIncrease', blank=True, null=True)
+    critchance = models.FloatField(db_column='CritChance', blank=True, null=True)
+    damagereduction = models.FloatField(db_column='DamageReduction', blank=True, null=True)
+    lifeonhit = models.FloatField(db_column='LifeOnHit', blank=True, null=True)
+    primaryresource = models.IntegerField(db_column='PrimaryResource', blank=True, null=True)
+    secondaryresource = models.IntegerField(db_column='SecondaryResource', blank=True, null=True)
+    updatedatetime = models.DateTimeField(db_column='UpdateDatetime', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'Fact_Hero'
+        unique_together = (('userid', 'apiheroid'),)
+
+     
+
+

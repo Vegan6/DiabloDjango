@@ -25,7 +25,16 @@
                     <th>Elite Kills</th>
                     <th>Last Updated</th>
                 </tr>
-                {% autoescape off %}{{CareerTable}}{% endautoescape %}
+                {% for hero in CareerTable %}
+                <tr>
+                    <th>{{ hero.name }} </th>
+                    <th>{{ hero.level }} <span style="color:crimson">({{ hero.paragonlevel }})</span> </th>
+                    <th>{{ hero.classid.classname }} </th>
+                    <th>{{ hero.genderid.gendername }} </th>
+                    <th>{{ hero.elitekills }} </th>
+                    <th>{{ hero.lastupdateddatetime|date:"Y-m-d" }}</th>
+                </tr>
+                {% endfor %}
             </table>
             <li class="actprog">
                 <ul class="actprogheader">Act Progression</ul>

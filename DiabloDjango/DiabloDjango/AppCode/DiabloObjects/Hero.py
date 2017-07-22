@@ -126,8 +126,8 @@ class Hero(dict):
     def Class(self):
         classId = str(self['class'])
         #return DiabloAPIConfig.classes[classId]
-        ClassName = models.DimensionClass.objects.get(externalclassname=classId)
-        return ClassName.classname
+        Class = models.DimensionClass.objects.get(externalclassname=classId)
+        return Class
 
     @property
     def Damage(self):
@@ -140,6 +140,10 @@ class Hero(dict):
     @property
     def DamageReduction(self):
         return int(self.Stats()['damageReduction'] * 100)
+    
+    @property
+    def Dead(self):
+        return self['dead']
 
     @property
     def DisplayLevel(self):
@@ -161,11 +165,15 @@ class Hero(dict):
     def Gender(self):
         genderId = int(self['gender'])
         #return DiabloAPIConfig.genders[genderId]
-        return models.DimensionGender.objects.get(genderid=genderId).gendername
+        return models.DimensionGender.objects.get(genderid=genderId)
 
     @property
     def GoldFind(self):
         return int(self.Stats()['goldFind'] * 100)
+    
+    @property
+    def Hardcore(self):
+        return self['hardcore']
 
     @property
     def Healing(self):
@@ -237,6 +245,10 @@ class Hero(dict):
                     '" class="fill-div">' + '<div class="face ' + self['class'] + '-' +
                     self.Gender + '">&nbsp;</div>' + nameDisplay + '</a></div></li>')
 
+    @property
+    def Seasonal(self):
+        return self['seasonal']
+    
     @property
     def Toughness(self):
         return int(self.Stats()['toughness'])

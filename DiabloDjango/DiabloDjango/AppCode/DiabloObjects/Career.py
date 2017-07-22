@@ -1,6 +1,6 @@
 import logging
 import re
-from . import DiabloAPIConfig
+#from . import DiabloAPIConfig
 
 
 class Career(dict):
@@ -12,14 +12,15 @@ class Career(dict):
         #set this to return Hero Object
         #heroes = dict()
         #Need to remove API Call from here...
-        global DiabloAPI
-        heroProfiles = list()
-        if len(self['heroes']) > 0:
-            for hero in self['heroes']:
-                heroProfiles.append(DiabloAPI.HeroProfile(DiabloAPIConfig.CURRENTSERVER,
-                    self.BattleTagURI, int(hero['id'])))
-        #return heroes
-        return heroProfiles
+#         global DiabloAPI
+#         heroProfiles = list()
+#         if len(self['heroes']) > 0:
+#             for hero in self['heroes']:
+#                 heroProfiles.append(DiabloAPI.HeroProfile(DiabloAPIConfig.CURRENTSERVER,
+#                     self.BattleTagURI, int(hero['id'])))
+#         #return heroes
+#         return heroProfiles
+        return self['heroes']
 
     def SeasonalProfiles(self):
         return self['seasonalProfiles']
