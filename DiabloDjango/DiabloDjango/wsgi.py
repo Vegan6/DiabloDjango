@@ -14,7 +14,10 @@ framework.
 
 """
 import os
+import sys
 
+# TODO: Set python home in venv to get rid of this line
+sys.path = ["/var/www/html/Git/DiabloDjango/DiabloDjango"] + sys.path
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "DiabloDjango.settings")
 
 # This application object is used by any WSGI server configured to use this
