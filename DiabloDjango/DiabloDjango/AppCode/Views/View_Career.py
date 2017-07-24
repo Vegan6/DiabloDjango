@@ -5,9 +5,10 @@ from DiabloDjango.AppCode import DiabloAPI
 from DiabloDjango.AppCode.DiabloObjects import Career
 from DiabloDjango.AppCode import helper
 from DiabloDjango.AppData import models
-from django.core import serializers
 from DiabloDjango.AppCode.DiabloObjects import Hero
 import re
+import json
+from django.forms.models import model_to_dict
 from DiabloDjango.AppCode.helper import GetUpdateTime
 
 
@@ -17,18 +18,20 @@ Heroes = list()
 # Step 2 Insert career if not there, update & pull if it is (async?)
 #On Update Career - Need to Insert/Update Hereoes listed (fallen and alive)
 def GetCareer(user, locale):
-    #Locale = models.DimensionLocale.objects.get(localeid=localeid)
-    global HeroPortrait
     global Heroes
     Heroes = list()
     CareerDetails = DiabloAPI.GetCareer(locale.serverurl, user.battletag)
     CurrentCareer = UpdateCareer(user, CareerDetails)
+    #Update Seasons
+    Seasons = CareerDetails.SeasonalProfiles()
+    for season in Seasons:
+        CurrentSeason = Career.Career(Seasons[season])
+        UpdateSeason(user, CurrentSeason)
+    #Update Heroes
     heroes = CareerDetails.Heroes()
     for hero in heroes:
-        #HeroPortrait += GetHeroMenuItem(hero, user.battletag)
-        #Heroes.append(UpdateHero(user, Hero.Hero(json.loads(hero))))
         CurrentHero = Hero.Hero(hero)
-        Heroes.append(UpdateHero(user, CurrentHero))    
+        Heroes.append(UpdateHeroFromCareer(user, CurrentHero))    
     return CurrentCareer
 
 
@@ -54,7 +57,7 @@ def UpdateCareer(user, careerDetails):
     return CheckCareer
 
 
-def UpdateHero(user, heroDetails):
+def UpdateHeroFromCareer(user, heroDetails):
     global HeroPortrait
     if not models.FactHero.objects.filter(userid=user, apiheroid=heroDetails.HeroId).exists():
         #Still need artisan levels
@@ -74,7 +77,22 @@ def UpdateHero(user, heroDetails):
     return Hero
 
 def UpdateSeason(user, seasonDetails):
-    return
+    seasonid = seasonDetails['seasonId']
+    if not models.FactCareer.objects.filter(userid=user, seasonid=seasonid).exists():
+        #Still need artisan levels
+        CheckCareer = models.FactCareer(
+            userid=user, seasonid=seasonid, paragonlevel=seasonDetails.ParagonLevel, paragonlevelhardcore=seasonDetails.ParagonLevelHardcore,             
+            monsterkills=seasonDetails.MonsterKills, elitekills=seasonDetails.EliteKills, monsterkillshardcore=seasonDetails.HardcoreMonsterKills,
+            highesthardcorelevel=seasonDetails.HighestHardcoreLevel, progressionact1=seasonDetails.Act1Completed, progressionact2=seasonDetails.Act2Completed,
+            progressionact3=seasonDetails.Act3Completed, progressionact4=seasonDetails.Act4Completed, progressionact5=seasonDetails.Act5Completed,
+            updatedatetime=datetime.now()
+            )
+        CheckCareer.save()
+        #Update each season
+    # If In DB async call to API (if update time > threshold) and return DB
+    else:
+        CheckCareer = models.FactCareer.objects.get(userid=user, seasonid=seasonid)
+    return CheckCareer
 
 
 # Make sure user exists in API
@@ -105,8 +123,7 @@ def GetHeroMenuItem(hero, battletag):
     DisplayLevel = hero.level if (hero.level < 70) else hero.paragonlevel
     #Return the div for individual hero
     #Need to add a span to distinguish hardcore/dead from not
-    # Don't know why seasonal doesn't return as bool???
-    if (hero.seasonal == b'\x01'):
+    if (hero.seasonal):
         nameDisplay = str('<div class="name seasonal">' +
                           '<span class="' + LevelType + '" type="submit" value="Get Hero" name="GetHero" >' +
                           str(DisplayLevel) + '</span>' + str(hero.name) + '</div>' +
@@ -128,23 +145,19 @@ def career(request):
     assert isinstance(request, HttpRequest)
     Locale = models.DimensionLocale.objects.get(localenameapi='en_US')
     BattleTag = request.GET.get('battletagcareer')
-    User = UpdateUser(BattleTag, Locale)
     CareerDetails = models.FactCareer()
     if not BattleTag:
-        #CareerDetails = Career.Career(request.session['CareerProfile'])
-        for obj in serializers.deserialize('json', Career.Career(request.session['CareerProfile'])):
-            CareerDetails += obj
-    else:
+        CareerFromMem = json.loads(request.session['CareerProfile'])
+        User = models.DimensionUser.objects.get(userid = CareerFromMem['userid'])
         CareerDetails = GetCareer(User, Locale)
-        #CareerDetails = DiabloAPI.GetCareer(DiabloAPIConfig.US_SERVER, BattleTag)
-        request.session['CareerProfile'] = serializers.serialize('json', [CareerDetails, ])
-
-    #HeroPortrait = ""
-    #CareerTable = ""
-    #heroes = CareerDetails.Heroes()
-    #for hero in heroes:
-    #    HeroPortrait += hero.Portrait
-    #    CareerTable += hero.CareerTableRow
+    else:
+        User = UpdateUser(BattleTag, Locale)
+        CareerDetails = GetCareer(User, Locale)
+        toDict = model_to_dict(CareerDetails)
+        toJSON = json.dumps(toDict, cls=helper.DateTimeEncoder)
+        request.session['CareerProfile'] = toJSON
+    
+    SeasonDetails = models.FactCareer.objects.filter(userid=User, seasonid__gte=0).order_by('seasonid')
     context_instance = {
         'Title': 'Diablo 3',
         'Year': datetime.now().year,
@@ -158,6 +171,7 @@ def career(request):
         'BattleTag': re.sub('\#\d{4}', '', User.battletagdisplay),
         'GuildName': '<' + CareerDetails.guildname + '>',
         'CareerTable': Heroes,
+        'SeasonTable': SeasonDetails,
         #'CareerProfile':
             #"\nBattleTag: " + CareerDetails.BattleTag
             #+ "\nParagon Level: " + str(CareerDetails.ParagonLevel)
