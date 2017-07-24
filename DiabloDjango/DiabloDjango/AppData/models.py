@@ -3,7 +3,6 @@
 #"""
 from django.db import models
 from django_mysql.models import Bit1BooleanField
-from django_mysql.models import 
 
 
 #from django.db import models
