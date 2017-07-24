@@ -1,6 +1,9 @@
 #"""
 #Definition of models.
 #"""
+from django.db import models
+from django_mysql.models import Bit1BooleanField
+
 
 #from django.db import models
 #from django.core.urlresolvers import reverse
@@ -51,7 +54,6 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 #from __future__ import unicode_literals
-from django.db import models
 
 
 class DimensionClass(models.Model):
@@ -126,11 +128,11 @@ class FactCareer(models.Model):
     elitekills = models.IntegerField(db_column='EliteKills', blank=True, null=True)
     monsterkillshardcore = models.IntegerField(db_column='MonsterKillsHardcore', blank=True, null=True)
     highesthardcorelevel = models.SmallIntegerField(db_column='HighestHardcoreLevel', blank=True, null=True)
-    progressionact1 = models.BooleanField(db_column='ProgressionAct1', blank=True, null=True)
-    progressionact2 = models.BooleanField(db_column='ProgressionAct2', blank=True, null=True)
-    progressionact3 = models.BooleanField(db_column='ProgressionAct3', blank=True, null=True)
-    progressionact4 = models.BooleanField(db_column='ProgressionAct4', blank=True, null=True)
-    progressionact5 = models.BooleanField(db_column='ProgressionAct5', blank=True, null=True)
+    progressionact1 = Bit1BooleanField(db_column='ProgressionAct1', blank=True, null=True)
+    progressionact2 = Bit1BooleanField(db_column='ProgressionAct2', blank=True, null=True)
+    progressionact3 = Bit1BooleanField(db_column='ProgressionAct3', blank=True, null=True)
+    progressionact4 = Bit1BooleanField(db_column='ProgressionAct4', blank=True, null=True)
+    progressionact5 = Bit1BooleanField(db_column='ProgressionAct5', blank=True, null=True)
     blacksmithlevel = models.IntegerField(db_column='BlackSmithLevel', blank=True, null=True)
     blacksmithhardcorelevel = models.IntegerField(db_column='BlackSmithHardcoreLevel', blank=True, null=True)
     blacksmithseasonlevel = models.IntegerField(db_column='BlackSmithSeasonLevel', blank=True, null=True)
@@ -144,7 +146,7 @@ class FactCareer(models.Model):
     mysticseasonlevel = models.IntegerField(db_column='MysticSeasonLevel', blank=True, null=True)
     mysticseasonhardcorelevel = models.IntegerField(db_column='MysticSeasonHardcoreLevel', blank=True, null=True)
     updatedatetime = models.DateTimeField(db_column='UpdateDatetime', blank=True, null=True)
-
+    
     class Meta:
         managed = False
         db_table = 'Fact_Career'
@@ -161,16 +163,16 @@ class FactHero(models.Model):
     paragonlevel = models.SmallIntegerField(db_column='ParagonLevel', blank=True, null=True)
     monsterkills = models.IntegerField(db_column='MonsterKills', blank=True, null=True)
     elitekills = models.IntegerField(db_column='EliteKills', blank=True, null=True)
-    hardcore = models.BooleanField(db_column='Hardcore', blank=True, null=True)
-    seasonal = models.BooleanField(db_column='Seasonal', blank=True, null=True)
+    hardcore = Bit1BooleanField(db_column='Hardcore', blank=True, null=True)
+    seasonal = Bit1BooleanField(db_column='Seasonal', blank=True, null=True)
     seasoncreated = models.SmallIntegerField(db_column='SeasonCreated', blank=True, null=True)
     lastupdateddatetime = models.DateField(db_column='LastUpdatedDateTime', blank=True, null=True)
-    progressionact1 = models.BooleanField(db_column='ProgressionAct1', blank=True, null=True)
-    progressionact2 = models.BooleanField(db_column='ProgressionAct2', blank=True, null=True)
-    progressionact3 = models.BooleanField(db_column='ProgressionAct3', blank=True, null=True)
-    progressionact4 = models.BooleanField(db_column='ProgressionAct4', blank=True, null=True)
-    progressionact5 = models.BooleanField(db_column='ProgressionAct5', blank=True, null=True)
-    dead = models.BooleanField(db_column='Dead', blank=True, null=True)
+    progressionact1 = Bit1BooleanField(db_column='ProgressionAct1', blank=True, null=True)
+    progressionact2 = Bit1BooleanField(db_column='ProgressionAct2', blank=True, null=True)
+    progressionact3 = Bit1BooleanField(db_column='ProgressionAct3', blank=True, null=True)
+    progressionact4 = Bit1BooleanField(db_column='ProgressionAct4', blank=True, null=True)
+    progressionact5 = Bit1BooleanField(db_column='ProgressionAct5', blank=True, null=True)
+    dead = Bit1BooleanField(db_column='Dead', blank=True, null=True)
     life = models.IntegerField(db_column='Life', blank=True, null=True)
     damage = models.FloatField(db_column='Damage', blank=True, null=True)
     toughness = models.IntegerField(db_column='Toughness', blank=True, null=True)

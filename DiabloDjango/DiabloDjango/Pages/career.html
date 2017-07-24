@@ -61,14 +61,49 @@
                     <th>Highest Hardcore Level</th>
                     <th>Elite Kills</th>
                     <th>Monster Kills</th>
-                    <th>Total Kills</th>
+                    <th>Monster Kills Hardcore</th>
                     <th>Act I</th>
                     <th>Act II</th>
                     <th>Act III</th>
                     <th>Act IV</th>
                     <th>Act V</th>
                 </tr>
-                {% autoescape off %}{{CareerSeasonTable}}{% endautoescape %}
+                {% for season in SeasonTable %}
+                <tr>
+                    <th>{{ season.seasonid }}</th>
+                    <th>{{ season.paragonlevel }}</th>
+                    <th>{{ season.paragonlevelhardcore }}</th>
+                    <th>{{ season.highesthardcorelevel }}</th>
+                    <th>{{ season.elitekills }}</th>
+                    <th>{{ season.monsterkills }}</th>
+                    <th>{{ season.monsterkillshardcore }}</th>    
+                    {% if season.progressionact1 %}                
+                    <th>Yes</th>
+                    {% else %}
+                    <th>No</th>
+                    {% endif %}
+                    {% if season.progressionact2 %}                
+                    <th>Yes</th>
+                    {% else %}
+                    <th>No</th>
+                    {% endif %}
+                    {% if season.progressionact3 %}                
+                    <th>Yes</th>
+                    {% else %}
+                    <th>No</th>
+                    {% endif %}
+                    {% if season.progressionact4 %}                
+                    <th>Yes</th>
+                    {% else %}
+                    <th>No</th>
+                    {% endif %}
+                    {% if season.progressionact5 %}                
+                    <th>Yes</th>
+                    {% else %}
+                    <th>No</th>
+                    {% endif %}
+                </tr>
+                {% endfor %}
             </table>
         </div>
 

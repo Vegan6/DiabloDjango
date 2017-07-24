@@ -1,7 +1,5 @@
 from decimal import Decimal
-from . import DiabloAPIConfig
 from . import Item
-from DiabloDjango.AppCode import helper
 from DiabloDjango.AppData import models
 
 
@@ -78,6 +76,36 @@ class Hero(dict):
     @property
     def statList(self):
         return self.Stats()
+    
+    @property
+    def Act1Completed(self):
+        progression = self['progression']
+        act1 = progression['act1']
+        return act1['completed']
+
+    @property
+    def Act2Completed(self):
+        progression = self['progression']
+        act2 = progression['act2']
+        return act2['completed']
+
+    @property
+    def Act3Completed(self):
+        progression = self['progression']
+        act3 = progression['act3']
+        return act3['completed']
+
+    @property
+    def Act4Completed(self):
+        progression = self['progression']
+        act4 = progression['act4']
+        return act4['completed']
+
+    @property
+    def Act5Completed(self):
+        progression = self['progression']
+        act5 = progression['act5']
+        return act5['completed']
 
     @property
     def ArcaneResist(self):
@@ -99,16 +127,18 @@ class Hero(dict):
         else:
             backImage = 'VitruvianWoman.jpg'
         return str(backImage)
-
+    
     @property
-    #Move this to view
-    def CareerTableRow(self):
-        return str(
-            '<tr><td>' + str(self.Name) + '</td><td>' + str(self.DisplayLevel) +
-            '</td><td>' + str(self.Class) + '</td><td>' + str(self.Gender) +
-            '</td><td>' + str("{:,}".format(self.EliteKills)) + '</td><td>' +
-            helper.GetUpdateTime(self.LastUpdated).strftime("%Y-%m-%d") +
-            '</td></tr>')
+    def BlockChance(self):
+        return self.Stats()['blockChance']
+    
+    @property
+    def BlockAmountMin(self):
+        return self.Stats()['blockAmountMin']
+    
+    @property
+    def BlockAmountMax(self):
+        return self.Stats()['blockAmountMax']
 
     @property
     def ColdResist(self):
@@ -144,6 +174,10 @@ class Hero(dict):
     @property
     def Dead(self):
         return self['dead']
+    
+    @property
+    def Dexterity(self):
+        return int(self.Stats()['dexterity'])
 
     @property
     def DisplayLevel(self):
@@ -182,6 +216,10 @@ class Hero(dict):
     @property
     def HeroId(self):
         return self['id']
+    
+    @property
+    def Intelligence(self):
+        return int(self.Stats()['intelligence'])
 
     @property
     def LastUpdated(self):
@@ -194,6 +232,10 @@ class Hero(dict):
     @property
     def Life(self):
         return int(self.Stats()['life'])
+    
+    @property
+    def LifePerKill(self):
+        return int(self.Stats()['lifePerKill'])
 
     @property
     def LifeOnHit(self):
@@ -202,10 +244,20 @@ class Hero(dict):
     @property
     def LifeSteal(self):
         return int(self.Stats()['lifeSteal'])
+    
+    @property
+    def LightningResist(self):
+        return int(self.Stats()['lightningResist'])
 
     @property
     def MagicFind(self):
         return int(self.Stats()['magicFind'] * 100)
+    
+    @property
+    def MonsterKills(self):
+        kills = self['kills']
+        #monsterKills = kills['monsters'] 
+        return 0
 
     @property
     def Name(self):
@@ -224,31 +276,33 @@ class Hero(dict):
         return int(self.Stats()['poisonResist'])
 
     @property
-    # needs moved out of here (used in menu)
-    def Portrait(self):
-        LevelType = 'level' if (self.Level < 70) else 'paragon-level'
-        #Return the div for individual hero
-        #Need to add a span to distinguish paragon from standard
-        if (self['seasonal']):
-            nameDisplay = str('<div class="name seasonal">' +
-            '<span class="' + LevelType + '" type="submit" value="Get Hero" name="GetHero" >' +
-                str(self.DisplayLevel) + '</span>' + str(self.Name) + '</div>' +
-            '<div class="seasonal-true">&nbsp;</div>')
-        else:
-            nameDisplay = str('<div class="name">' +
-            '<span class="' + LevelType + '" type="submit" value="Get Hero" name="GetHero" >' +
-                str(self.DisplayLevel) + '</span>' + str(self.Name) + '</div>' +
-            '<div class="seasonal-false">&nbsp;</div>')
-
-        return str('<li class="heroMenuItem"><div class="hero clickable" value="' + str(self['id']) + '">' +
-                    '<a href="/hero?battletag=' + DiabloAPIConfig.BATTLETAG + '&heroid=' + str(self.HeroId) +
-                    '" class="fill-div">' + '<div class="face ' + self['class'] + '-' +
-                    self.Gender + '">&nbsp;</div>' + nameDisplay + '</a></div></li>')
-
+    def PrimaryResource(self):
+        return self.Stats()['primaryResource']
+    
     @property
     def Seasonal(self):
         return self['seasonal']
     
     @property
+    def SeasonCreated(self):
+        return self['seasonCreated']
+    
+    @property
+    def SecondaryResource(self):
+        return self.Stats()['secondaryResource']
+    
+    @property
+    def Strength(self):
+        return int(self.Stats()['strength'])
+    
+    @property
+    def Thorns(self):
+        return self.Stats()['thorns']
+    
+    @property
     def Toughness(self):
         return int(self.Stats()['toughness'])
+    
+    @property
+    def Vitality(self):
+        return int(self.Stats()['vitality'])
