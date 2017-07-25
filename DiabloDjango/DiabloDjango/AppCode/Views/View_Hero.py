@@ -7,7 +7,7 @@ from DiabloDjango.AppData import models
 from DiabloDjango.AppCode.Views import View_Career
 import json
 from django.forms.models import model_to_dict
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 HeroPortrait = ""
@@ -17,128 +17,130 @@ HeroPortrait = ""
 def GetHero(user, locale, heroid):
     global HeroPortrait
     HeroPortrait = ""
-    HeroDetails = DiabloAPI.HeroProfile(locale.serverurl, user.battletag, heroid)
     #Update/Get CurrentHero
-    CurrentHero = UpdateHero(user, HeroDetails)    
-    #Update Hero Portrait List
-    Heroes = models.FactHero.objects.filter(userid=user).order_by('seasonal', '-paragonlevel', '-level', '-elitekills')
-    for hero in Heroes:
-        HeroPortrait += View_Career.GetHeroMenuItem(hero, user.battletag)  
-    return CurrentHero
-
-
-def UpdateHero(user, heroDetails):
-    #global HeroPortrait
-    if not models.FactHero.objects.filter(userid=user, apiheroid=heroDetails.HeroId).exists():
-        #Still need all non career items
+    if not models.FactHero.objects.filter(userid=user, apiheroid=heroid).exists():
+        HeroDetails = DiabloAPI.HeroProfile(locale.serverurl, user.battletag, heroid)
+        #Still need Skills, items, etc
         Hero = models.FactHero(
             userid=user, 
-            apiheroid=heroDetails.HeroId, 
-            name=heroDetails.Name, 
-            classid=heroDetails.Class, 
-            genderid=heroDetails.Gender,
-            level=heroDetails.Level, 
-            paragonlevel=heroDetails.ParagonLevel, 
-            dead=heroDetails.Dead, 
-            seasonal=heroDetails.Seasonal,
-            hardcore=heroDetails.Hardcore, 
-            lastupdateddatetime=helper.GetUpdateTime(heroDetails.LastUpdated), 
-            elitekills=heroDetails.EliteKills,
-            monsterkills=heroDetails.MonsterKills,
-            seasoncreated=heroDetails.SeasonCreated,
-            progressionact1=heroDetails.Act1Completed,
-            progressionact2=heroDetails.Act2Completed,
-            progressionact3=heroDetails.Act3Completed,
-            progressionact4=heroDetails.Act4Completed,
-            progressionact5=heroDetails.Act5Completed,
-            life=heroDetails.Life,
-            damage=heroDetails.Damage,
-            toughness=heroDetails.Toughness,
-            healing=heroDetails.Healing,
-            attackspeed=heroDetails.AttackSpeed,
-            armor=heroDetails.Armor,
-            strength=heroDetails.Strength,
-            dexterity=heroDetails.Dexterity,
-            vitality=heroDetails.Vitality,
-            intelligence=heroDetails.Intelligence,
-            physicalresist=heroDetails.PhysicalResist,
-            fireresist=heroDetails.FireResist,
-            coldresist=heroDetails.ColdResist,
-            lightningresist=heroDetails.LightningResist,
-            poisonresist=heroDetails.PoisonResist,
-            arcaneresist=heroDetails.ArcaneResist,
-            critdamage=heroDetails.CriticalDamage,
-            blockchance=heroDetails.BlockChance,
-            blockamountmin=heroDetails.BlockAmountMin,
-            blockamountmax=heroDetails.BlockAmountMax,
-            thorns=heroDetails.Thorns,
-            lifesteal=heroDetails.LifeSteal,
-            lifeperkill=heroDetails.LifePerKill,
-            goldfind=heroDetails.GoldFind,
-            magicfind=heroDetails.MagicFind,
-            damageincrease=heroDetails.DamageIncrease,
-            critchance=heroDetails.CriticalChance,
-            damagereduction=heroDetails.DamageReduction,
-            lifeonhit=heroDetails.LifeOnHit,
-            primaryresource=heroDetails.PrimaryResource,
-            secondaryresource=heroDetails.SecondaryResource,
+            apiheroid=HeroDetails.HeroId, 
+            name=HeroDetails.Name, 
+            classid=HeroDetails.Class, 
+            genderid=HeroDetails.Gender,
+            level=HeroDetails.Level, 
+            paragonlevel=HeroDetails.ParagonLevel, 
+            dead=HeroDetails.Dead, 
+            seasonal=HeroDetails.Seasonal,
+            hardcore=HeroDetails.Hardcore, 
+            lastupdateddatetime=helper.GetUpdateTime(HeroDetails.LastUpdated), 
+            elitekills=HeroDetails.EliteKills,
+            monsterkills=HeroDetails.MonsterKills,
+            seasoncreated=HeroDetails.SeasonCreated,
+            progressionact1=HeroDetails.Act1Completed,
+            progressionact2=HeroDetails.Act2Completed,
+            progressionact3=HeroDetails.Act3Completed,
+            progressionact4=HeroDetails.Act4Completed,
+            progressionact5=HeroDetails.Act5Completed,
+            life=HeroDetails.Life,
+            damage=HeroDetails.Damage,
+            toughness=HeroDetails.Toughness,
+            healing=HeroDetails.Healing,
+            attackspeed=HeroDetails.AttackSpeed,
+            armor=HeroDetails.Armor,
+            strength=HeroDetails.Strength,
+            dexterity=HeroDetails.Dexterity,
+            vitality=HeroDetails.Vitality,
+            intelligence=HeroDetails.Intelligence,
+            physicalresist=HeroDetails.PhysicalResist,
+            fireresist=HeroDetails.FireResist,
+            coldresist=HeroDetails.ColdResist,
+            lightningresist=HeroDetails.LightningResist,
+            poisonresist=HeroDetails.PoisonResist,
+            arcaneresist=HeroDetails.ArcaneResist,
+            critdamage=HeroDetails.CriticalDamage,
+            blockchance=HeroDetails.BlockChance,
+            blockamountmin=HeroDetails.BlockAmountMin,
+            blockamountmax=HeroDetails.BlockAmountMax,
+            thorns=HeroDetails.Thorns,
+            lifesteal=HeroDetails.LifeSteal,
+            lifeperkill=HeroDetails.LifePerKill,
+            goldfind=HeroDetails.GoldFind,
+            magicfind=HeroDetails.MagicFind,
+            damageincrease=HeroDetails.DamageIncrease,
+            critchance=HeroDetails.CriticalChance,
+            damagereduction=HeroDetails.DamageReduction,
+            lifeonhit=HeroDetails.LifeOnHit,
+            primaryresource=HeroDetails.PrimaryResource,
+            secondaryresource=HeroDetails.SecondaryResource,
             updatedatetime=datetime.now()
             )
         Hero.save()
     # If In DB async call to API (if update time > threshold) and return DB
     else:
-        Hero = models.FactHero.objects.get(userid=user, apiheroid=heroDetails.HeroId)
-        Hero.classid=heroDetails.Class
-        Hero.genderid=heroDetails.Gender
-        Hero.level=heroDetails.Level
-        Hero.paragonlevel=heroDetails.ParagonLevel
-        Hero.dead=heroDetails.Dead
-        Hero.seasonal=heroDetails.Seasonal
-        Hero.hardcore=heroDetails.Hardcore
-        Hero.lastupdateddatetime=helper.GetUpdateTime(heroDetails.LastUpdated)
-        Hero.elitekills=heroDetails.EliteKills
-        Hero.monsterkills=heroDetails.MonsterKills
-        Hero.seasoncreated=heroDetails.SeasonCreated
-        Hero.progressionact1=heroDetails.Act1Completed
-        Hero.progressionact2=heroDetails.Act2Completed
-        Hero.progressionact3=heroDetails.Act3Completed
-        Hero.progressionact4=heroDetails.Act4Completed
-        Hero.progressionact5=heroDetails.Act5Completed
-        Hero.life=heroDetails.Life
-        Hero.damage=heroDetails.Damage
-        Hero.toughness=heroDetails.Toughness
-        Hero.healing=heroDetails.Healing
-        Hero.attackspeed=heroDetails.AttackSpeed
-        Hero.armor=heroDetails.Armor
-        Hero.strength=heroDetails.Strength
-        Hero.dexterity=heroDetails.Dexterity
-        Hero.vitality=heroDetails.Vitality
-        Hero.intelligence=heroDetails.Intelligence
-        Hero.physicalresist=heroDetails.PhysicalResist
-        Hero.fireresist=heroDetails.FireResist
-        Hero.coldresist=heroDetails.ColdResist
-        Hero.lightningresist=heroDetails.LightningResist
-        Hero.poisonresist=heroDetails.PoisonResist
-        Hero.arcaneresist=heroDetails.ArcaneResist
-        Hero.critdamage=heroDetails.CriticalDamage
-        Hero.blockchance=heroDetails.BlockChance
-        Hero.blockamountmin=heroDetails.BlockAmountMin
-        Hero.blockamountmax=heroDetails.BlockAmountMax
-        Hero.thorns=heroDetails.Thorns
-        Hero.lifesteal=heroDetails.LifeSteal
-        Hero.lifeperkill=heroDetails.LifePerKill
-        Hero.goldfind=heroDetails.GoldFind
-        Hero.magicfind=heroDetails.MagicFind
-        Hero.damageincrease=heroDetails.DamageIncrease
-        Hero.critchance=heroDetails.CriticalChance
-        Hero.damagereduction=heroDetails.DamageReduction
-        Hero.lifeonhit=heroDetails.LifeOnHit
-        Hero.primaryresource=heroDetails.PrimaryResource
-        Hero.secondaryresource=heroDetails.SecondaryResource
-        Hero.updatedatetime=datetime.now()
-        Hero.save()
+        Hero = models.FactHero.objects.get(userid=user, apiheroid=heroid)
+        if Hero.updatedatetime <= datetime.now() - timedelta(hours=1):
+            HeroDetails = DiabloAPI.HeroProfile(locale.serverurl, user.battletag, heroid)
+            Hero.classid=HeroDetails.Class
+            Hero.genderid=HeroDetails.Gender
+            Hero.level=HeroDetails.Level
+            Hero.paragonlevel=HeroDetails.ParagonLevel
+            Hero.dead=HeroDetails.Dead
+            Hero.seasonal=HeroDetails.Seasonal
+            Hero.hardcore=HeroDetails.Hardcore
+            Hero.lastupdateddatetime=helper.GetUpdateTime(HeroDetails.LastUpdated)
+            Hero.elitekills=HeroDetails.EliteKills
+            Hero.monsterkills=HeroDetails.MonsterKills
+            Hero.seasoncreated=HeroDetails.SeasonCreated
+            Hero.progressionact1=HeroDetails.Act1Completed
+            Hero.progressionact2=HeroDetails.Act2Completed
+            Hero.progressionact3=HeroDetails.Act3Completed
+            Hero.progressionact4=HeroDetails.Act4Completed
+            Hero.progressionact5=HeroDetails.Act5Completed
+            Hero.life=HeroDetails.Life
+            Hero.damage=HeroDetails.Damage
+            Hero.toughness=HeroDetails.Toughness
+            Hero.healing=HeroDetails.Healing
+            Hero.attackspeed=HeroDetails.AttackSpeed
+            Hero.armor=HeroDetails.Armor
+            Hero.strength=HeroDetails.Strength
+            Hero.dexterity=HeroDetails.Dexterity
+            Hero.vitality=HeroDetails.Vitality
+            Hero.intelligence=HeroDetails.Intelligence
+            Hero.physicalresist=HeroDetails.PhysicalResist
+            Hero.fireresist=HeroDetails.FireResist
+            Hero.coldresist=HeroDetails.ColdResist
+            Hero.lightningresist=HeroDetails.LightningResist
+            Hero.poisonresist=HeroDetails.PoisonResist
+            Hero.arcaneresist=HeroDetails.ArcaneResist
+            Hero.critdamage=HeroDetails.CriticalDamage
+            Hero.blockchance=HeroDetails.BlockChance
+            Hero.blockamountmin=HeroDetails.BlockAmountMin
+            Hero.blockamountmax=HeroDetails.BlockAmountMax
+            Hero.thorns=HeroDetails.Thorns
+            Hero.lifesteal=HeroDetails.LifeSteal
+            Hero.lifeperkill=HeroDetails.LifePerKill
+            Hero.goldfind=HeroDetails.GoldFind
+            Hero.magicfind=HeroDetails.MagicFind
+            Hero.damageincrease=HeroDetails.DamageIncrease
+            Hero.critchance=HeroDetails.CriticalChance
+            Hero.damagereduction=HeroDetails.DamageReduction
+            Hero.lifeonhit=HeroDetails.LifeOnHit
+            Hero.primaryresource=HeroDetails.PrimaryResource
+            Hero.secondaryresource=HeroDetails.SecondaryResource
+            Hero.updatedatetime=datetime.now()
+            Hero.save()
+    #Update Hero Portrait List
+    Heroes = models.FactHero.objects.filter(userid=user).order_by('seasonal', '-paragonlevel', '-level', '-elitekills')
+    for hero in Heroes:
+        HeroPortrait += View_Career.GetHeroMenuItem(hero, user.battletag)  
     return Hero
 
+def GetBackImage(hero):
+    if (hero.genderid.genderid == 0):
+        backImage = 'VitruvianMan.jpg'
+    else:
+        backImage = 'VitruvianWoman.jpg'
+    return str(backImage)
 
 def hero(request):
     """Renders the hero page."""
@@ -147,14 +149,14 @@ def hero(request):
     Locale = models.DimensionLocale.objects.get(localenameapi='en_US')
     BattleTag = request.GET.get('battletag')
     User = View_Career.UpdateUser(BattleTag, Locale)
-    if not models.FactCareer.objects.filter(userid=User, seasonid=-1).exists():
-        raise Exception('Ooops Error:\n' + 'Career Does Not Exist.')
-    else:
-        CareerDetails = models.FactCareer.objects.get(userid=User, seasonid=-1)
     # If HeroID not passed in use current hero or last played hero
     if not HeroID:
         HeroID = json.loads(request.session['CurrentHero'])['apiheroid']
         if not HeroID:
+            if not models.FactCareer.objects.filter(userid=User, seasonid=-1).exists():
+                raise Exception('Ooops Error:\n' + 'Career Does Not Exist.')
+            else:
+                CareerDetails = models.FactCareer.objects.get(userid=User, seasonid=-1)
             HeroID = int(CareerDetails.lastheroplayed)
     else:
         HeroID = int(HeroID)
@@ -169,10 +171,10 @@ def hero(request):
         'Title': 'Diablo 3',
         'Year': datetime.now().year,
         'UserName': '<li class="menuItem">' + User.battletagdisplay + '</li>',
-        #'Damage': "{:,}".format(CurrentHero.damage),
+        'Damage': "{:,}".format(CurrentHero.damage),
         'HeroName': CurrentHero.name,
         'CharacterMenu': HeroPortrait,
-#         'HeroVitru': CurrentHero.BackImage,
+        'HeroVitru': GetBackImage(CurrentHero),
 #         'HandsIcon': CurrentHero.Hands.IconURL,
 #         'HandsToolTip': CurrentHero.Hands.ToolTipURL,
 #         'ChestIcon': CurrentHero.Chest.IconURL,
@@ -209,8 +211,8 @@ def hero(request):
             + "\nParagon Level: " + str(CurrentHero.paragonlevel)
             + "\nClass: " + CurrentHero.classid.classname
             + "\nGender: " + CurrentHero.genderid.gendername
-#             + "\nCritical Hit Chance: " + str(CurrentHero.critchance) + "%"
-#             + "\nCritical Hit Damage: " + str(CurrentHero.critdamage) + "%"
+             + "\nCritical Hit Chance: " + str(CurrentHero.critchance) + "%"
+             + "\nCritical Hit Damage: " + str(CurrentHero.critdamage) + "%"
             + "\nLast Update: " + str(CurrentHero.lastupdateddatetime),
 #             + "\nDamage: " + str(CurrentHero.damage),
     }

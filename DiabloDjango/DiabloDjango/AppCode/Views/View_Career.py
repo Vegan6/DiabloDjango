@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpRequest
-from datetime import datetime
+from datetime import datetime, timedelta
 from DiabloDjango.AppCode import DiabloAPI
 from DiabloDjango.AppCode.DiabloObjects import Career
 from DiabloDjango.AppCode import helper
@@ -18,43 +18,68 @@ Heroes = list()
 # Step 2 Insert career if not there, update & pull if it is (async?)
 #On Update Career - Need to Insert/Update Hereoes listed (fallen and alive)
 def GetCareer(user, locale):
-    global Heroes
+    global Heroes, HeroPortrait
     Heroes = list()
-    CareerDetails = DiabloAPI.GetCareer(locale.serverurl, user.battletag)
-    CurrentCareer = UpdateCareer(user, CareerDetails)
-    #Update Seasons
-    Seasons = CareerDetails.SeasonalProfiles()
-    for season in Seasons:
-        CurrentSeason = Career.Career(Seasons[season])
-        UpdateSeason(user, CurrentSeason)
-    #Update Heroes
-    heroes = CareerDetails.Heroes()
-    for hero in heroes:
-        CurrentHero = Hero.Hero(hero)
-        Heroes.append(UpdateHeroFromCareer(user, CurrentHero))    
-    return CurrentCareer
-
-
-def UpdateCareer(user, careerDetails):
+    CareerDetails = None 
     seasonid = -1
     if not models.FactCareer.objects.filter(userid=user, seasonid=seasonid).exists():
+        CareerDetails = DiabloAPI.GetCareer(locale.serverurl, user.battletag)
         #Still need artisan levels
-        CheckCareer = models.FactCareer(
-            userid=user, seasonid=seasonid, paragonlevel=careerDetails.ParagonLevel,
-            paragonlevelhardcore=careerDetails.ParagonLevelHardcore, paragonlevelseason=careerDetails.ParagonLevelSeason,
-            paragonlevelseasonhardcore=careerDetails.ParagonLevelSeasonHardcore, guildname=careerDetails.GuildName,
-            lastheroplayed=careerDetails.LastHeroPlayed, lastupdateddatetime=helper.GetUpdateTime(careerDetails.LastUpdated),
-            monsterkills=careerDetails.MonsterKills, elitekills=careerDetails.EliteKills, monsterkillshardcore=careerDetails.HardcoreMonsterKills,
-            highesthardcorelevel=careerDetails.HighestHardcoreLevel, progressionact1=careerDetails.Act1Completed, progressionact2=careerDetails.Act2Completed,
-            progressionact3=careerDetails.Act3Completed, progressionact4=careerDetails.Act4Completed, progressionact5=careerDetails.Act5Completed,
-            updatedatetime=datetime.now()
+        CurrentCareer = models.FactCareer(
+            userid=user, seasonid=seasonid, paragonlevel=CareerDetails.ParagonLevel,
+            paragonlevelhardcore=CareerDetails.ParagonLevelHardcore, paragonlevelseason=CareerDetails.ParagonLevelSeason,
+            paragonlevelseasonhardcore=CareerDetails.ParagonLevelSeasonHardcore, guildname=CareerDetails.GuildName,
+            lastheroplayed=CareerDetails.LastHeroPlayed, lastupdateddatetime=helper.GetUpdateTime(CareerDetails.LastUpdated),
+            monsterkills=CareerDetails.MonsterKills, elitekills=CareerDetails.EliteKills, monsterkillshardcore=CareerDetails.HardcoreMonsterKills,
+            highesthardcorelevel=CareerDetails.HighestHardcoreLevel, progressionact1=CareerDetails.Act1Completed, progressionact2=CareerDetails.Act2Completed,
+            progressionact3=CareerDetails.Act3Completed, progressionact4=CareerDetails.Act4Completed, progressionact5=CareerDetails.Act5Completed,
+            blacksmithlevel=CareerDetails.BlacksmithLevel,updatedatetime=datetime.now()
             )
-        CheckCareer.save()
+        CurrentCareer.save()
         #Update each season
     # If In DB async call to API (if update time > threshold) and return DB
     else:
-        CheckCareer = models.FactCareer.objects.get(userid=user, seasonid=seasonid)
-    return CheckCareer
+        CurrentCareer = models.FactCareer.objects.get(userid=user, seasonid=seasonid)
+        if CurrentCareer.updatedatetime <= datetime.now() - timedelta(hours=1):
+            CareerDetails = DiabloAPI.GetCareer(locale.serverurl, user.battletag)
+            #Update Career
+            CurrentCareer.paragonlevel=CareerDetails.ParagonLevel
+            CurrentCareer.paragonlevelhardcore=CareerDetails.ParagonLevelHardcore
+            CurrentCareer.paragonlevelseason=CareerDetails.ParagonLevelSeason
+            CurrentCareer.paragonlevelseasonhardcore=CareerDetails.ParagonLevelSeasonHardcore
+            CurrentCareer.guildname=CareerDetails.GuildName
+            CurrentCareer.lastheroplayed=CareerDetails.LastHeroPlayed
+            CurrentCareer.lastupdateddatetime=helper.GetUpdateTime(CareerDetails.LastUpdated)
+            CurrentCareer.monsterkills=CareerDetails.MonsterKills
+            CurrentCareer.elitekills=CareerDetails.EliteKills
+            CurrentCareer.monsterkillshardcore=CareerDetails.HardcoreMonsterKills
+            CurrentCareer.highesthardcorelevel=CareerDetails.HighestHardcoreLevel
+            CurrentCareer.progressionact1=CareerDetails.Act1Completed
+            CurrentCareer.progressionact2=CareerDetails.Act2Completed
+            CurrentCareer.progressionact3=CareerDetails.Act3Completed
+            CurrentCareer.progressionact4=CareerDetails.Act4Completed
+            CurrentCareer.progressionact5=CareerDetails.Act5Completed
+            CurrentCareer.blacksmithlevel=CareerDetails.BlacksmithLevel
+            CurrentCareer.updatedatetime=datetime.now()
+            CurrentCareer.save()
+    # If threshold then update seasons and heroes
+    if not CareerDetails is None:
+        #Update Seasons
+        Seasons = CareerDetails.SeasonalProfiles()
+        for season in Seasons:
+            CurrentSeason = Career.Career(Seasons[season])
+            UpdateSeason(user, CurrentSeason)
+        #Update Heroes
+        heroes = CareerDetails.Heroes()
+        for hero in heroes:
+            CurrentHero = Hero.Hero(hero)
+            Heroes.append(UpdateHeroFromCareer(user, CurrentHero))
+    else:
+        HeroModel = models.FactHero.objects.filter(userid=user).order_by('seasonal', '-paragonlevel', '-level', '-elitekills')
+        for hero in HeroModel:
+            Heroes.append(hero)
+            HeroPortrait += GetHeroMenuItem(hero, user.battletag)
+    return CurrentCareer
 
 
 def UpdateHeroFromCareer(user, heroDetails):
@@ -64,13 +89,25 @@ def UpdateHeroFromCareer(user, heroDetails):
         Hero = models.FactHero(
             userid=user, apiheroid=heroDetails.HeroId, name=heroDetails.Name, classid=heroDetails.Class, genderid=heroDetails.Gender,
             level=heroDetails.Level, paragonlevel=heroDetails.ParagonLevel, dead=heroDetails.Dead, seasonal=heroDetails.Seasonal,
-            hardcore=heroDetails.Hardcore, lastupdateddatetime=GetUpdateTime(heroDetails.LastUpdated), elitekills=heroDetails.EliteKills,
-            updatedatetime=datetime.now()
+            hardcore=heroDetails.Hardcore, lastupdateddatetime=GetUpdateTime(heroDetails.LastUpdated), elitekills=heroDetails.EliteKills
             )
         Hero.save()
     # If In DB async call to API (if update time > threshold) and return DB
     else:
         Hero = models.FactHero.objects.get(userid=user, apiheroid=heroDetails.HeroId)
+        Hero.userid=user
+        Hero.apiheroid=heroDetails.HeroId
+        Hero.name=heroDetails.Name
+        Hero.classid=heroDetails.Class
+        Hero.genderid=heroDetails.Gender
+        Hero.level=heroDetails.Level
+        Hero.paragonlevel=heroDetails.ParagonLevel
+        Hero.dead=heroDetails.Dead
+        Hero.seasonal=heroDetails.Seasonal
+        Hero.hardcore=heroDetails.Hardcore
+        Hero.lastupdateddatetime=GetUpdateTime(heroDetails.LastUpdated)
+        Hero.elitekills=heroDetails.EliteKills
+        Hero.save()
     
     HeroPortrait += GetHeroMenuItem(Hero, user.battletag)
     
@@ -81,10 +118,20 @@ def UpdateSeason(user, seasonDetails):
     if not models.FactCareer.objects.filter(userid=user, seasonid=seasonid).exists():
         #Still need artisan levels
         CheckCareer = models.FactCareer(
-            userid=user, seasonid=seasonid, paragonlevel=seasonDetails.ParagonLevel, paragonlevelhardcore=seasonDetails.ParagonLevelHardcore,             
-            monsterkills=seasonDetails.MonsterKills, elitekills=seasonDetails.EliteKills, monsterkillshardcore=seasonDetails.HardcoreMonsterKills,
-            highesthardcorelevel=seasonDetails.HighestHardcoreLevel, progressionact1=seasonDetails.Act1Completed, progressionact2=seasonDetails.Act2Completed,
-            progressionact3=seasonDetails.Act3Completed, progressionact4=seasonDetails.Act4Completed, progressionact5=seasonDetails.Act5Completed,
+            userid=user, 
+            seasonid=seasonid, 
+            paragonlevel=seasonDetails.ParagonLevel, 
+            paragonlevelhardcore=seasonDetails.ParagonLevelHardcore,             
+            monsterkills=seasonDetails.MonsterKills, 
+            elitekills=seasonDetails.EliteKills, 
+            monsterkillshardcore=seasonDetails.HardcoreMonsterKills,
+            highesthardcorelevel=seasonDetails.HighestHardcoreLevel, 
+            progressionact1=seasonDetails.Act1Completed, 
+            progressionact2=seasonDetails.Act2Completed,
+            progressionact3=seasonDetails.Act3Completed, 
+            progressionact4=seasonDetails.Act4Completed, 
+            progressionact5=seasonDetails.Act5Completed,
+            blacksmithlevel=seasonDetails.BlacksmithLevel,
             updatedatetime=datetime.now()
             )
         CheckCareer.save()
@@ -92,6 +139,20 @@ def UpdateSeason(user, seasonDetails):
     # If In DB async call to API (if update time > threshold) and return DB
     else:
         CheckCareer = models.FactCareer.objects.get(userid=user, seasonid=seasonid)
+        CheckCareer.paragonlevel=seasonDetails.ParagonLevel
+        CheckCareer.paragonlevelhardcore=seasonDetails.ParagonLevelHardcore         
+        CheckCareer.monsterkills=seasonDetails.MonsterKills
+        CheckCareer.elitekills=seasonDetails.EliteKills
+        CheckCareer.monsterkillshardcore=seasonDetails.HardcoreMonsterKills
+        CheckCareer.highesthardcorelevel=seasonDetails.HighestHardcoreLevel
+        CheckCareer.progressionact1=seasonDetails.Act1Completed
+        CheckCareer.progressionact2=seasonDetails.Act2Completed
+        CheckCareer.progressionact3=seasonDetails.Act3Completed
+        CheckCareer.progressionact4=seasonDetails.Act4Completed
+        CheckCareer.progressionact5=seasonDetails.Act5Completed
+        CheckCareer.blacksmithlevel=seasonDetails.BlacksmithLevel
+        CheckCareer.updatedatetime=datetime.now()
+        CheckCareer.save()
     return CheckCareer
 
 

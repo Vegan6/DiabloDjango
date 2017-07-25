@@ -118,15 +118,6 @@ class Hero(dict):
     @property
     def AttackSpeed(self):
         return round(Decimal(self.Stats()['attackSpeed']), 2)
-
-    @property
-    #move this to controller
-    def BackImage(self):
-        if (int(self['gender']) == 0):
-            backImage = 'VitruvianMan.jpg'
-        else:
-            backImage = 'VitruvianWoman.jpg'
-        return str(backImage)
     
     @property
     def BlockChance(self):

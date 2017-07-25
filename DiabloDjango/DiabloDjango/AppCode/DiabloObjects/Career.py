@@ -1,6 +1,5 @@
 import logging
 import re
-#from . import DiabloAPIConfig
 
 
 class Career(dict):
@@ -9,17 +8,6 @@ class Career(dict):
         return self['kills']
 
     def Heroes(self):
-        #set this to return Hero Object
-        #heroes = dict()
-        #Need to remove API Call from here...
-#         global DiabloAPI
-#         heroProfiles = list()
-#         if len(self['heroes']) > 0:
-#             for hero in self['heroes']:
-#                 heroProfiles.append(DiabloAPI.HeroProfile(DiabloAPIConfig.CURRENTSERVER,
-#                     self.BattleTagURI, int(hero['id'])))
-#         #return heroes
-#         return heroProfiles
         return self['heroes']
 
     def SeasonalProfiles(self):
@@ -76,6 +64,10 @@ class Career(dict):
     @property
     def BattleTagDisplay(self):
         return '<li class="menuItem">' + str(self['battleTag']) + '</li>'
+    
+    @property
+    def BlacksmithLevel(self):
+        return (self['blacksmith'])['level']
 
     @property
     def EliteKills(self):
