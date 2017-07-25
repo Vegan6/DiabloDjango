@@ -36,6 +36,9 @@ def HeroProfile(Host, BattleTag, HeroId):
     else:
         raise Exception('Error:\n' + response.text)
 
+#Leaderboard URL
+#https://us.api.battle.net/data/d3/season/6/leaderboard/rift-team-4
+
 
 def log(text):
     logging.basicConfig(filename="py_log.txt", level=logging.DEBUG)
