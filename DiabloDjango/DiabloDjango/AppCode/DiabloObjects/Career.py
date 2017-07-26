@@ -67,7 +67,8 @@ class Career(dict):
     
     @property
     def BlacksmithLevel(self):
-        return (self['blacksmith'])['level']
+        Blacksmith = self['blacksmith']
+        return Blacksmith['level']
 
     @property
     def EliteKills(self):
