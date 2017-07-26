@@ -12,6 +12,7 @@ import DiabloDjango.AppCode.Views.View_Hero
 import DiabloDjango.AppCode.Views.View_Toolbox
 import DiabloDjango.AppCode.Views.View_Contact
 import DiabloDjango.AppCode.Views.View_About
+import DiabloDjango.AppCode.Views.View_Leaderboard
 
 # Uncomment the next lines to enable the admin:
 #from django.conf.urls import include
@@ -22,6 +23,7 @@ urlpatterns = [
     url(r'^$', DiabloDjango.AppCode.Views.View_Home.home),
     url(r'^hero', DiabloDjango.AppCode.Views.View_Hero.hero),
     url(r'^career', DiabloDjango.AppCode.Views.View_Career.career),
+    url(r'^leaderboard', DiabloDjango.AppCode.Views.View_Leaderboard.leaderboard),
     url(r'^toolbox', DiabloDjango.AppCode.Views.View_Toolbox.toolbox),
     url(r'^contact', DiabloDjango.AppCode.Views.View_Contact.contact),
     url(r'^about', DiabloDjango.AppCode.Views.View_About.about),
