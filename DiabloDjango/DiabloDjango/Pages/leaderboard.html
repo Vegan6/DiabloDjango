@@ -8,12 +8,12 @@
 		{% for leader in Rows.row %}
 			{% for player in leader.player %}
 			<tr>
-				<td>{{leader.data[0].number}}</td>
-				<td>{{leader.data[1].number}}</td>
-				<td>{{leader.data[2].timestamp}}</td>
-				<td>{{player.data[0].string}}&lt;{{player.data[7].string}}&gt;</td>
-				<td>{{player.data[2].string}}</td>
-				<td>{{player.data[5].number}}</td>				
+				<td>{{leader.data.0.number}}</td>
+				<td>{{leader.data.1.number}}</td>
+				<td>{{leader.data.2.timestamp}}</td>
+				<td>{{player.data.0.string}}&lt;{{player.data.7.string}}&gt;</td>
+				<td>{{player.data.2.string}}</td>
+				<td>{{player.data.5.number}}</td>				
 			</tr>
 			{% endfor %}
 		{% endfor %}
