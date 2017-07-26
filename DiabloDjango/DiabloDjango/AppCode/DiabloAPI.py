@@ -56,7 +56,7 @@ def AuthToken():
         #raise Exception('Error:\n' + response.text)
 
 def GetLeaderboards(token):
-    url = 'https://us.api.battle.net/data/d3/season/11/leaderboard/rift-team-2?access_token=%s' % (token)
+    url = 'https://us.api.battle.net/data/d3/season/11/leaderboard/rift-necromancer?access_token=%s' % (token)
     response = requests.get(url)
     return Leaderboard.Leaderboard(json.loads(response.text))
 
