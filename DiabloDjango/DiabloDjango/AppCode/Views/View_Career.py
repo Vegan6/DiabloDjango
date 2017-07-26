@@ -19,6 +19,7 @@ Heroes = list()
 #On Update Career - Need to Insert/Update Hereoes listed (fallen and alive)
 def GetCareer(user, locale):
     global Heroes, HeroPortrait
+    HeroPortrait = ""
     Heroes = list()
     CareerDetails = None 
     seasonid = -1
@@ -131,7 +132,7 @@ def UpdateSeason(user, seasonDetails):
             progressionact3=seasonDetails.Act3Completed, 
             progressionact4=seasonDetails.Act4Completed, 
             progressionact5=seasonDetails.Act5Completed,
-            blacksmithlevel=seasonDetails.BlacksmithLevel,
+           #blacksmithlevel=seasonDetails.BlacksmithLevel,
             updatedatetime=datetime.now()
             )
         CheckCareer.save()
@@ -150,7 +151,7 @@ def UpdateSeason(user, seasonDetails):
         CheckCareer.progressionact3=seasonDetails.Act3Completed
         CheckCareer.progressionact4=seasonDetails.Act4Completed
         CheckCareer.progressionact5=seasonDetails.Act5Completed
-        CheckCareer.blacksmithlevel=seasonDetails.BlacksmithLevel
+        #CheckCareer.blacksmithlevel=seasonDetails.BlacksmithLevel
         CheckCareer.updatedatetime=datetime.now()
         CheckCareer.save()
     return CheckCareer
