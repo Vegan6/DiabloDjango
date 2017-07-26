@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% load staticfiles %}
+{% load templatefilters %}
 
 {% block content %}
 
@@ -7,7 +8,7 @@
 <div style="color:#fff">
 	<form method="post">
 	    <label for="featured">Leaderboard: </label>
-	    <select id="leaderboard" name="leaderboard" onchange="this.form.submit();">
+	    <select id="ddlLeaderboard" name="ddlLeaderboard" onchange="this.form.submit();">
 	    	<option value="rift-barbarian">Barbarian</option>
 	    	<option value="rift-crusader">Crusader</option>	    	
 	        <option value="rift-dh">Demon Hunter</option>
@@ -16,14 +17,27 @@
 	    	<option value="rift-wd">Witch Doctor</option>
 	    	<option value="rift-wizard">Wizard</option>
         </select>
+        <select id="ddlSeason" name="ddlSeason" onchange="this.form.submit();">
+	    	<option value="1">1</option>
+	    	<option value="2">2</option>	    	
+	        <option value="3">3</option>
+	    	<option value="4">4</option>
+	        <option value="5">5</option>
+	    	<option value="6">6</option>
+	    	<option value="7">7</option>
+	    	<option value="8">8</option>
+	    	<option value="9">9</option>
+	    	<option value="10">10</option>
+	    	<option value="11">11</option>
+        </select>
 	</form> 
-	<table>
+	<table id="tbl-leaderboards" class="tblLeaderboards">
 		{% for leader in Rows.row %}
 			{% for player in leader.player %}
 			<tr>
 				<td>{{leader.order}}</td>
 				<td>{{leader.data.1.number}}</td>
-				<td>{{leader.data.2.timestamp}}</td>
+				<td>{{leader.data.2.timestamp|frommillisec}}</td>
 				<td>{{player.data.0.string}}({{player.data.5.number}}) &lt;{{player.data.7.string}}&gt;</td>
 				<td>{{player.data.2.string}}</td>
 			</tr>
@@ -34,9 +48,11 @@
 
 <script>
 	document.addEventListener("DOMContentLoaded", function() {
-	  var select = document.getElementById("leaderboard");
+	  var ddlLeaderboard = document.getElementById("ddlLeaderboard"),
+	  	  ddlSeason = document.getElementById("ddlSeason");
 	  
-	  select.value = "{{ Selected }}";
+	  ddlLeaderboard.value = "{{ Selected }}";
+	  ddlSeason.value = "{{ Season }}";
 	  
 	  console.log(select);
 	  

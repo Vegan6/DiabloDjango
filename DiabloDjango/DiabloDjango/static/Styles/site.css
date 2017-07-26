@@ -242,3 +242,7 @@ select {
    border-radius: 0px;
    padding-left: 15px;
 }
+
+table.tblLeaderboards {
+	background:rgba(0,0,0,0.75);
+}
