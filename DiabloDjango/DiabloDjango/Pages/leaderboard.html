@@ -3,7 +3,20 @@
 
 {% block content %}
 
+
 <div style="color:#fff">
+	<form method="post">
+	    <label for="featured">Leaderboard: </label>
+	    <select id="leaderboard" name="leaderboard" onchange="this.form.submit();">
+	    	<option value="rift-barbarian">Barbarian</option>
+	    	<option value="rift-crusader">Crusader</option>	    	
+	        <option value="rift-dh">Demon Hunter</option>
+	    	<option value="rift-monk">Monk</option>
+	        <option value="rift-necromancer">Necromancer</option>
+	    	<option value="rift-wd">Witch Doctor</option>
+	    	<option value="rift-wizard">Wizard</option>
+        </select>
+	</form> 
 	<table>
 		{% for leader in Rows.row %}
 			{% for player in leader.player %}
@@ -11,13 +24,23 @@
 				<td>{{leader.order}}</td>
 				<td>{{leader.data.1.number}}</td>
 				<td>{{leader.data.2.timestamp}}</td>
-				<td>{{player.data.0.string}}&lt;{{player.data.7.string}}&gt;</td>
+				<td>{{player.data.0.string}}({{player.data.5.number}}) &lt;{{player.data.7.string}}&gt;</td>
 				<td>{{player.data.2.string}}</td>
-				<td>{{player.data.5.number}}</td>				
 			</tr>
 			{% endfor %}
 		{% endfor %}
 	</table>
 </div>
 
+<script>
+	document.addEventListener("DOMContentLoaded", function() {
+	  var select = document.getElementById("leaderboard");
+	  
+	  select.value = "{{ Selected }}";
+	  
+	  console.log(select);
+	  
+	  
+	});
+</script>
 {% endblock %}
