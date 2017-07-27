@@ -55,8 +55,8 @@ def AuthToken():
     #else:
         #raise Exception('Error:\n' + response.text)
 
-def GetLeaderboards(token, data_point):
-    url = 'https://us.api.battle.net/data/d3/season/11/leaderboard/%s?access_token=%s' % (data_point, token)
+def GetLeaderboards(token, data_point, season):
+    url = 'https://us.api.battle.net/data/d3/season/%s/leaderboard/%s?access_token=%s' % (season, data_point, token)
     response = requests.get(url)
     return Leaderboard.Leaderboard(json.loads(response.text))
 
