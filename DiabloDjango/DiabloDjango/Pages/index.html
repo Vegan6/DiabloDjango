@@ -4,8 +4,13 @@
 
 
 
-    <form action="/career" method="get" style="text-align: left">
-        <div class="lead">
+    <form action="/" method="post" style="text-align: left">
+        {% csrf_token %}
+	    {{ form }}
+	    <div class="lead">
+	        <input type="submit" value="Get Career" name="GetCareer" style="color: white; background-color: black;"/>
+	    </div>
+       <!-- <div class="lead">
             <table>
                 <tr>
                     <td>
@@ -19,7 +24,7 @@
             <div class="lead">
                  <input type="submit" value="Get Career" name="GetCareer" style="color: white; background-color: black;"/>
             </div>
-        </div>
+        </div>-->
 
     </form>
 

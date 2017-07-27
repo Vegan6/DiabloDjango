@@ -98,6 +98,13 @@ select,
 textarea {
     max-width: 780px;
 }
+label.homeform {
+	color: white	
+}
+input.homeform {
+	background-color: #000000; 
+	color: #ffffff
+}
 
 /* styles for validation helpers */
 #json-dispaly{

@@ -10,10 +10,12 @@ import re
 import json
 from django.forms.models import model_to_dict
 from DiabloDjango.AppCode.helper import GetUpdateTime
+from django.middleware import csrf
 
 
 HeroPortrait = ""
 Heroes = list()
+Request = ""
 # Step 1 Insert career if not there, pull if it is
 # Step 2 Insert career if not there, update & pull if it is (async?)
 #On Update Career - Need to Insert/Update Hereoes listed (fallen and alive)
@@ -196,17 +198,29 @@ def GetHeroMenuItem(hero, battletag):
                           str(DisplayLevel) + '</span>' + str(hero.name) + '</div>' +
                           '<div class="seasonal-false">&nbsp;</div>')
         
-    return str('<li class="heroMenuItem"><div class="hero clickable" value="' + str(hero.apiheroid) + '">' +
-               '<a href="/hero?battletag=' + battletag + '&heroid=' + str(hero.apiheroid) +
-               '" class="fill-div">' + '<div class="face ' + hero.classid.externalclassname + '-' +
-               hero.genderid.gendername + '">&nbsp;</div>' + nameDisplay + '</a></div></li>')
+#     return str('<li class="heroMenuItem"><div class="hero clickable" value="' + str(hero.apiheroid) + '">' +
+#                '<a href="/hero?battletag=' + battletag + '&heroid=' + str(hero.apiheroid) +
+#                '" class="fill-div">' + '<div class="face ' + hero.classid.externalclassname + '-' +
+#                hero.genderid.gendername + '">&nbsp;</div>' + nameDisplay + '</a></div></li>')
+    return str('<li class="heroMenuItem"><div class="hero clickable">' +
+                '<form id="form' + str(hero.apiheroid) + '" method="post" action="/hero">' +
+                '<input type="hidden" name="csrfmiddlewaretoken" value="' + csrf.get_token(Request) + '">'
+                '<input type="hidden" name="heroid" value="' + str(hero.apiheroid) + '" />' +
+                    #'<a href="#" class="fill-div" onclick="document.forms[0].submit();return false;">' +
+                    '<a href="#" class="fill-div" onclick=''document.getElementById("form' + str(hero.apiheroid) + '").submit();return false;''>'
+                '<div class="face ' + hero.classid.externalclassname + '-' +
+               hero.genderid.gendername + '">&nbsp;</div>' + nameDisplay + '</a></form></div></li>')
 
 
 def career(request):
     """Renders the Career page."""
+    global Request
+    Request = ""
+    Request = request    
     assert isinstance(request, HttpRequest)
     Locale = models.DimensionLocale.objects.get(localenameapi='en_US')
-    BattleTag = request.GET.get('battletagcareer')
+    #BattleTag = request.GET.get('battletagcareer')
+    BattleTag = request.session['battletag']
     CareerDetails = models.FactCareer()
     if not BattleTag:
         CareerFromMem = json.loads(request.session['CareerProfile'])

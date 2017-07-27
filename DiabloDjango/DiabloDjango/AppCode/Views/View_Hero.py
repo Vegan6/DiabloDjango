@@ -145,10 +145,13 @@ def GetBackImage(hero):
 def hero(request):
     """Renders the hero page."""
     assert isinstance(request, HttpRequest)
-    HeroID = request.GET.get('heroid', '')
+    #HeroID = request.GET.get('heroid', '')
     Locale = models.DimensionLocale.objects.get(localenameapi='en_US')
-    BattleTag = request.GET.get('battletag')
+    BattleTag = request.session['battletag']
     User = View_Career.UpdateUser(BattleTag, Locale)
+    HeroID = None
+    if request.method == 'POST':
+        HeroID = request.POST['heroid']  
     # If HeroID not passed in use current hero or last played hero
     if not HeroID:
         HeroID = json.loads(request.session['CurrentHero'])['apiheroid']
