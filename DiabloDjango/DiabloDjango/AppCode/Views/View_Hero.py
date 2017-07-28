@@ -6,17 +6,15 @@ from DiabloDjango.AppCode import DiabloAPI
 from DiabloDjango.AppData import models
 from DiabloDjango.AppCode.Views import View_Career
 import json
+import re
 from django.forms.models import model_to_dict
 from datetime import datetime, timedelta
 
 
-HeroPortrait = ""
 # Step 1 Insert career if not there, pull if it is
 # Step 2 Insert career if not there, update & pull if it is (async?)
 #On Update Career - Need to Insert/Update Hereoes listed (fallen and alive)
 def GetHero(user, locale, heroid):
-    global HeroPortrait
-    HeroPortrait = ""
     #Update/Get CurrentHero
     if not models.FactHero.objects.filter(userid=user, apiheroid=heroid).exists():
         HeroDetails = DiabloAPI.HeroProfile(locale.serverurl, user.battletag, heroid)
@@ -129,10 +127,6 @@ def GetHero(user, locale, heroid):
             Hero.secondaryresource=HeroDetails.SecondaryResource
             Hero.updatedatetime=datetime.now()
             Hero.save()
-    #Update Hero Portrait List
-    Heroes = models.FactHero.objects.filter(userid=user).order_by('seasonal', '-paragonlevel', '-level', '-elitekills')
-    for hero in Heroes:
-        HeroPortrait += View_Career.GetHeroMenuItem(hero, user.battletag)  
     return Hero
 
 def GetBackImage(hero):
@@ -145,10 +139,10 @@ def GetBackImage(hero):
 def hero(request):
     """Renders the hero page."""
     assert isinstance(request, HttpRequest)
-    #HeroID = request.GET.get('heroid', '')
     Locale = models.DimensionLocale.objects.get(localenameapi='en_US')
     BattleTag = request.session['battletag']
     User = View_Career.UpdateUser(BattleTag, Locale)
+    CareerDetails = models.FactCareer.objects.get(userid=User, seasonid=-1)
     HeroID = None
     if request.method == 'POST':
         HeroID = request.POST['heroid']  
@@ -165,10 +159,16 @@ def hero(request):
         HeroID = int(HeroID)
     CurrentHero = GetHero(User, Locale, HeroID)
         
-    #Save Current Hero to Cookies
+    #Save Current Hero to Session
     toDict = model_to_dict(CurrentHero)
     toJSON = json.dumps(toDict, cls=helper.DateTimeEncoder)
     request.session['CurrentHero'] = toJSON
+    
+    #Get Character Menu
+    try:
+        HeroPortrait = request.session['heroportrait']
+    except:
+        HeroPortrait = ''
 
     context_instance = {
         'Title': 'Diablo 3',
@@ -177,7 +177,10 @@ def hero(request):
         'Damage': "{:,}".format(CurrentHero.damage),
         'HeroName': CurrentHero.name,
         'CharacterMenu': HeroPortrait,
+        'BattleTag': re.sub('\#\d{4}', '', User.battletagdisplay),
+        'GuildName': '<' + CareerDetails.guildname + '>',
         'HeroVitru': GetBackImage(CurrentHero),
+        'Hero': CurrentHero,
 #         'HandsIcon': CurrentHero.Hands.IconURL,
 #         'HandsToolTip': CurrentHero.Hands.ToolTipURL,
 #         'ChestIcon': CurrentHero.Chest.IconURL,

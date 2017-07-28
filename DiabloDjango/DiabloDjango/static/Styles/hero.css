@@ -82,3 +82,12 @@ div.Legs {
 }
 
 /*#endregion*/
+
+span.heroname {
+    font-size: 16px;
+    font-weight: normal;
+    color: #CECECE;   
+    margin: auto;
+    line-height: 31px;
+    text-align: center;
+}

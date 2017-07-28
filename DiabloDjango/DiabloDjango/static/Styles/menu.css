@@ -135,8 +135,14 @@
     	background-position: 0 -396px;
     }
     div#HeroList div.hero div.name {
-            color:#FFFFFF; font-weight:bold; background-color:rgba(0, 0, 0, 0.5); padding-top:9px; margin:2px;
-            text-align:right; text-overflow:ellipsis; overflow:hidden;
+            color:#FFFFFF; 
+            font-weight:bold; 
+            background-color:rgba(0, 0, 0, 0.5); 
+            padding-top:9px; 
+            margin:2px;
+            text-align:right; 
+            text-overflow:ellipsis; 
+            overflow:hidden;
             width: 90%;
             float: right;
             position: absolute;
@@ -145,15 +151,24 @@
             height: 53px;
     }
     div#HeroList div.hero div.name span.level {
-    	color:#FFFFFF; margin-right:5px;
+    	color:#FFFFFF; 
+    	margin-right:5px;
     }
     div#HeroList div.hero div.name span.paragon-level {
-    	color:#FF0000; margin-right:5px;
+    	color:#FF0000; 
+    	margin-right:5px;
+    }
+    div#HeroList div.hero {
+      background-color:#000; 
     }
     div#HeroList div.hero div.hardcore {
-    	background-color:rgba(80, 0, 0, 0.5); border-color:#900;
+    	color:#e60101; 
+    }
+    div#HeroList div.hero div.dead {
+      background-color:rgba(230, 1, 1, .3); 
     }
     /*div#HeroList div.hero div.seasonal {
+    HARDCORE COLOR: e60101
     	color:#FF0000; background-color:rgba(0, 80, 0, 0.5); border-color:#690;
     }*/
     div#HeroList div.seasonal-true {

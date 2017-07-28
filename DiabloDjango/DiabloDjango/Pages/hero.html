@@ -5,7 +5,13 @@
 {% block content %}
 
 
-    <h1 style="color:#B20000">{{HeroName}}</h1>
+    <div class="username">
+	    <span class="battletag">{{BattleTag}}</span>
+	    <span class="guildname"> {{GuildName}}</span>
+	</div>
+	<div class="careerdivrow">
+        <span class="heroname">{{HeroName}} {{Hero.level}} ({{Hero.paragonlevel}})</span>
+    </div>
     <!--<span>{{StatList}}</span>-->
     <table id="HeroStats" class="StatsTable">
         <thead>

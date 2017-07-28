@@ -81,7 +81,7 @@ def GetCareer(user, locale):
         HeroModel = models.FactHero.objects.filter(userid=user).order_by('seasonal', '-paragonlevel', '-level', '-elitekills')
         for hero in HeroModel:
             Heroes.append(hero)
-            HeroPortrait += GetHeroMenuItem(hero, user.battletag)
+            HeroPortrait += GetHeroMenuItem(hero)
     return CurrentCareer
 
 
@@ -112,7 +112,7 @@ def UpdateHeroFromCareer(user, heroDetails):
         Hero.elitekills=heroDetails.EliteKills
         Hero.save()
     
-    HeroPortrait += GetHeroMenuItem(Hero, user.battletag)
+    HeroPortrait += GetHeroMenuItem(Hero)
     
     return Hero
 
@@ -182,31 +182,38 @@ def GetActProgHTML(actProg):
         return '<span class="actprogincomplete">Incomplete</span>'
     
     
-def GetHeroMenuItem(hero, battletag):
+def GetHeroMenuItem(hero):
     LevelType = 'level' if (hero.level < 70) else 'paragon-level'
     DisplayLevel = hero.level if (hero.level < 70) else hero.paragonlevel
     #Return the div for individual hero
     #Need to add a span to distinguish hardcore/dead from not
     if (hero.seasonal):
-        nameDisplay = str('<div class="name seasonal">' +
+        if (hero.dead):
+            nameDisplay = str('<div class="name seasonal dead' + (' hardcore' if hero.hardcore else '') + '">' +
+                          '<span class="' + LevelType + '" type="submit" value="Get Hero" name="GetHero" >' +
+                          str(DisplayLevel) + '</span>' + str(hero.name) + '</div>' +
+                          '<div class="seasonal-true">&nbsp;</div>')
+        else:
+            nameDisplay = str('<div class="name seasonal' + (' hardcore' if hero.hardcore else '') + '">' +
                           '<span class="' + LevelType + '" type="submit" value="Get Hero" name="GetHero" >' +
                           str(DisplayLevel) + '</span>' + str(hero.name) + '</div>' +
                           '<div class="seasonal-true">&nbsp;</div>')
     else:
-        nameDisplay = str('<div class="name">' +
+        if (hero.dead):
+            nameDisplay = str('<div class="name dead' + (' hardcore' if hero.hardcore else '') + '">' +
+                          '<span class="' + LevelType + '" type="submit" value="Get Hero" name="GetHero" >' +
+                          str(DisplayLevel) + '</span>' + str(hero.name) + '</div>' +
+                          '<div class="seasonal-false">&nbsp;</div>')
+        else:
+            nameDisplay = str('<div class="name' + (' hardcore' if hero.hardcore else '') + '">' +
                           '<span class="' + LevelType + '" type="submit" value="Get Hero" name="GetHero" >' +
                           str(DisplayLevel) + '</span>' + str(hero.name) + '</div>' +
                           '<div class="seasonal-false">&nbsp;</div>')
         
-#     return str('<li class="heroMenuItem"><div class="hero clickable" value="' + str(hero.apiheroid) + '">' +
-#                '<a href="/hero?battletag=' + battletag + '&heroid=' + str(hero.apiheroid) +
-#                '" class="fill-div">' + '<div class="face ' + hero.classid.externalclassname + '-' +
-#                hero.genderid.gendername + '">&nbsp;</div>' + nameDisplay + '</a></div></li>')
     return str('<li class="heroMenuItem"><div class="hero clickable">' +
                 '<form id="form' + str(hero.apiheroid) + '" method="post" action="/hero">' +
                 '<input type="hidden" name="csrfmiddlewaretoken" value="' + csrf.get_token(Request) + '">'
                 '<input type="hidden" name="heroid" value="' + str(hero.apiheroid) + '" />' +
-                    #'<a href="#" class="fill-div" onclick="document.forms[0].submit();return false;">' +
                     '<a href="#" class="fill-div" onclick=''document.getElementById("form' + str(hero.apiheroid) + '").submit();return false;''>'
                 '<div class="face ' + hero.classid.externalclassname + '-' +
                hero.genderid.gendername + '">&nbsp;</div>' + nameDisplay + '</a></form></div></li>')
@@ -219,7 +226,6 @@ def career(request):
     Request = request    
     assert isinstance(request, HttpRequest)
     Locale = models.DimensionLocale.objects.get(localenameapi='en_US')
-    #BattleTag = request.GET.get('battletagcareer')
     BattleTag = request.session['battletag']
     CareerDetails = models.FactCareer()
     if not BattleTag:
@@ -232,7 +238,8 @@ def career(request):
         toDict = model_to_dict(CareerDetails)
         toJSON = json.dumps(toDict, cls=helper.DateTimeEncoder)
         request.session['CareerProfile'] = toJSON
-    
+    # Save Hero Portrait list to session
+    request.session['heroportrait'] = HeroPortrait
     SeasonDetails = models.FactCareer.objects.filter(userid=User, seasonid__gte=0).order_by('seasonid')
     context_instance = {
         'Title': 'Diablo 3',

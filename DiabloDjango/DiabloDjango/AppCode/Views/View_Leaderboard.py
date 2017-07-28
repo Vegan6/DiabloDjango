@@ -25,6 +25,11 @@ def GetLeaderboard(data_point, season):
 def leaderboard(request):
     """Renders the leaderboard page."""
     assert isinstance(request, HttpRequest)    
+    initial={'battletag': request.session.get('battletag', None)}
+    try:
+        HeroPortrait = request.session['heroportrait']
+    except:
+        HeroPortrait = ''
     
     data_point = request.POST.get("ddlLeaderboard", "rift-necromancer")
     season = request.POST.get("ddlSeason", "11");
@@ -34,6 +39,8 @@ def leaderboard(request):
     context = {
             'title': 'Leaderboards',
             'year': datetime.now().year,
+            'UserName': '<li class="menuItem">' + str(initial['battletag']).replace('-', '#') + '</li>',
+            'CharacterMenu': HeroPortrait,
             'Rows' : Leaderboards,
             'Selected' : data_point,
             "Season" : season

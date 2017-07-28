@@ -9,6 +9,10 @@ def home(request):
     assert isinstance(request, HttpRequest)
     initial={'battletag': request.session.get('battletag', None)}
     form = HomeForm.HomeForm(request.POST or None, initial=initial)
+    try:
+        HeroPortrait = request.session['heroportrait']
+    except:
+        HeroPortrait = ''
     if request.method == 'POST':
         if form.is_valid():
             request.session['battletag'] = form.cleaned_data['battletag']
@@ -19,6 +23,7 @@ def home(request):
             'year': datetime.now().year,
             'form': form,
             'UserName': '<li class="menuItem">' + str(initial['battletag']).replace('-', '#') + '</li>',
+            'CharacterMenu': HeroPortrait,
         }
     return render(
         request,
