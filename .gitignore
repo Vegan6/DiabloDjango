@@ -241,3 +241,4 @@ ModelManifest.xml
 *.pyc
 
 DiabloDjango/db\.sqlite3
+/.metadata/
