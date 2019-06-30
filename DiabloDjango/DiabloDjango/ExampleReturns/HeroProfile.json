@@ -1,487 +1,541 @@
 {
-	'dead': False,
-	'level': 70,
-	'id': 76254722,
-	'seasonCreated': 6,
-	'skills': {
-		'passive': [{
-			'skill': {
-				'level': 13,
-				'tooltipUrl': 'skill/wizard/evocation',
-				'skillCalcId': 'b',
-				'description': 'Reduce all cooldowns by 20%.',
-				'name': 'Evocation',
-				'slug': 'evocation',
-				'icon': 'wizard_passive_evocation',
-				'flavor': 'So long have you focused on twisting reality to your will that time itself seeks to appease you.'
-			}
-		}, {
-			'skill': {
-				'level': 60,
-				'tooltipUrl': 'skill/wizard/unstable-anomaly',
-				'skillCalcId': 'h',
-				'description': 'When you receive fatal damage, you instead gain a shield equal to 400% of your maximum Life for 5 seconds and release a shockwave that knocks enemies back and Stuns them for 3 seconds. \r\n\r\nThis effect may occur once every 60 seconds.',
-				'name': 'Unstable Anomaly',
-				'slug': 'unstable-anomaly',
-				'icon': 'wizard_passive_unstableanomaly',
-				'flavor': '"It takes perfect concentration for a Wizard to dance on the edge of infinity. Never be the one to break that concentration." â€”One-Eye Whipple'
-			}
-		}, {
-			'skill': {
-				'level': 66,
-				'tooltipUrl': 'skill/wizard/audacity',
-				'skillCalcId': 'i',
-				'description': 'You deal 30% additional damage to enemies within 15 yards.',
-				'name': 'Audacity',
-				'slug': 'audacity',
-				'icon': 'x1_wizard_passive_audacity',
-				'flavor': '"Those who dare approach you do so at their own peril." â€”Valthek, High Councilor of the Vizjerei'
-			}
-		}, {
-			'skill': {
-				'level': 10,
-				'tooltipUrl': 'skill/wizard/blur',
-				'skillCalcId': 'Z',
-				'description': 'Decrease damage taken by 17%.',
-				'name': 'Blur',
-				'slug': 'blur',
-				'icon': 'wizard_passive_blur',
-				'flavor': 'Truly powerful Wizards have been known to turn their magic inward, transmuting the very composition of their own bodies for boundless energy and catlike reflexes.'
-			}
-		}],
-		'active': [{
-			'rune': {
-				'level': 44,
-				'simpleDescription': 'Gain Arcane Power for each enemy hit.',
-				'skillCalcId': 'Y',
-				'description': 'Gain 1 Arcane Power for each enemy hit.',
-				'name': 'Surge of Power',
-				'slug': 'electrocute-d',
-				'type': 'd',
-				'tooltipParams': 'rune/electrocute/d',
-				'order': 3
-			},
-			'skill': {
-				'level': 15,
-				'icon': 'wizard_electrocute',
-				'tooltipUrl': 'skill/wizard/electrocute',
-				'simpleDescription': 'Signature Spell\r\n\r\nCast chain lightning that electrocutes up to 3 enemies.',
-				'skillCalcId': 'U',
-				'description': 'This is a Signature spell. Signature spells are free to cast.\r\n\r\nLightning arcs from your fingertips, dealing 138% weapon damage as Lightning. The lightning can jump, hitting up to 2 additional enemies.',
-				'name': 'Electrocute',
-				'slug': 'electrocute',
-				'categorySlug': 'primary'
-			}
-		}, {
-			'rune': {
-				'level': 18,
-				'simpleDescription': "You take less damage from attacks every second you channel.\r\n\r\nArcane Torrent's damage turns into Fire.",
-				'skillCalcId': 'a',
-				'description': "You take 15% less damage from attacks while channeling. Every second you channel increases this amount by 5%, up to a maximum total of 25% damage reduction.\r\n\r\nArcane Torrent's damage turns into Fire.",
-				'name': 'Flame Ward',
-				'slug': 'arcane-torrent-a',
-				'type': 'a',
-				'tooltipParams': 'rune/arcane-torrent/a',
-				'order': 0
-			},
-			'skill': {
-				'level': 12,
-				'icon': 'wizard_arcanetorrent',
-				'tooltipUrl': 'skill/wizard/arcane-torrent',
-				'simpleDescription': 'Cost: 16 Arcane Power\r\n\r\nUnleash a barrage of arcane projectiles.',
-				'skillCalcId': 'e',
-				'description': 'Cost: 16 Arcane Power\r\n\r\nHurl a barrage of arcane projectiles that deal 400% weapon damage as Arcane to all enemies near the impact location.\r\n\r\nArcane Torrent damage is increased by 305% weapon damage every second, up to a maximum total of 1010% weapon damage as Arcane.',
-				'name': 'Arcane Torrent',
-				'slug': 'arcane-torrent',
-				'categorySlug': 'secondary'
-			}
-		}, {
-			'rune': {
-				'level': 31,
-				'simpleDescription': 'When you are struck by a melee attack, your Armor is increased.',
-				'skillCalcId': 'Z',
-				'description': 'When you are struck by a melee attack, your Armor is increased by 20% for 30 seconds. This effect stacks up to 3 times.',
-				'name': 'Crystallize',
-				'slug': 'ice-armor-d',
-				'type': 'd',
-				'tooltipParams': 'rune/ice-armor/d',
-				'order': 1
-			},
-			'skill': {
-				'level': 14,
-				'icon': 'wizard_icearmor',
-				'tooltipUrl': 'skill/wizard/ice-armor',
-				'simpleDescription': 'Cost: 25 Arcane Power\r\n\r\nProtect yourself with a barrier of ice that Chills attackers.\r\n\r\nOnly one Armor may be active at a time.',
-				'skillCalcId': 'f',
-				'description': 'Cost: 25 Arcane Power\r\n\r\nSurround yourself in a barrier of ice that reduces damage from melee attacks by 12%. Melee attackers are either Chilled or Frozen for 3 seconds. Lasts 10 minutes.\r\n\r\nOnly one Armor may be active at a time.',
-				'name': 'Ice Armor',
-				'slug': 'ice-armor',
-				'categorySlug': 'conjuration'
-			}
-		}, {
-			'rune': {
-				'level': 56,
-				'simpleDescription': 'Instead of a single explosion, release a chain of consecutive explosions.',
-				'skillCalcId': 'c',
-				'description': 'Instead of a single explosion, release a chain of 3 consecutive explosions, each dealing 520% weapon damage as Fire.',
-				'name': 'Chain Reaction',
-				'slug': 'explosive-blast-e',
-				'type': 'e',
-				'tooltipParams': 'rune/explosive-blast/e',
-				'order': 4
-			},
-			'skill': {
-				'level': 19,
-				'icon': 'wizard_explosiveblast',
-				'tooltipUrl': 'skill/wizard/explosive-blast',
-				'simpleDescription': 'Cost: 20 Arcane Power\r\nCooldown: 6 seconds\r\n\r\nGather energy and release it as a devastating blast.',
-				'skillCalcId': 'h',
-				'description': 'Cost: 20 Arcane Power\r\nCooldown: 6 seconds\r\n\r\nGather an infusion of energy around you that explodes after 1.5 seconds for 945% weapon damage as Arcane to all enemies within 12 yards.',
-				'name': 'Explosive Blast',
-				'slug': 'explosive-blast',
-				'categorySlug': 'mastery'
-			}
-		}, {
-			'rune': {
-				'level': 59,
-				'simpleDescription': 'Cast a short range Wave of Force that Stuns after teleporting.',
-				'skillCalcId': 'c',
-				'description': 'Cast a short range Wave of Force upon arrival, dealing 175% weapon damage as Arcane to all nearby enemies and stunning them for 1 second.',
-				'name': 'Calamity',
-				'slug': 'teleport-a',
-				'type': 'a',
-				'tooltipParams': 'rune/teleport/a',
-				'order': 4
-			},
-			'skill': {
-				'level': 22,
-				'icon': 'wizard_teleport',
-				'tooltipUrl': 'skill/wizard/teleport',
-				'simpleDescription': 'Cooldown: 11 seconds\r\n\r\nTeleport instantly to another location.',
-				'skillCalcId': 'Q',
-				'description': 'Cooldown: 11 seconds\r\n\r\nTeleport through the ether to the selected location up to 50 yards away.',
-				'name': 'Teleport',
-				'slug': 'teleport',
-				'categorySlug': 'defensive'
-			}
-		}, {
-			'rune': {
-				'level': 36,
-				'simpleDescription': 'An explosion erupts around you when you transform.\r\n\r\nArchon abilities deal Fire damage instead of Arcane.',
-				'skillCalcId': 'a',
-				'description': 'An explosion erupts around you when you transform, dealing 3680% weapon damage as Fire to all enemies within 15 yards.\r\n\r\nArchon abilities deal Fire damage instead of Arcane.',
-				'name': 'Combustion',
-				'slug': 'archon-e',
-				'type': 'e',
-				'tooltipParams': 'rune/archon/e',
-				'order': 0
-			},
-			'skill': {
-				'level': 30,
-				'icon': 'wizard_archon',
-				'tooltipUrl': 'skill/wizard/archon',
-				'simpleDescription': 'Cooldown: 120 seconds\r\n\r\nBecome a being of pure energy and gain potent new abilities for 20 seconds.',
-				'skillCalcId': 'm',
-				'description': 'Cooldown: 120 seconds\r\n\r\nTransform into a being of pure arcane energy for 20 seconds. While in Archon form, your normal abilities are replaced by powerful Archon abilities, your damage is increased by 30%, and your Armor and resistances are increased by 150%.\r\n\r\nEach enemy killed while in Archon form increases your damage by 6% for the remaining duration of Archon.',
-				'name': 'Archon',
-				'slug': 'archon',
-				'categorySlug': 'mastery'
-			}
-		}]
-	},
-	'paragonLevel': 240,
-	'gender': 1,
-	'progression': {
-		'act2': {
-			'completedQuests': [],
-			'completed': False
-		},
-		'act1': {
-			'completedQuests': [{
-				'name': 'The Fallen Star',
-				'slug': 'the-fallen-star'
-			}, {
-				'name': 'The Legacy of Cain',
-				'slug': 'the-legacy-of-cain'
-			}, {
-				'name': 'A Shattered Crown',
-				'slug': 'a-shattered-crown'
-			}],
-			'completed': False
-		},
-		'act4': {
-			'completedQuests': [],
-			'completed': False
-		},
-		'act5': {
-			'completedQuests': [],
-			'completed': False
-		},
-		'act3': {
-			'completedQuests': [],
-			'completed': False
-		}
-	},
-	'last-updated': 1465884301,
-	'class': 'wizard',
-	'stats': {
-		'physicalResist': 1179,
-		'healing': 1264990.0,
-		'critDamage': 3.5500000000000003,
-		'coldResist': 1179,
-		'blockAmountMin': 0,
-		'lifeSteal': 0.0,
-		'toughness': 4822050.0,
-		'critChance': 0.35000000075,
-		'attackSpeed': 1.399999976158142,
-		'secondaryResource': 0,
-		'lifeOnHit': 30172.0,
-		'armor': 6507,
-		'lightningResist': 1871,
-		'fireResist': 1333,
-		'blockChance': 0.0,
-		'damageReduction': 0.0,
-		'dexterity': 77,
-		'arcaneResist': 1323,
-		'thorns': 17808.0,
-		'goldFind': 0.6600000000000001,
-		'strength': 77,
-		'poisonResist': 1333,
-		'blockAmountMax': 0,
-		'damageIncrease': 0.0,
-		'lifePerKill': 5584.0,
-		'intelligence': 7666,
-		'vitality': 2612,
-		'damage': 498156.0,
-		'life': 296418,
-		'primaryResource': 114,
-		'magicFind': 0.39
-	},
-	'items': {
-		'hands': {
-			'tooltipParams': 'item/CkUIlaL0zggSBwgEFVyXwXod89VHtB1yjh0hHTp12owdmKeOwB1-VrMuHfNwB60wi1I4lQJAAFASWARglQKAAUa1AclbkqQYuN2MrA9QBFgCoAG43YysDw',
-			'displayColor': 'green',
-			'name': "Vyr's Grasping Gauntlets",
-			'id': 'Unique_Gloves_Set_13_x1',
-			'icon': 'unique_gloves_set_13_x1_demonhunter_male',
-			'setItemsEquipped': ['Unique_Gloves_Set_13_x1']
-		},
-		'mainHand': {
-			'name': 'In-geom',
-			'id': 'Unique_Sword_1H_113_x1',
-			'icon': 'unique_sword_1h_113_x1_demonhunter_male',
-			'tooltipParams': 'item/Cj8I-4TBJxIHCAQVmeiNUB1yjh0hHWpJaeodZ70cYR2eT4PcHfNwB60wi1I4qwNAAFASWARgqwOAAUa1AZvZ2e8YsqLviApQBFgC',
-			'displayColor': 'orange'
-		},
-		'leftFinger': {
-			'name': 'Obsidian Ring of the Zodiac',
-			'id': 'Unique_Ring_023_p2',
-			'icon': 'unique_ring_023_p2_demonhunter_male',
-			'tooltipParams': 'item/ClYIvf6N2wsSBwgEFfttR7kduLwgeh1-dlWhHeYV2w0ddEWniR1LtflLMItSOIUDQABQElgEYIUDgAFGpQF0RaeJrQGYp47AtQE2VV1EuAHJw-70AcABIxiJyMTrCFAEWAI',
-			'displayColor': 'orange'
-		},
-		'shoulders': {
-			'tooltipParams': 'item/CkUIsaT0xAsSBwgEFcn53okdrNOZOR1Fe8bdHcA0GXIdQ05EUR0gjTdUHZuG9uIwi1I4oQJAAFASWARgoQKAAUa1AdL4yBUY7ZiI4g5QBFgCoAHtmIjiDg',
-			'displayColor': 'green',
-			'name': 'Dashing Pauldrons of Despair',
-			'id': 'Unique_Shoulder_Set_02_p2',
-			'icon': 'unique_shoulder_set_02_p2_demonhunter_male',
-			'setItemsEquipped': ['Unique_Shoulder_Set_02_p2']
-		},
-		'rightFinger': {
-			'tooltipParams': 'item/CncIgYqtowISBwgEFeo06HUdrLzTUx0_8gnYHTp12owdmKeOwB2bhvbiHWYjBlAwi1I4mQNAAFASWARgmQNqMAoMCAAQj4OctoWAgKADEiAIxv79rAQSBwgEFWwXo8Ewi1I4AEAAUBJYBJABBtgBEoABRrUBNlVdRBjU08HeDlAEWAKgAdTTwd4O',
-			'displayColor': 'green',
-			'name': 'Restraint',
-			'id': 'Unique_Ring_Set_002_x1',
-			'icon': 'unique_ring_set_002_x1_demonhunter_male',
-			'setItemsEquipped': ['Unique_Ring_Set_002_x1']
-		},
-		'neck': {
-			'tooltipParams': 'item/CkUIqKL_xQYSBwgEFdx2G1sdxK05XB0BYC2xHbDBCXIdOJ3kBB1-VrMuHfNwB60wi1I4_AJAAFASWARg_AKAAUa1AbDFRGQYuNvbsQtQBFgCoAG429uxCw',
-			'displayColor': 'green',
-			'name': "Blackthorne's Duncraig Cross",
-			'id': 'Unique_Amulet_016_x1',
-			'icon': 'unique_amulet_016_x1_demonhunter_male',
-			'setItemsEquipped': ['Unique_Amulet_016_x1']
-		},
-		'torso': {
-			'tooltipParams': 'item/CswBCPCSlMEJEgcIBBWFd28PHXGLd_Ad0IZp1x05neQEHcA0GXIdcyMGUB3cO1NoMItaOJwDQABQElgEYJwDaisKDAgAELbn8_OAgIDgOxIbCMy8ndcPEgcIBBWMvhzCMItSOABAAVgEkAEGaisKDAgAELfn8_OAgIDgOxIbCNS53toEEgcIBBWMvhzCMItSOABAAVgEkAEGaisKDAgAELeehduCgICAKxIbCObnpJwHEgcIBBWMvhzCMItSOABAAVgEkAEGgAFGtQExIhlgGIre-_YBUARYAqABl83m7A6gAdXuyvwFoAHd14_lBaABit779gGgAajS45MG',
-			'displayColor': 'green',
-			'name': "Firebird's Breast",
-			'id': 'Unique_Chest_Set_06_x1',
-			'icon': 'unique_chest_set_06_x1_wizard_female',
-			'setItemsEquipped': ['Unique_Chest_Set_06_x1', 'Unique_Pants_Set_06_x1', 'Unique_Orb_Set_06_x1', 'Unique_Helm_Set_06_x1', 'Unique_Boots_Set_06_x1']
-		},
-		'waist': {
-			'name': 'Fazulaâ€™s Improbable Chain',
-			'id': 'P4_Unique_Belt_07',
-			'icon': 'p4_unique_belt_07_demonhunter_male',
-			'tooltipParams': 'item/CkAIyKPVjgUSBwgEFYbGMFgdxK05XB07J28kHdqy8YgdQ05EUR2bhvbiMItSOIwDQABQElgEYIwDgAFGtQHAp0LUGIyahoMLUARYAg',
-			'displayColor': 'orange'
-		},
-		'head': {
-			'tooltipParams': 'item/CnIIydfs0gcSBwgEFbQsM4kd83AHrR1mIwZQHZetR7sdZz7s5B1_jofMHT_yCdgwi1I4uQNAAFASWARguQNqKwoMCAAQ49fHnYqAgMAxEhsI7duy5wMSBwgEFd4KX_4wi1I4AEABWASQAQaAAUa1AX_5Tl0Yl83m7A5QBFgCoAGXzebsDqAB1e7K_AWgAd3Xj-UFoAGK3vv2AaABqNLjkwY',
-			'displayColor': 'green',
-			'name': "Firebird's Plume",
-			'id': 'Unique_Helm_Set_06_x1',
-			'icon': 'unique_helm_set_06_x1_demonhunter_male',
-			'setItemsEquipped': ['Unique_Chest_Set_06_x1', 'Unique_Pants_Set_06_x1', 'Unique_Orb_Set_06_x1', 'Unique_Helm_Set_06_x1', 'Unique_Boots_Set_06_x1']
-		},
-		'feet': {
-			'tooltipParams': 'item/CkUI_vmB2AMSBwgEFVWkNtAdm4b24h1DTkRRHZetR7sdos8UVh2s05k5HX-Oh8wwi1I4-gJAAFASWARg-gKAAUa1AaBFm38Y1e7K_AVQBFgCoAGXzebsDqAB1e7K_AWgAd3Xj-UFoAGK3vv2AaABqNLjkwY',
-			'displayColor': 'green',
-			'name': "Firebird's Tarsi",
-			'id': 'Unique_Boots_Set_06_x1',
-			'icon': 'unique_boots_set_06_x1_demonhunter_male',
-			'setItemsEquipped': ['Unique_Chest_Set_06_x1', 'Unique_Pants_Set_06_x1', 'Unique_Orb_Set_06_x1', 'Unique_Helm_Set_06_x1', 'Unique_Boots_Set_06_x1']
-		},
-		'bracers': {
-			'name': 'Strongarm Bracers',
-			'id': 'Unique_Bracer_007_x1',
-			'icon': 'unique_bracer_007_x1_demonhunter_male',
-			'tooltipParams': 'item/CkAI7-vyrQwSBwgEFSPaCDcd0IZp1x1txAUSHYQDodYd3DtTaB3mFdsNMItaOJ8DQABQElgEYJ8DgAFGtQHbLMrLGMboxvAGUARYAg',
-			'displayColor': 'orange'
-		},
-		'offHand': {
-			'tooltipParams': 'item/CkAIk8_G1wwSBwgEFREKrtEd8hig4B1UpbyNHcA0GXIduLwgeh30cAetMItaOLMCQABQElgEYLMCgAFGtQHaw45xGN3Xj-UFUARYAqABl83m7A6gAdXuyvwFoAHd14_lBaABit779gGgAajS45MG',
-			'displayColor': 'green',
-			'name': "Firebird's Eye",
-			'id': 'Unique_Orb_Set_06_x1',
-			'icon': 'unique_orb_set_06_x1_demonhunter_male',
-			'setItemsEquipped': ['Unique_Chest_Set_06_x1', 'Unique_Pants_Set_06_x1', 'Unique_Orb_Set_06_x1', 'Unique_Helm_Set_06_x1', 'Unique_Boots_Set_06_x1']
-		},
-		'legs': {
-			'tooltipParams': 'item/Cp0BCMPg4KkPEgcIBBWUdDwxHZuG9uIdj5DKUB07J28kHUNORFEd2T_Unx2svNNTMItSOKsCQABQElgEYKsCaisKDAgAEMfp8_OAgIDgOxIbCOD9i78KEgcIBBXdCl_-MItSOABAAVgEkAEGaikKDAgAEKTp8_OAgIDgOxIZCKf5qpACEgcIBBXdCl_-MI9SOABAAZABBoABRrUBn5LVpRio0uOTBlAEWAKgAZfN5uwOoAHV7sr8BaAB3deP5QWgAYre-_YBoAGo0uOTBg',
-			'displayColor': 'green',
-			'name': "Firebird's Down",
-			'id': 'Unique_Pants_Set_06_x1',
-			'icon': 'unique_pants_set_06_x1_demonhunter_male',
-			'setItemsEquipped': ['Unique_Chest_Set_06_x1', 'Unique_Pants_Set_06_x1', 'Unique_Orb_Set_06_x1', 'Unique_Helm_Set_06_x1', 'Unique_Boots_Set_06_x1']
-		}
-	},
-	'followers': {
-		'templar': {
-			'slug': 'templar',
-			'items': {
-				'special': {
-					'name': 'Enchanting Favor',
-					'id': 'x1_FollowerItem_Templar_Legendary_01',
-					'icon': 'x1_followeritem_templar_legendary_01_demonhunter_male',
-					'tooltipParams': 'item/ClgIoLzpzAYSBwgEFY9EW9Idco4dIR07J28kHXWNeDwdsMEJch2BgcbEMIlSOKQCQABQElgGYKQCgAFGtQHsC2NEyAHt4tYFyAGwiLweyAHTxMIXyAG8ucsDGOHtpdoF',
-					'displayColor': 'orange'
-				},
-				'mainHand': {
-					'name': 'The Barber',
-					'id': 'Unique_Dagger_003_x1',
-					'icon': 'unique_dagger_003_x1_demonhunter_male',
-					'tooltipParams': 'item/CkUI88masAMSBwgEFToM8sUdG13PRB2MHL6WHRYJsEYde6MmIh30cAetHZ5Pg9wwi1o4wwJAAFASWARgwwKAAUa1Ab6CT7IYi8_voAc',
-					'displayColor': 'orange'
-				},
-				'leftFinger': {
-					'name': 'Halo of Karini',
-					'id': 'P41_Unique_Ring_01',
-					'icon': 'p41_unique_ring_01_demonhunter_male',
-					'tooltipParams': 'item/CkwIrp2igwcSBwgEFbrJRMsdS7X5Sx1nPuzkHUNORFEdZiMGUB2bhvbiMIlSOPoBQABQElgGYPoBgAFGtQE2VV1EyAGwiLweyAHoqpMIGIvZ2csG',
-					'displayColor': 'orange'
-				},
-				'rightFinger': {
-					'name': "Bul-Kathos's Wedding Band",
-					'id': 'Unique_Ring_020_x1',
-					'icon': 'unique_ring_020_x1_demonhunter_male',
-					'tooltipParams': 'item/ClYItLj7qggSBwgEFd_JRbkdP_IJ2B2L8XpCHTp12owdmKeOwB2bhvbiMItSONgCQABQElgEYNgCgAFGpQGbhvbirQFmIwZQtQE2VV1EuAGfx4XFDsABAxjB2NHrCA',
-					'displayColor': 'orange'
-				},
-				'offHand': {
-					'name': "Coven's Criterion",
-					'id': 'Unique_Shield_107_x1',
-					'icon': 'unique_shield_107_x1_demonhunter_male',
-					'tooltipParams': 'item/CkAI1vHghgESBwgEFY499AsdRXvG3R1-VrMuHYGBxsQdTT8Y9h2bBgDLMItSONoCQABQElgEYNoCgAFGtQETDDtsGJz2ob8B',
-					'displayColor': 'orange'
-				},
-				'neck': {
-					'name': 'Eye of Etlich',
-					'id': 'Unique_Amulet_014_x1',
-					'icon': 'unique_amulet_014_x1_demonhunter_male',
-					'tooltipParams': 'item/CkUIlPzBywoSBwgEFRpeGlsdRXvG3R1qSWnqHYvxekId83AHrR2ELjYpHWU61OAwi1I40AJAAFASWARg0AKAAUa1AbDFRGQYtPjSsQs',
-					'displayColor': 'orange'
-				}
-			},
-			'level': 70,
-			'skills': [{
-				'skill': {
-					'level': 5,
-					'tooltipUrl': 'skill/templar/heal',
-					'simpleDescription': 'Cooldown: 30 seconds\r\n\r\nHeals you and the Templar.',
-					'skillCalcId': 'a',
-					'description': 'Cooldown: 30 seconds\r\n\r\nHeals you and the Templar for 193112 Life.',
-					'name': 'Heal',
-					'slug': 'heal',
-					'icon': 'templar_heal_110'
-				}
-			}, {
-				'skill': {
-					'level': 10,
-					'tooltipUrl': 'skill/templar/loyalty',
-					'simpleDescription': 'Provides Life regeneration for you and the Templar.',
-					'skillCalcId': 'b',
-					'description': 'Regenerates 6437 Life per second for you and the Templar.',
-					'name': 'Loyalty',
-					'slug': 'loyalty',
-					'icon': 'templar_loyalty'
-				}
-			}, {
-				'skill': {
-					'level': 15,
-					'tooltipUrl': 'skill/templar/onslaught',
-					'simpleDescription': 'Cooldown: 10 seconds\r\n\r\nDelivers a massive blow to an enemy.',
-					'skillCalcId': 'X',
-					'description': 'Cooldown: 10 seconds\r\n\r\nDelivers a massive blow to an enemy for 800% weapon damage.',
-					'name': 'Onslaught',
-					'slug': 'onslaught',
-					'icon': 'templar_onslaught'
-				}
-			}, {
-				'skill': {
-					'level': 20,
-					'tooltipUrl': 'skill/templar/inspire',
-					'simpleDescription': 'Increases your resource generation.',
-					'skillCalcId': 'd',
-					'description': 'Increases your resource generation.\r\n\r\nMana: 7 per second.\r\nHatred: 1 per second.\r\nWrath: 1.1 per second.\r\nArcane Power: 1.4 per second.\r\nFury: 10% generated.\r\nSpirit: 10% generated.',
-					'name': 'Inspire',
-					'slug': 'inspire',
-					'icon': 'templar_inspire'
-				}
-			}],
-			'stats': {
-				'goldFind': 6,
-				'magicFind': 0,
-				'experienceBonus': 74
-			}
-		}
-	},
-	'seasonal': True,
-	'name': 'Possum',
-	'kills': {
-		'elites': 3048
-	},
-	'hardcore': False,
-	'legendaryPowers': [{
-		'name': 'The Furnace',
-		'id': 'Unique_Mace_2H_103_x1',
-		'icon': 'unique_mace_2h_103_x1_demonhunter_male',
-		'tooltipParams': 'item/the-furnace',
-		'displayColor': 'orange'
-	}, {
-		'name': 'Spaulders of Zakara',
-		'id': 'Unique_Shoulder_102_x1',
-		'icon': 'unique_shoulder_102_x1_demonhunter_male',
-		'tooltipParams': 'item/spaulders-of-zakara',
-		'displayColor': 'orange'
-	}, {
-		'name': 'Ring of Royal Grandeur',
-		'id': 'P3_Unique_Ring_107',
-		'icon': 'p3_unique_ring_107_demonhunter_male',
-		'tooltipParams': 'item/ring-of-royal-grandeur-3EbhYb',
-		'displayColor': 'orange'
-	}]
+  "id": 111630741,
+  "name": "PandaCorn",
+  "class": "demon-hunter",
+  "gender": 1,
+  "level": 70,
+  "paragonLevel": 714,
+  "kills": {
+    "elites": 6915
+  },
+  "hardcore": true,
+  "seasonal": true,
+  "seasonCreated": 17,
+  "skills": {
+    "active": [
+      {
+        "skill": {
+          "slug": "grenade",
+          "name": "Grenade",
+          "icon": "demonhunter_grenades",
+          "level": 15,
+          "tooltipUrl": "/class/demon-hunter/active/grenade",
+          "description": "Generate: 4 Hatred\n\nThrow a grenade that bounces and explodes for 160% weapon damage as Fire.",
+          "descriptionHtml": "<p><span class=\"d3-color-gold\">Generate:</span> <span class=\"d3-color-green\">4</span> Hatred</p>\n\n<p>Throw a grenade that bounces and explodes for <span class=\"d3-color-green\">160%</span> weapon damage as Fire.</p>"
+        },
+        "rune": {
+          "slug": "tinkerer",
+          "type": "d",
+          "name": "Tinkerer",
+          "level": 22,
+          "description": "Increase Hatred generated to 7.",
+          "descriptionHtml": "<p>Increase Hatred generated to <span class=\"d3-color-green\">7</span>.</p>"
+        }
+      },
+      {
+        "skill": {
+          "slug": "impale",
+          "name": "Impale",
+          "icon": "demonhunter_impale",
+          "level": 2,
+          "tooltipUrl": "/class/demon-hunter/active/impale",
+          "description": "Cost: 20 Hatred\n\nThrow a knife that impales an enemy for 750% weapon damage.",
+          "descriptionHtml": "<p><span class=\"d3-color-gold\">Cost:</span> <span class=\"d3-color-green\">20</span> Hatred</p>\n\n<p>Throw a knife that impales an enemy for <span class=\"d3-color-green\">750%</span> weapon damage.</p>"
+        },
+        "rune": {
+          "slug": "ricochet",
+          "type": "d",
+          "name": "Ricochet",
+          "level": 53,
+          "description": "The knife ricochets to 2 additional nearby enemies within 20 yards of each other.\n\nImpale's damage turns into Lightning.",
+          "descriptionHtml": "<p>The knife ricochets to <span class=\"d3-color-green\">2</span> additional nearby enemies within <span class=\"d3-color-green\">20</span> yards of each other.</p>\n\n<p>Impale's damage turns into Lightning.</p>"
+        }
+      },
+      {
+        "skill": {
+          "slug": "companion",
+          "name": "Companion",
+          "icon": "x1_demonhunter_companion",
+          "level": 17,
+          "tooltipUrl": "/class/demon-hunter/active/companion",
+          "description": "Cooldown: 30 seconds\n\nActive: Your raven deals an additional 500% damage on its next attack.\n\nPassive: Summons a raven companion that pecks at enemies for 100% of your weapon damage as Physical.",
+          "descriptionHtml": "<p><span class=\"d3-color-gold\">Cooldown:</span> <span class=\"d3-color-green\">30</span> seconds</p>\n\n<p><span class=\"d3-color-gold\">Active:</span> Your raven deals an additional <span class=\"d3-color-green\">500%</span> damage on its next attack.</p>\n\n<p><span class=\"d3-color-gold\">Passive:</span> Summons a raven companion that pecks at enemies for <span class=\"d3-color-green\">100%</span> of your weapon damage as Physical.</p>"
+        },
+        "rune": {
+          "slug": "wolf companion",
+          "type": "c",
+          "name": "Wolf Companion",
+          "level": 59,
+          "description": "Active: Your wolf howls, granting you and your allies within 60 yards 15% increased damage for 10 seconds.\n\nPassive: Summons a wolf companion that attacks enemies in front of him for 150% of your weapon damage as Physical.",
+          "descriptionHtml": "<p><span class=\"d3-color-gold\">Active:</span> Your wolf howls, granting you and your allies within <span class=\"d3-color-green\">60</span> yards <span class=\"d3-color-green\">15%</span> increased damage for <span class=\"d3-color-green\">10</span> seconds.</p>\n\n<p><span class=\"d3-color-gold\">Passive:</span> Summons a wolf companion that attacks enemies in front of him for <span class=\"d3-color-green\">150%</span> of your weapon damage as Physical.</p>"
+        }
+      },
+      {
+        "skill": {
+          "slug": "vault",
+          "name": "Vault",
+          "icon": "demonhunter_vault",
+          "level": 9,
+          "tooltipUrl": "/class/demon-hunter/active/vault",
+          "description": "Cost: 8 Discipline\n\nTumble acrobatically 35 yards.",
+          "descriptionHtml": "<p><span class=\"d3-color-gold\">Cost:</span> <span class=\"d3-color-green\">8</span> Discipline</p>\n\n<p>Tumble acrobatically <span class=\"d3-color-green\">35</span> yards.</p>"
+        },
+        "rune": {
+          "slug": "rattling roll",
+          "type": "e",
+          "name": "Rattling Roll",
+          "level": 23,
+          "description": "Enemies you vault through are knocked away and Stunned for 1.5 seconds.",
+          "descriptionHtml": "<p>Enemies you vault through are knocked away and Stunned for <span class=\"d3-color-green\">1.5</span> seconds.</p>"
+        }
+      },
+      {
+        "skill": {
+          "slug": "vengeance",
+          "name": "Vengeance",
+          "icon": "x1_demonhunter_vengeance",
+          "level": 61,
+          "tooltipUrl": "/class/demon-hunter/active/vengeance",
+          "description": "Cooldown: 90 seconds\n\nTurn into the physical embodiment of Vengeance for 20 seconds.\n\n\n Side Guns: Gain 4 additional piercing shots for 60% weapon damage each on every attack.\n Homing Rockets: Shoot 2 rockets at nearby enemies for 80% weapon damage each on every attack.\n Vengeance: Gain 40% increased damage.",
+          "descriptionHtml": "<p><span class=\"d3-color-gold\">Cooldown:</span> <span class=\"d3-color-green\">90</span> seconds</p>\n\n<p>Turn into the physical embodiment of Vengeance for <span class=\"d3-color-green\">20</span> seconds.</p>\n\n<p><span class=\"tooltip-icon-bullet\"></span> <span class=\"d3-color-gold\">Side Guns:</span> Gain <span class=\"d3-color-green\">4</span> additional piercing shots for <span class=\"d3-color-green\">60%</span> weapon damage each on every attack.<br></br><span class=\"tooltip-icon-bullet\"></span> <span class=\"d3-color-gold\">Homing Rockets:</span> Shoot <span class=\"d3-color-green\">2</span> rockets at nearby enemies for <span class=\"d3-color-green\">80%</span> weapon damage each on every attack.<br></br><span class=\"tooltip-icon-bullet\"></span> <span class=\"d3-color-gold\">Vengeance:</span> Gain <span class=\"d3-color-green\">40%</span> increased damage.</p>"
+        },
+        "rune": {
+          "slug": "dark heart",
+          "type": "b",
+          "name": "Dark Heart",
+          "level": 63,
+          "description": "Vengeance fills your heart, reducing all damage taken by 50%.",
+          "descriptionHtml": "<p>Vengeance fills your heart, reducing all damage taken by <span class=\"d3-color-green\">50%</span>.</p>"
+        }
+      },
+      {
+        "skill": {
+          "slug": "shadow-power",
+          "name": "Shadow Power",
+          "icon": "demonhunter_shadowpower",
+          "level": 16,
+          "tooltipUrl": "/class/demon-hunter/active/shadow-power",
+          "description": "Cost: 14 Discipline\n\nDraw in the power of the shadows, gaining 26,821 Life per Hit for 5 seconds.\n\nLife per Hit gained is increased by 25% of your Life per Kill.",
+          "descriptionHtml": "<p><span class=\"d3-color-gold\">Cost:</span> <span class=\"d3-color-green\">14</span> Discipline</p>\n\n<p>Draw in the power of the shadows, gaining <span class=\"d3-color-green\">26,821</span> Life per Hit for <span class=\"d3-color-green\">5</span> seconds.</p>\n\n<p>Life per Hit gained is increased by <span class=\"d3-color-green\">25%</span> of your Life per Kill.</p>"
+        },
+        "rune": {
+          "slug": "blood moon",
+          "type": "e",
+          "name": "Blood Moon",
+          "level": 29,
+          "description": "Double the total amount of Life per Hit gained.",
+          "descriptionHtml": "<p>Double the total amount of Life per Hit gained.</p>"
+        }
+      }
+    ],
+    "passive": [
+      {
+        "skill": {
+          "slug": "cull-the-weak",
+          "name": "Cull the Weak",
+          "icon": "demonhunter_passive_culltheweak",
+          "level": 20,
+          "tooltipUrl": "/class/demon-hunter/passive/cull-the-weak",
+          "description": "Increase damage against Slowed or Chilled enemies by 20%.",
+          "descriptionHtml": "<p>Increase damage against Slowed or Chilled enemies by <span class=\"d3-color-green\">20%</span>.</p>",
+          "flavorText": "\"I'll show you the same mercy you showed my helpless family.\" —Tyla Shrikewing"
+        }
+      },
+      {
+        "skill": {
+          "slug": "numbing-traps",
+          "name": "Numbing Traps",
+          "icon": "demonhunter_passive_numbingtraps",
+          "level": 30,
+          "tooltipUrl": "/class/demon-hunter/passive/numbing-traps",
+          "description": "Enemies you Slow, Chill, or hit with Fan of Knives, Spike Trap, Caltrops, Grenades, and Sentry fire have their damage reduced by 25% for 5 seconds.",
+          "descriptionHtml": "<p>Enemies you Slow, Chill, or hit with Fan of Knives, Spike Trap, Caltrops, Grenades, and Sentry fire have their damage reduced by <span class=\"d3-color-green\">25%</span> for <span class=\"d3-color-green\">5</span> seconds.</p>",
+          "flavorText": "\"Demonic anatomy is strange and diverse. At times they defy sanity, but in other ways they are just as vulnerable as we are.\" —Meditations on the Enemy"
+        }
+      },
+      {
+        "skill": {
+          "slug": "awareness",
+          "name": "Awareness",
+          "icon": "x1_demonhunter_passive_awareness",
+          "level": 66,
+          "tooltipUrl": "/class/demon-hunter/passive/awareness",
+          "description": "When you receive fatal damage, you instead vanish for 2 seconds and regenerate 50% of maximum Life.\n\nThis effect may occur once every 60 seconds.",
+          "descriptionHtml": "<p>When you receive fatal damage, you instead vanish for <span class=\"d3-color-green\">2</span> seconds and regenerate <span class=\"d3-color-green\">50%</span> of maximum Life.</p>\n\n<p>This effect may occur once every <span class=\"d3-color-green\">60</span> seconds.</p>",
+          "flavorText": "\"Everything is a test. Study your surroundings well, and you will pass.\" —Josen, Master Hunter"
+        }
+      },
+      {
+        "skill": {
+          "slug": "ambush",
+          "name": "Ambush",
+          "icon": "x1_demonhunter_passive_ambush",
+          "level": 64,
+          "tooltipUrl": "/class/demon-hunter/passive/ambush",
+          "description": "You deal 40% additional damage to enemies above 75% health.",
+          "descriptionHtml": "<p>You deal <span class=\"d3-color-green\">40%</span> additional damage to enemies above <span class=\"d3-color-green\">75%</span> health.</p>",
+          "flavorText": "\"The art of surprise is difficult, but rewarding to master.\" —Mynton, Demon Hunter"
+        }
+      }
+    ]
+  },
+  "items": {
+    "head": {
+      "id": "Unique_Helm_Set_03_p2",
+      "name": "Accursed Visage",
+      "icon": "unique_helm_set_03_p2_demonhunter_male",
+      "displayColor": "green",
+      "tooltipParams": "/item/accursed-visage-Unique_Helm_Set_03_p2",
+      "dyeColor": {
+        "id": "Dye_19",
+        "name": "Purity Dye",
+        "icon": "dye_19_demonhunter_male",
+        "tooltipParams": "item/purity-dye"
+      }
+    },
+    "neck": {
+      "id": "x1_Amulet_norm_unique_25",
+      "name": "Hellfire Amulet",
+      "icon": "x1_amulet_norm_unique_25_demonhunter_male",
+      "displayColor": "orange",
+      "tooltipParams": "/artisan/jeweler/recipe/hellfire-amulet-of-intelligence"
+    },
+    "torso": {
+      "id": "Unique_Chest_Set_03_p2",
+      "name": "Cage of the Hellborn",
+      "icon": "unique_chest_set_03_p2_demonhunter_male",
+      "displayColor": "green",
+      "tooltipParams": "/item/cage-of-the-hellborn-Unique_Chest_Set_03_p2",
+      "dyeColor": {
+        "id": "Dye_20",
+        "name": "Abyssal Dye",
+        "icon": "dye_20_demonhunter_male",
+        "tooltipParams": "item/abyssal-dye"
+      }
+    },
+    "shoulders": {
+      "id": "Unique_Shoulder_Set_03_p2",
+      "name": "Unsanctified Shoulders",
+      "icon": "unique_shoulder_set_03_p2_demonhunter_male",
+      "displayColor": "green",
+      "tooltipParams": "/item/unsanctified-shoulders-Unique_Shoulder_Set_03_p2",
+      "dyeColor": {
+        "id": "Dye_19",
+        "name": "Purity Dye",
+        "icon": "dye_19_demonhunter_male",
+        "tooltipParams": "item/purity-dye"
+      }
+    },
+    "legs": {
+      "id": "Unique_Pants_Set_03_p2",
+      "name": "Unholy Plates",
+      "icon": "unique_pants_set_03_p2_demonhunter_male",
+      "displayColor": "green",
+      "tooltipParams": "/item/unholy-plates-Unique_Pants_Set_03_p2",
+      "dyeColor": {
+        "id": "Dye_20",
+        "name": "Abyssal Dye",
+        "icon": "dye_20_demonhunter_male",
+        "tooltipParams": "item/abyssal-dye"
+      }
+    },
+    "waist": {
+      "id": "Unique_Belt_009_x1",
+      "name": "The Witching Hour",
+      "icon": "unique_belt_009_x1_demonhunter_male",
+      "displayColor": "orange",
+      "tooltipParams": "/item/the-witching-hour-Unique_Belt_009_x1"
+    },
+    "hands": {
+      "id": "Unique_Gloves_Set_03_p2",
+      "name": "Fiendish Grips",
+      "icon": "unique_gloves_set_03_p2_demonhunter_male",
+      "displayColor": "green",
+      "tooltipParams": "/item/fiendish-grips-Unique_Gloves_Set_03_p2",
+      "dyeColor": {
+        "id": "Dye_19",
+        "name": "Purity Dye",
+        "icon": "dye_19_demonhunter_male",
+        "tooltipParams": "item/purity-dye"
+      }
+    },
+    "bracers": {
+      "id": "P61_Unique_Bracer_103",
+      "name": "Wraps of Clarity",
+      "icon": "p61_unique_bracer_103_demonhunter_male",
+      "displayColor": "orange",
+      "tooltipParams": "/item/wraps-of-clarity-P61_Unique_Bracer_103"
+    },
+    "feet": {
+      "id": "Unique_Boots_Set_03_p2",
+      "name": "Hell Walkers",
+      "icon": "unique_boots_set_03_p2_demonhunter_male",
+      "displayColor": "green",
+      "tooltipParams": "/item/hell-walkers-Unique_Boots_Set_03_p2",
+      "dyeColor": {
+        "id": "Dye_19",
+        "name": "Purity Dye",
+        "icon": "dye_19_demonhunter_male",
+        "tooltipParams": "item/purity-dye"
+      }
+    },
+    "leftFinger": {
+      "id": "Unique_Ring_Set_001_x1",
+      "name": "Focus",
+      "icon": "unique_ring_set_001_x1_demonhunter_male",
+      "displayColor": "green",
+      "tooltipParams": "/item/focus-Unique_Ring_Set_001_x1"
+    },
+    "rightFinger": {
+      "id": "Unique_Ring_Set_002_x1",
+      "name": "Restraint",
+      "icon": "unique_ring_set_002_x1_demonhunter_male",
+      "displayColor": "green",
+      "tooltipParams": "/item/restraint-Unique_Ring_Set_002_x1"
+    },
+    "mainHand": {
+      "id": "P61_Unique_Bow_104_x1",
+      "name": "Yang's Recurve",
+      "icon": "p61_unique_bow_104_x1_demonhunter_male",
+      "displayColor": "orange",
+      "tooltipParams": "/item/yangs-recurve-P61_Unique_Bow_104_x1"
+    },
+    "offHand": {
+      "id": "P61_Unique_Quiver_007",
+      "name": "Dead Man's Legacy",
+      "icon": "p61_unique_quiver_007_demonhunter_male",
+      "displayColor": "orange",
+      "tooltipParams": "/item/dead-mans-legacy-P61_Unique_Quiver_007"
+    }
+  },
+  "followers": {
+    "templar": {
+      "slug": "templar",
+      "level": 70,
+      "items": {
+        "neck": {
+          "id": "Unique_Amulet_104_x1",
+          "name": "The Ess of Johan",
+          "icon": "unique_amulet_104_x1_demonhunter_male",
+          "displayColor": "orange",
+          "tooltipParams": "/item/the-ess-of-johan-Unique_Amulet_104_x1"
+        },
+        "leftFinger": {
+          "id": "Unique_Ring_102_p2",
+          "name": "Wyrdward",
+          "icon": "unique_ring_102_p2_demonhunter_male",
+          "displayColor": "orange",
+          "tooltipParams": "/item/wyrdward-Unique_Ring_102_p2"
+        },
+        "rightFinger": {
+          "id": "Unique_Ring_017_p4",
+          "name": "Oculus Ring",
+          "icon": "unique_ring_017_p4_demonhunter_male",
+          "displayColor": "orange",
+          "tooltipParams": "/item/oculus-ring-Unique_Ring_017_p4"
+        },
+        "mainHand": {
+          "id": "P3_Unique_Sword_1H_104",
+          "name": "Fulminator",
+          "icon": "p3_unique_sword_1h_104_demonhunter_male",
+          "displayColor": "orange",
+          "tooltipParams": "/item/fulminator-P3_Unique_Sword_1H_104"
+        },
+        "offHand": {
+          "id": "Unique_Shield_008_x1",
+          "name": "Lidless Wall",
+          "icon": "unique_shield_008_x1_demonhunter_male",
+          "displayColor": "orange",
+          "tooltipParams": "/item/lidless-wall-Unique_Shield_008_x1"
+        }
+      },
+      "stats": {
+        "goldFind": 75,
+        "magicFind": 0,
+        "experienceBonus": 170
+      },
+      "skills": [
+        {
+          "slug": "intervene",
+          "name": "Intervene",
+          "icon": "templar_intervene",
+          "level": 5,
+          "tooltipUrl": "/follower/templar/skill/intervene",
+          "description": "Cooldown: 10 seconds\n\nTaunt enemies within 10 yards of you for 3 seconds when you are hit.",
+          "descriptionHtml": "<p><span class=\"d3-color-gold\">Cooldown:</span> <span class=\"d3-color-green\">10</span> seconds</p>\n\n<p>Taunt enemies within <span class=\"d3-color-green\">10</span> yards of you for <span class=\"d3-color-green\">3</span> seconds when you are hit.</p>"
+        },
+        {
+          "slug": "loyalty",
+          "name": "Loyalty",
+          "icon": "templar_loyalty",
+          "level": 10,
+          "tooltipUrl": "/follower/templar/skill/loyalty",
+          "description": "Regenerates 6437 Life per second for you and the Templar.",
+          "descriptionHtml": "<p>Regenerates <span class=\"d3-color-green\">6437</span> Life per second for you and the Templar.</p>"
+        },
+        {
+          "slug": "charge",
+          "name": "Charge",
+          "icon": "templar_shieldcharge",
+          "level": 15,
+          "tooltipUrl": "/follower/templar/skill/charge",
+          "description": "Cooldown: 10 seconds\n\nCharges a target, dealing 280% weapon damage and stunning all enemies within 8 yards for 3 seconds.",
+          "descriptionHtml": "<p><span class=\"d3-color-gold\">Cooldown:</span> <span class=\"d3-color-green\">10</span> seconds</p>\n\n<p>Charges a target, dealing <span class=\"d3-color-green\">280%</span> weapon damage and stunning all enemies within <span class=\"d3-color-green\">8</span> yards for <span class=\"d3-color-green\">3</span> seconds.</p>"
+        },
+        {
+          "slug": "guardian",
+          "name": "Guardian",
+          "icon": "templar_guardian",
+          "level": 20,
+          "tooltipUrl": "/follower/templar/skill/guardian",
+          "description": "Cooldown: 30 seconds\n\nRush to your aid, knocking back enemies within 15 yards and healing you for 182,383 Life.",
+          "descriptionHtml": "<p><span class=\"d3-color-gold\">Cooldown:</span> <span class=\"d3-color-green\">30</span> seconds</p>\n\n<p>Rush to your aid, knocking back enemies within <span class=\"d3-color-green\">15</span> yards and healing you for <span class=\"d3-color-green\">182,383</span> Life.</p>"
+        }
+      ]
+    },
+    "scoundrel": {
+      "slug": "scoundrel",
+      "level": 70,
+      "items": {
+        "mainHand": {
+          "id": "Crossbow_001",
+          "name": "Light Crossbow of Slaying",
+          "icon": "crossbow_001_demonhunter_male",
+          "displayColor": "blue",
+          "tooltipParams": "/item/light-crossbow-Crossbow_001"
+        }
+      },
+      "stats": {
+        "goldFind": 0,
+        "magicFind": 0,
+        "experienceBonus": 0
+      },
+      "skills": []
+    },
+    "enchantress": {
+      "slug": "enchantress",
+      "level": 70,
+      "items": {
+        "mainHand": {
+          "id": "Staff_002",
+          "name": "Long Staff of Focus",
+          "icon": "staff_002_demonhunter_male",
+          "displayColor": "blue",
+          "tooltipParams": "/item/long-staff-Staff_002"
+        }
+      },
+      "stats": {
+        "goldFind": 0,
+        "magicFind": 0,
+        "experienceBonus": 0
+      },
+      "skills": []
+    }
+  },
+  "legendaryPowers": [
+    {
+      "id": "P4_Unique_HandXBow_001",
+      "name": "Dawn",
+      "icon": "p4_unique_handxbow_001_demonhunter_male",
+      "displayColor": "orange",
+      "tooltipParams": "/item/dawn-P4_Unique_HandXBow_001"
+    },
+    {
+      "id": "P4_Unique_Chest_012",
+      "name": "Aquila Cuirass",
+      "icon": "p4_unique_chest_012_demonhunter_male",
+      "displayColor": "orange",
+      "tooltipParams": "/item/aquila-cuirass-P4_Unique_Chest_012"
+    },
+    {
+      "id": "P4_Unique_Ring_02",
+      "name": "Elusive Ring",
+      "icon": "p4_unique_ring_02_demonhunter_male",
+      "displayColor": "orange",
+      "tooltipParams": "/item/elusive-ring-P4_Unique_Ring_02"
+    }
+  ],
+  "progression": {
+    "act1": {
+      "completed": false,
+      "completedQuests": [
+        {
+          "slug": "the-fallen-star",
+          "name": "The Fallen Star"
+        },
+        {
+          "slug": "the-legacy-of-cain",
+          "name": "The Legacy of Cain"
+        },
+        {
+          "slug": "a-shattered-crown",
+          "name": "A Shattered Crown"
+        },
+        {
+          "slug": "reign-of-the-black-king",
+          "name": "Reign of the Black King"
+        },
+        {
+          "slug": "sword-of-the-stranger",
+          "name": "Sword of the Stranger"
+        },
+        {
+          "slug": "the-broken-blade",
+          "name": "The Broken Blade"
+        },
+        {
+          "slug": "the-doom-in-wortham",
+          "name": "The Doom in Wortham"
+        }
+      ]
+    },
+    "act2": {
+      "completed": false,
+      "completedQuests": []
+    },
+    "act3": {
+      "completed": false,
+      "completedQuests": []
+    },
+    "act4": {
+      "completed": false,
+      "completedQuests": []
+    },
+    "act5": {
+      "completed": false,
+      "completedQuests": []
+    }
+  },
+  "alive": true,
+  "lastUpdated": 1561382789,
+  "highestSoloRiftCompleted": 80,
+  "stats": {
+    "life": 715067.6,
+    "damage": 778201,
+    "toughness": 21648500,
+    "healing": 1915940,
+    "attackSpeed": 1.8227999,
+    "armor": 14585,
+    "strength": 77,
+    "dexterity": 9814,
+    "vitality": 5540,
+    "intelligence": 77,
+    "physicalResist": 160,
+    "fireResist": 0,
+    "coldResist": 0,
+    "lightningResist": 401,
+    "poisonResist": 204,
+    "arcaneResist": 184,
+    "blockChance": 0,
+    "blockAmountMin": 0,
+    "blockAmountMax": 0,
+    "goldFind": 0.99,
+    "critChance": 0.35000002,
+    "thorns": 3436,
+    "lifeSteal": 0,
+    "lifePerKill": 0,
+    "lifeOnHit": 17786,
+    "primaryResource": 125,
+    "secondaryResource": 52
+  }
 }

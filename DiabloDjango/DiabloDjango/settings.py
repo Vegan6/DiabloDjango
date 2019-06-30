@@ -4,7 +4,7 @@ Django settings for DiabloDjango project.
 
 from os import path
 PROJECT_ROOT = path.dirname(path.abspath(path.dirname(__file__)))
-MEDIA_ROOT = PROJECT_ROOT + '/DiabloDjango/Includes/Images/'
+MEDIA_ROOT = PROJECT_ROOT + '/DiabloDjango/static/Images/'
 
 DEBUG = False
 
@@ -21,10 +21,10 @@ DATABASES = {
         'NAME': 'DiabloDB',
         'USER': 'Diablo',
         'PASSWORD': 'qCn4HuUh9N4xH77V',
-        #'HOST': '10.1.1.16',
-        #'PORT': '3306',
-        'HOST': 'heretic.myvnc.com',
-        'PORT': '33306',
+        'HOST': '10.1.1.16',
+        'PORT': '3306',
+        #'HOST': 'heretic.myvnc.com',
+        #'PORT': '33306',
     }
 }
 
@@ -87,7 +87,7 @@ STATICFILES_FINDERS = (
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'n(bd1f1c%e8=_xad02x5qtfn%wgwpi492e$8_erx+d)!tpeoim'
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -168,3 +168,9 @@ LOGGING = {
 
 # Specify the default test runner.
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
+#STATIC_ROOT = ''
+
+#STATIC_URL = '/DiabloDjango/static/'
+
+#STATICFILES_DIRS = ( path.join('static'), )

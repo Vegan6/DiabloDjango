@@ -76,7 +76,7 @@ def GetHero(user, locale, heroid):
     # If In DB async call to API (if update time > threshold) and return DB
     else:
         Hero = models.FactHero.objects.get(userid=user, apiheroid=heroid)
-        if Hero.updatedatetime <= datetime.now() - timedelta(hours=1):
+        if Hero.updatedatetime <= datetime.now() - timedelta(minutes=1):
             HeroDetails = DiabloAPI.HeroProfile(locale.serverurl, user.battletag, heroid)
             Hero.classid=HeroDetails.Class
             Hero.genderid=HeroDetails.Gender

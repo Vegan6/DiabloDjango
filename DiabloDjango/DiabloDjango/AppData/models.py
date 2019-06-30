@@ -3,6 +3,7 @@
 #"""
 from django.db import models
 from django_mysql.models import Bit1BooleanField
+from django.db.models.fields import NullBooleanField
 
 
 #from django.db import models
@@ -129,6 +130,7 @@ class FactCareer(models.Model):
     monsterkillshardcore = models.IntegerField(db_column='MonsterKillsHardcore', blank=True, null=True)
     highesthardcorelevel = models.SmallIntegerField(db_column='HighestHardcoreLevel', blank=True, null=True)
     progressionact1 = Bit1BooleanField(db_column='ProgressionAct1', blank=True, null=True)
+    #test = NullBooleanField
     progressionact2 = Bit1BooleanField(db_column='ProgressionAct2', blank=True, null=True)
     progressionact3 = Bit1BooleanField(db_column='ProgressionAct3', blank=True, null=True)
     progressionact4 = Bit1BooleanField(db_column='ProgressionAct4', blank=True, null=True)

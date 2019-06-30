@@ -43,7 +43,7 @@ def GetCareer(user, locale):
     # If In DB async call to API (if update time > threshold) and return DB
     else:
         CurrentCareer = models.FactCareer.objects.get(userid=user, seasonid=seasonid)
-        if CurrentCareer.updatedatetime <= datetime.now() - timedelta(hours=1):
+        if CurrentCareer.updatedatetime <= datetime.now() - timedelta(seconds=1):
             CareerDetails = DiabloAPI.GetCareer(locale.serverurl, user.battletag)
             #Update Career
             CurrentCareer.paragonlevel=CareerDetails.ParagonLevel

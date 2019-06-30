@@ -16,6 +16,7 @@ def GetCareer(Host, BattleTag):
     DiabloAPIConfig.CURRENTSERVER = Host
     DiabloAPIConfig.BATTLETAG = BattleTag
     url = "%s/d3/profile/%s/?%s&%s" % (Host, BattleTag, DiabloAPIConfig.EN_LOCALE, DiabloAPIConfig.API_KEY)
+    #url = "https://us.api.blizzard.com/d3/profile/Heretic-1984/?locale=en_US&access_token=USKLUsusrWy9xBoKj4vaK4onV9E2YBRvY7"
     response = requests.get(url)
     response
     if response.status_code == 200:
@@ -41,7 +42,7 @@ def HeroProfile(Host, BattleTag, HeroId):
 #Leaderboard URL
 #https://us.api.battle.net/data/d3/season/6/leaderboard/rift-team-4
 def AuthToken():
-    url = 'http://us.api.battle.net/oauth/token'
+    url = 'http://us.api.blizzard.com/oauth/token'
     #secret = models.DimensionConfig.objects.get(ConfigName='APISecret')
     #apikey = models.DimensionConfig.objects.get(ConfigName='APIKey')
     secret = 'x3uTTXHjbDRWSmAmENCm4mdbza8xaaun'
@@ -50,13 +51,13 @@ def AuthToken():
     data = {' grant_type': 'client_credentials', 'client_id' : apikey, 'client_secret' : secret }
     #response = requests.post(url, data=json.dumps(data), headers=header)
     #if response.status_code == 200:
-    return 'upd2st3bwz5f89sbtejq2f5c'
+    return 'USKLUsusrWy9xBoKj4vaK4onV9E2YBRvY7'
         #return response.text
     #else:
         #raise Exception('Error:\n' + response.text)
 
 def GetLeaderboards(token, data_point, season):
-    url = 'https://us.api.battle.net/data/d3/season/%s/leaderboard/%s?access_token=%s' % (season, data_point, token)
+    url = 'https://us.api.blizzard.com/data/d3/season/%s/leaderboard/%s?access_token=%s' % (season, data_point, token)
     response = requests.get(url)
     return Leaderboard.Leaderboard(json.loads(response.text))
 

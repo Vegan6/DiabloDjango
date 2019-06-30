@@ -31,8 +31,8 @@ def leaderboard(request):
     except:
         HeroPortrait = ''
     
-    data_point = request.POST.get("ddlLeaderboard", "rift-necromancer")
-    season = request.POST.get("ddlSeason", "11");
+    data_point = request.POST.get("ddlLeaderboard", "rift-dh")
+    season = request.POST.get("ddlSeason", "17");
     
     Leaderboards = GetLeaderboard(data_point, season)
     

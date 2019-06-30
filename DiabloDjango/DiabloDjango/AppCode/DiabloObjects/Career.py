@@ -25,30 +25,45 @@ class Career(dict):
 
     @property
     def Act1Completed(self):
+      if not 'progression' in self:
+        return None
+      else:
         progression = self['progression']
         act1 = progression['act1']
         return act1
 
     @property
     def Act2Completed(self):
+      if not 'progression' in self:
+        return None
+      else:
         progression = self['progression']
         act2 = progression['act2']
         return act2
 
     @property
     def Act3Completed(self):
+      if not 'progression' in self:
+        return None
+      else:
         progression = self['progression']
         act3 = progression['act3']
         return act3
 
     @property
     def Act4Completed(self):
+      if not 'progression' in self:
+        return None
+      else:
         progression = self['progression']
         act4 = progression['act4']
         return act4
 
     @property
     def Act5Completed(self):
+      if not 'progression' in self:
+        return None
+      else:
         progression = self['progression']
         act5 = progression['act5']
         return act5

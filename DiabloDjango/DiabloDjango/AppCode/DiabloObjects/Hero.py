@@ -79,30 +79,45 @@ class Hero(dict):
     
     @property
     def Act1Completed(self):
+      if not 'progression' in self:
+        return None
+      else:
         progression = self['progression']
         act1 = progression['act1']
         return act1['completed']
 
     @property
     def Act2Completed(self):
+      if not 'progression' in self:
+        return None
+      else:
         progression = self['progression']
         act2 = progression['act2']
         return act2['completed']
 
     @property
     def Act3Completed(self):
+      if not 'progression' in self:
+        return None
+      else:
         progression = self['progression']
         act3 = progression['act3']
         return act3['completed']
 
     @property
     def Act4Completed(self):
+      if not 'progression' in self:
+        return None
+      else:
         progression = self['progression']
         act4 = progression['act4']
         return act4['completed']
 
     @property
     def Act5Completed(self):
+      if not 'progression' in self:
+        return None
+      else:
         progression = self['progression']
         act5 = progression['act5']
         return act5['completed']
@@ -137,7 +152,8 @@ class Hero(dict):
 
     @property
     def CriticalDamage(self):
-        return int(self.Stats()['critDamage'] * 100)
+        #return int(self.Stats()['critDamage'] * 100)
+        return 0
 
     @property
     def CriticalChance(self):
@@ -156,15 +172,23 @@ class Hero(dict):
 
     @property
     def DamageIncrease(self):
-        return int(self.Stats()['damageIncrease'] * 100)
+        #return int(self.Stats()['damageIncrease'] * 100)
+        return 0
 
     @property
     def DamageReduction(self):
-        return int(self.Stats()['damageReduction'] * 100)
+        #return int(self.Stats()['damageReduction'] * 100)
+        return 0
     
     @property
     def Dead(self):
-        return self['dead']
+      if not 'alive' in self:
+        return None
+      elif self['alive']:
+        return False
+      else:
+        return True
+        #return !self['alive']
     
     @property
     def Dexterity(self):
@@ -214,7 +238,13 @@ class Hero(dict):
 
     @property
     def LastUpdated(self):
-        return int(self['last-updated'])
+      if not 'lastUpdated' in self:
+        if not 'last-updated' in self:
+          return None
+        else: 
+          return int(self['last-updated'])
+      else:
+        return int(self['lastUpdated'])
 
     @property
     def Level(self):
@@ -242,7 +272,8 @@ class Hero(dict):
 
     @property
     def MagicFind(self):
-        return int(self.Stats()['magicFind'] * 100)
+        #return int(self.Stats()['magicFind'] * 100)
+      return 0
     
     @property
     def MonsterKills(self):
